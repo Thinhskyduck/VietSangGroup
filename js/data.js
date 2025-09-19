@@ -1,0 +1,56 @@
+const feedbackData = [
+    {
+        imageNumber: 1,
+        quote: "Phản hồi vui vẻ khi sử dụng dịch vụ vệ sinh lớp học từ Việt Sáng Clean. Rất chuyên nghiệp và sạch sẽ!",
+        author: "Chị Hạnh",
+        info: "Giáo viên trường Tiểu học Lương Thế Vinh, Thủ Đức"
+    },
+    {
+        imageNumber: 2,
+        quote: "Phản hồi hài lòng khi sử dụng dịch vụ vệ sinh lớp học bán trú từ Việt Sáng Clean.",
+        author: "Chị Quyên",
+        info: "Phụ huynh học sinh, Thủ Đức"
+    },
+    {
+        imageNumber: 3,
+        quote: "Hài lòng và giới thiệu dịch vụ đến mọi người sau 3 lần sử dụng dịch vụ vệ sinh và chuyển nhà trọn gói từ đội ngũ Việt Sáng.",
+        author: "Chị Oanh",
+        info: "Căn hộ Bình Khánh, Quận 2"
+    },
+    {
+        imageNumber: 4,
+        quote: "Phản hồi hài lòng về dịch vụ tổng vệ sinh căn hộ lâu năm.",
+        author: "Chị Uyên",
+        info: "Khu đô thị Cityland Park Hill, Gò Vấp"
+    },
+    {
+        imageNumber: 5, // Ảnh 5 và 6 dùng chung nội dung
+        quote: "Phản hồi rất hài lòng về dịch vụ chuyển nhà từ Việt Sáng Moving.",
+        author: "Ms Lan Anh",
+        info: "Tân Bình"
+    },
+    {
+        imageNumber: 6, // Ảnh 5 và 6 dùng chung nội dung
+        quote: "Phản hồi rất hài lòng về dịch vụ chuyển nhà từ Việt Sáng Moving.",
+        author: "Ms Lan Anh",
+        info: "Tân Bình"
+    },
+    {
+        imageNumber: 7,
+        quote: "Phản hồi hài lòng về dịch vụ chuyển trọ từ Việt Sáng Moving.",
+        author: "Ms Thi",
+        info: "Xô Viết Nghệ Tĩnh, Bình Thạnh"
+    },
+    {
+        imageNumber: 8,
+        quote: "Phản hồi hài lòng về dịch vụ chuyển căn hộ trọn gói từ Việt Sáng Moving.",
+        author: "Vợ chồng chị Lan",
+        info: "Landmark 2, Vinhomes Central Park"
+    },
+    {
+        imageNumber: 9,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Clean.",
+        author: "Chị Kiều",
+        info: "Linh Đông, Thủ Đức"
+    }
+];

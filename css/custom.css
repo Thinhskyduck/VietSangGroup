@@ -1,0 +1,864 @@
+/* --- Navbar Tùy Chỉnh --- */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+}
+
+/* Nút "Liên Hệ Ngay" nổi bật hơn */
+.btn-contact-nav {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-contact-nav:hover {
+    background-color: var(--primary);
+    color: #fff;
+    transform: translateY(-2px); /* Hiệu ứng nhấc lên khi hover */
+    box-shadow: 0 6px 20px rgba(252, 185, 0, 0.4);
+}
+
+
+/* --- Nút Đặt Lịch Dịch Vụ được thiết kế lại --- */
+.btn-service {
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 50px !important; /* Bo tròn */
+    transition: all 0.3s ease;
+    border: none;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.btn-service:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.30);
+}
+
+
+/* --- Project Carousel Tùy Chỉnh --- */
+.project-carousel .portfolio-img {
+    position: relative;
+}
+
+.project-carousel .portfolio-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(29, 41, 62, 0.6); /* Lớp phủ màu tối hơn */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-carousel .portfolio-item:hover .portfolio-img::after {
+    opacity: 1;
+}
+
+.project-carousel .portfolio-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+.project-carousel .portfolio-item:hover .portfolio-btn {
+    opacity: 1;
+}
+
+/* Sao chép style mũi tên từ Testimonial Carousel */
+.project-carousel.owl-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.project-carousel.owl-carousel .owl-nav button.owl-prev,
+.project-carousel.owl-carousel .owl-nav button.owl-next {
+    pointer-events: all;
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark) !important;
+    background: #FFFFFF !important;
+    border-radius: 45px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+    font-size: 20px !important;
+    transition: .3s;
+}
+
+.project-carousel.owl-carousel .owl-nav button.owl-prev {
+    left: -25px;
+}
+
+.project-carousel.owl-carousel .owl-nav button.owl-next {
+    right: -25px;
+}
+
+.project-carousel.owl-carousel .owl-nav button.owl-prev:hover,
+.project-carousel.owl-carousel .owl-nav button.owl-next:hover {
+    background: var(--primary) !important;
+    color: #FFFFFF !important;
+}
+
+
+/* ===== Sửa lỗi ảnh "cái dài cái ngắn" (PHẦN MỚI) ===== */
+.portfolio-container .portfolio-img {
+    position: relative; /* Rất quan trọng: làm mốc cho nút xem ảnh */
+    height: 280px;
+    overflow: hidden;
+}
+
+.portfolio-container .portfolio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Đảm bảo nút xem ảnh luôn nằm giữa và chỉ hiện khi hover */
+.portfolio-container .portfolio-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(29, 41, 62, 0.6);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+.portfolio-container .portfolio-item:hover .portfolio-btn {
+    opacity: 1;
+}
+
+/* --- Testimonial (Phản Hồi) Redesign --- */
+
+.testimonial-item-new {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+    border-left: 7px solid var(--primary);
+    min-height: 450px; /* Tăng chiều cao tối thiểu */
+}
+
+.testimonial-img-container {
+    flex-shrink: 0;
+    width: 280px;             /* Chiều rộng cố định */
+    max-height: 500px;        /* Giới hạn chiều cao tối đa */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border: 5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;         /* nền đen cho ảnh ngang khỏi bị dư */
+}
+
+.testimonial-img-container img {
+    max-width: 100%;   /* Ảnh ngang sẽ co theo chiều rộng */
+    max-height: 100%;  /* Ảnh đứng sẽ co theo chiều cao */
+    height: auto;
+    width: auto;
+    object-fit: contain;  /* Giữ nguyên toàn bộ ảnh, không crop */
+    display: block;
+}
+
+
+.testimonial-text-container {
+    flex-grow: 1;
+}
+
+.testimonial-text-container p {
+    font-size: 1.2rem; /* Tăng cỡ chữ phản hồi */
+    font-style: italic;
+    color: #555;
+    line-height: 1.7;
+}
+
+.testimonial-text-container h5 {
+    color: var(--dark);
+    font-weight: 700;
+}
+
+/* THÊM VÀO: Định dạng lại cho các nút điều hướng */
+.testimonial-carousel.owl-carousel .owl-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    background: #fff;
+    border: 2px solid var(--primary); /* Sử dụng màu primary cho viền */
+    border-radius: 50px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    color: #FFFFFF;
+    background: var(--primary); /* Đổi nền khi hover */
+}
+/* --- Kết thúc phần thêm vào --- */
+@media (max-width: 992px) { /* Thay đổi điểm ngắt */
+    .testimonial-item-new {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+    }
+    .testimonial-img-container {
+        width: 100%;
+        max-width: 280px;
+        height: 500px; /* Giữ nguyên chiều cao trên mobile */
+        margin-bottom: 30px;
+    }
+    .testimonial-text-container .fa-quote-left {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* --- Kết thúc Testimonial (Phản Hồi) Redesign --- */
+
+/* --- Footer Tùy Chỉnh --- */
+.footer-contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.container-fluid.my-5 .position-relative {
+    height: 350px; /* Đặt một chiều cao cố định */
+    overflow: hidden;
+}
+
+.container-fluid.my-5 .position-relative img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Lấp đầy khung mà không làm méo ảnh */
+    transition: transform 0.5s ease; /* Thêm hiệu ứng phóng to khi hover */
+}
+
+/* Thêm hiệu ứng phóng to ảnh khi hover */
+.container-fluid.my-5 .position-relative:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Tùy chỉnh hiệu ứng Hover cho Dịch Vụ --- */
+/* Ghi đè màu nền của lớp phủ */
+.service-item:hover .service-text::before {
+    background: var(--primary) !important; /* var(--primary) chính là màu #c49963 */
+}
+
+/* Ghi đè màu chữ khi hover */
+.service-item:hover .service-text * {
+    color: var(--light) !important; /* var(--light) chính là màu #faefe0 */
+}
+
+
+/* --- Thiết kế lại Bộ lọc Công trình (Thanh trượt ngang) --- */
+.portfolio-flters-container {
+    width: 100%;
+    overflow-x: auto; /* Cho phép cuộn ngang */
+    padding-bottom: 20px; /* Tạo khoảng trống để bóng đổ không bị cắt */
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch; /* Hỗ trợ cuộn mượt trên mobile */
+}
+
+/* Ẩn thanh scrollbar trên trình duyệt Webkit (Chrome, Safari) */
+.portfolio-flters-container::-webkit-scrollbar {
+    display: none;
+}
+
+.portfolio-flters-container ul {
+    display: flex; /* Hiển thị các nút trên một hàng */
+    flex-wrap: nowrap; /* Không cho phép xuống dòng */
+    white-space: nowrap; /* Giữ các nút trên một hàng */
+    justify-content: center;
+}
+
+#portfolio-flters li {
+    flex-shrink: 0; /* Ngăn các nút bị co lại */
+    margin: 0 5px;
+}
+
+/* --- Hiệu ứng động cho Navbar --- */
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(196, 153, 99, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(196, 153, 99, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(196, 153, 99, 0);
+  }
+}
+
+.navbar-nav .nav-link i {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Áp dụng hiệu ứng tỏa sáng cho icon */
+.navbar-nav .nav-link .fa-phone-alt,
+.navbar-nav .nav-link .bi-chat-dots-fill {
+  border-radius: 50%;
+  animation: pulse-animation 2s infinite;
+}
+
+/* Hiệu ứng phóng to khi hover */
+.navbar-nav .nav-link:hover i {
+    transform: scale(1.2);
+}
+
+/* --- Sửa lỗi ảnh "cái dài cái ngắn" cho Dịch Vụ --- */
+.service-img-container {
+    height: 500px; /* Chiều cao cố định cho ảnh dịch vụ */
+    overflow: hidden;
+}
+
+.service-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- CSS cho nút "Xem Thêm" và Video --- */
+/* Ẩn các công trình cũ hơn ban đầu */
+.portfolio-item.portfolio-hidden {
+    display: none;
+}
+
+/* Giao diện cho video item */
+.video-item .portfolio-btn .fa-play {
+    font-size: 2rem; /* Làm icon Play to hơn */
+}
+
+/* Overlay mờ trên ảnh */
+.video-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); /* độ mờ */
+}
+
+/* Nút Play giữa ảnh */
+.btn-play-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px; height: 80px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  color: #000;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-play-center:hover {
+  background: #fff;
+  color: #007bff; /* hoặc màu brand của bạn */
+}
+
+#videoContainer lite-youtube,
+#videoContainer iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.ratio-9x16 {
+  aspect-ratio: 9 / 16;
+}
+
+/* --- Thiết kế lại cho Thẻ Dịch Vụ --- */
+.service-card-new {
+    transition: all 0.3s ease;
+}
+
+.service-card-new:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+.service-card-new .card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.service-card-new .list-group-item {
+    background: transparent; /* Loại bỏ nền trắng của list item */
+    border: none;
+    padding-left: 0;
+}
+
+.bg-primary {
+    background-color: #c49963  !important;
+}
+
+/* --- Tùy chỉnh cho Tiêu đề Dịch vụ (Badge) --- */
+.service-badge {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    font-size: 1.4rem; /* BẠN CÓ THỂ TĂNG/GIẢM CỠ CHỮ Ở ĐÂY */
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem; /* Bo góc nhẹ */
+    color: var(--light); /* Màu chữ #faefe0 */
+    background-color: var(--primary); /* Màu nền #c49963 */
+}
+
+/* --- Thiết kế lại cho Hộp "Đặc Biệt" --- */
+.special-offer-box {
+    border: 2px dashed var(--primary);
+    border-radius: 10px;
+    background-color: #fff; /* Nền trắng để nổi bật trên lớp phủ hover */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.special-offer-header {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.special-offer-body {
+    padding: 15px;
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+.move-offer-box {
+    border: 2px dashed var(--primary);
+    border-radius: 10px;
+    background-color: #fff; /* Nền trắng để nổi bật trên lớp phủ hover */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.move-offer-header {
+    background-color: #3983d3;
+    color: var(--light);
+    padding: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.move-offer-body {
+    padding: 15px;
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+/* Thay đổi màu sắc khi thẻ dịch vụ được hover */
+.service-card-new:hover .special-offer-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--light);
+}
+.service-card-new:hover .special-offer-body {
+    color: var(--dark);
+}
+
+/* Vòng tròn icon */
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Hover hiệu ứng */
+.contact-link {
+  transition: color 0.3s ease;
+}
+.contact-link:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+
+/* --- Nâng cấp Giao diện Carousel --- */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* Nút bấm CTA nâng cấp */
+.custom-cta {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 60px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  background: linear-gradient(45deg, #ff8000, #ffcc00); /* gradient vàng cam nổi bật */
+  border: none;
+  border-radius: 60px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+/* Hiệu ứng tỏa sáng (Pulse viền ngoài) */
+.custom-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 60px;
+  z-index: -1;
+  animation: pulse-border 2.5s infinite;
+}
+
+/* Hiệu ứng quét sáng (Shimmer rõ hơn) */
+.custom-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shimmer 2.2s infinite linear;
+}
+
+/* Hover */
+.custom-cta:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* Animation Pulse */
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 25px rgba(255, 140, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+  }
+}
+
+/* Animation Shimmer */
+@keyframes shimmer {
+  0% {
+    left: -200%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+/* --- Tùy chỉnh cho Modal Lựa Chọn Đặt Lịch --- */
+.modal-content {
+    background-color: var(--light);
+}
+
+#bookingOptionsModal .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--dark);
+}
+
+/* Thiết kế lại toàn bộ các nút trong Modal */
+#bookingOptionsModal .btn-lg {
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700; /* Chữ đậm hơn */
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex; /* Dùng flexbox để căn icon và chữ */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Bóng đổ ngoài */
+}
+
+#bookingOptionsModal .btn-lg:hover {
+    transform: translateY(-5px) scale(1.03); /* Hiệu ứng nhấc lên và phóng to */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Nút điền form (Website) - Gradient Vàng đậm */
+.btn-primary-custom {
+    background-image: linear-gradient(to right, #d4a017 0%, #b8860b 51%, #d4a017 100%);
+    background-size: 200% auto;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.btn-primary-custom:hover {
+    background-position: right center;
+}
+
+/* Nút Zalo - Gradient Xanh Dương tươi */
+.btn-zalo-custom {
+    background-image: linear-gradient(to right, #0072ff 0%, #0052d4 51%, #0072ff 100%);
+    background-size: 200% auto;
+    color: white;
+}
+.btn-zalo-custom:hover {
+    background-position: right center;
+}
+
+/* Nút Gọi điện - Gradient Xanh Lá nổi bật */
+.btn-phone-custom {
+    background-image: linear-gradient(to right, #00c853 0%, #009624 51%, #00c853 100%);
+    background-size: 200% auto;
+    color: white;
+}
+.btn-phone-custom:hover {
+    background-position: right center;
+}
+
+/* --- Tùy chỉnh cho Trang Form Đặt Lịch --- */
+/* Form nâng cấp */
+#bookingForm {
+  border-radius: 16px;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), #ffffff);
+}
+
+/* Section title */
+.section-title {
+  color: var(--dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 8px;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* Required marker */
+.form-label.required::after {
+  content: " *";
+  color: #d9534f;
+  margin-left: 2px;
+}
+
+/* Larger inputs */
+.form-control, .form-select {
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid #e6e6e6;
+  transition: box-shadow .15s ease, border-color .15s ease;
+  font-size: 1rem;
+}
+
+/* Focus */
+#bookingForm .form-control:focus, #bookingForm .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 8px 20px rgba(196,153,99,0.12);
+  outline: none;
+}
+
+/* Radio/btn-check group styling */
+.btn-group .btn {
+  border-radius: 8px;
+  padding: 10px 14px;
+  min-width: 140px;
+}
+.btn-group .btn-check:checked + .btn, .btn-group .btn:active, .btn-group .btn:focus {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(196,153,99,1), rgba(196,153,99,0.9));
+  border-color: rgba(196,153,99,1);
+}
+
+/* Custom checkbox style */
+.custom-check .form-check-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.custom-check .form-check-input:checked {
+  background: linear-gradient(90deg, #c49963, #d4a017);
+  border-color: #b8860b;
+  box-shadow: 0 4px 12px rgba(196,153,99,0.18);
+}
+.custom-check .form-check-label {
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* Submit button */
+#submitBtn {
+  background: linear-gradient(90deg,#ff8000,#ffc837);
+  border: none;
+  box-shadow: 0 10px 30px rgba(255,136,0,0.18);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+#submitBtn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 40px rgba(255,136,0,0.25); }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .btn-group .btn { min-width: auto; padding: 8px 10px; font-size: .95rem; }
+  .testimonial-img-container { max-height: 380px; }
+}
+
+/* --- Tùy chỉnh cho Form Ma Trận --- */
+.matrix-form {
+  margin-top: 10px;
+}
+
+.matrix-form th, .matrix-form td {
+  vertical-align: middle;
+}
+
+.matrix-form th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.matrix-form .form-check-input {
+  width: 1.25em;
+  height: 1.25em;
+  cursor: pointer;
+}
+
+/* --- Tùy chỉnh cho Page Header của trang Form --- */
+.page-header-form-cleaning {
+    /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-3.png') center center no-repeat;
+    background-size: cover;
+}
+
+.page-header-form-moving {
+    /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-2.png') center center no-repeat;
+    background-size: cover;
+}
+
+.page-header-form-thanks {
+    /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-1.png') center center no-repeat;
+    background-size: cover;
+}
+
+/* Tùy chỉnh breadcrumb */
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Tùy chỉnh cho Nút Quay Lại --- */
+.btn-back {
+    border-radius: 50px; /* Bo tròn */
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    border-width: 2px;
+    /* Thêm vào: căn chỉnh icon và chữ */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-back:hover {
+    background-color: #6c757d ;
+    color: #fff;
+    border-color: var(--secondary);
+}
+/* --- Tùy chỉnh cho Video trong Carousel --- */
+.carousel-video-item {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 0;
+}
+
+/* --- Tùy chỉnh cho Nút Âm thanh Video --- */
+.video-controls {
+    /* Đặt nút ở góc dưới bên phải */
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    width: auto;
+    /* Nút sẽ không bị ảnh hưởng bởi lớp phủ đen */
+    background: transparent !important;
+    z-index: 10;
+}
+
+#mute-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+#mute-toggle-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+}

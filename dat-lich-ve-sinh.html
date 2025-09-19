@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Đặt Lịch Vệ Sinh - Việt Sáng</title>
+    <!-- (Toàn bộ thẻ <head> được sao chép từ index.html để đảm bảo đồng bộ) -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="img/logo.png" rel="icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light p-0">
+      <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+          <div
+            class="h-100 d-inline-flex align-items-center border-start border-end px-3"
+          >
+            <small class="fa fa-phone-alt me-2"></small>
+            <small>0853 052 768</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center border-end px-3">
+            <small class="far fa-envelope-open me-2"></small>
+            <small>vietsanghome@gmail.com</small>
+          </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+          <div class="h-100 d-inline-flex align-items-center">
+            <a class="btn btn-square border-end border-start" href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-square border-end" href="https://www.youtube.com/@HaiMeNhaXinh"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a class="btn btn-square border-end" href="https://www.tiktok.com/@haimenhaxinh?_t=ZS-8ziwxJPjZOZ&_r=1"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+            <a
+              class="btn btn-square border-end"
+              href="https://zalo.me/0931992089"
+              target="_blank"
+              title="Chat Zalo"
+            >
+             <i class="bi bi-chat-dots-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start (Thiết kế lại liên hệ) -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <img src="img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-2">
+        <h1 class="m-0 fw-bold text-primary">Việt Sáng</h1>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-3 py-lg-0 d-flex align-items-center gap-3">
+
+          <!-- Phone -->
+          <a href="tel:0853052768" class="nav-item nav-link d-flex align-items-center contact-link">
+            <div class="icon-circle bg-primary text-white me-2">
+              <i class="fa fa-phone-alt"></i>
+            </div>
+            <strong class="text-primary">0931 992 089</strong>
+          </a>
+
+          <!-- Zalo -->
+          <a href="https://zalo.me/0931992089" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="img/logo/zalo.png" alt="Zalo" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">Zalo</strong>
+          </a>
+
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="img/logo/fb.png" alt="Facebook" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">Facebook</strong>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@haimenhaxinh?_t=ZS-8ziwxJPjZOZ&_r=1" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="img/logo/tiktok.png" alt="TikTok" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">TikTok</strong>
+          </a>
+
+          <!-- Button -->
+          <a href="#services" class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3">
+            Đặt lịch ngay
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start (Nâng cấp) -->
+    <div class="container-fluid page-header page-header-form-cleaning py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white animated slideInDown mb-4">
+        Đặt Lịch Dịch Vụ Vệ Sinh
+        </h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a class="text-white" href="index.html">Trang Chủ</a></li>
+                <li class="breadcrumb-item text-primary active" aria-current="page">Đặt Lịch</li>
+            </ol>
+        </nav>
+    </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Main Content: Form Đặt Lịch (nâng cấp) -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            
+            <!-- Tiêu đề trang -->
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="border-start border-5 border-primary d-inline-block ps-4 mb-3">
+                <h6 class="text-body text-uppercase mb-2">Đặt Lịch Dịch Vụ</h6>
+                <h1 class="display-6 mb-0">Phiếu Đặt Lịch Vệ Sinh</h1>
+            </div>
+            <p class="mb-0 text-muted">Vui lòng cung cấp thông tin chi tiết dưới đây để chúng tôi phục vụ bạn tốt nhất. Các mục có dấu <span class="text-danger">*</span> là bắt buộc.</p>
+            </div>
+
+            <!-- Form chính -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12">                 
+                    <form id="bookingForm" class="p-5 bg-white shadow-lg rounded-3 position-relative" novalidate>
+                    <input type="hidden" name="selectedServices" id="selectedServices" value="">
+                    
+                    <!-- I. THÔNG TIN CƠ BẢN -->
+                    <h4 class="mb-4 section-title">I. Thông Tin Cơ Bản</h4>                   
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                        <label class="form-label required">1. Tên người đặt dịch vụ</label>
+                        <input type="text" class="form-control form-control-lg" id="tenNguoiDat" name="tenNguoiDat" placeholder="Tên của bạn" required>
+                        <div class="invalid-feedback">Vui lòng nhập tên.</div>
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label required">Số điện thoại liên hệ</label>
+                        <input type="tel" class="form-control form-control-lg" id="soDienThoai" name="soDienThoai" placeholder="0xx xxx xxxx" pattern="^[0-9+\-\s]{7,20}$" required>
+                        <div class="invalid-feedback">Số điện thoại không hợp lệ.</div>
+                        </div>
+                        <div class="col-12">
+                        <label class="form-label required">2. Địa chỉ cần dọn vệ sinh</label>
+                        <input type="text" class="form-control form-control-lg" id="diaChi" name="diaChi" placeholder="Số nhà, đường, phường/quận" required>
+                        <div class="invalid-feedback">Vui lòng nhập địa chỉ.</div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <!-- II. ĐẶC ĐIỂM CÔNG TRÌNH -->
+                    <h4 class="mb-4 section-title">II. Đặc Điểm Công Trình</h4>
+                    <div class="row g-4 mb-4 align-items-center">
+                        <div class="col-12">
+                        <label class="form-label required d-block mb-2">3. Đặc điểm nhà ở</label>
+                        <div class="btn-group" role="group" aria-label="Đặc điểm nhà" id="dacDiemGroup">
+                            <input type="radio" class="btn-check" name="dacDiemNha" id="nhaLauNam" value="Nhà ở lâu năm" required>
+                            <label class="btn btn-outline-primary" for="nhaLauNam">Nhà ở lâu năm</label>
+
+                            <input type="radio" class="btn-check" name="dacDiemNha" id="nhaMoi" value="Nhà ở còn mới">
+                            <label class="btn btn-outline-primary" for="nhaMoi">Nhà ở còn mới</label>
+
+                            <input type="radio" class="btn-check" name="dacDiemNha" id="nhaSauXayDung" value="Nhà ở sau xây dựng">
+                            <label class="btn btn-outline-primary" for="nhaSauXayDung">Nhà sau xây dựng</label>
+                        </div>
+                        <div class="form-text text-muted mt-2">Chọn 1 mục phù hợp nhất.</div>
+                        </div>
+
+                        <div class="col-md-5">
+                        <label class="form-label required">4. Tổng diện tích (m²)</label>
+                        <input type="number" class="form-control" id="dienTich" name="dienTich" placeholder="Ví dụ: 75" min="1" required>
+                        <div class="invalid-feedback">Nhập diện tích hợp lệ.</div>
+                        </div>
+
+                        <div class="col-md-7">
+                        <label class="form-label">5. Số tầng / phòng ngủ / toilet</label>
+                        <div class="row g-2">
+                            <div class="col">
+                            <input type="number" class="form-control" name="soTang" placeholder="Tầng" min="0">
+                            </div>
+                            <div class="col">
+                            <input type="number" class="form-control" name="soPhongNgu" placeholder="Phòng ngủ" min="0">
+                            </div>
+                            <div class="col">
+                            <input type="number" class="form-control" name="soToilet" placeholder="Toilet" min="0">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <!-- III. HẠNG MỤC VỆ SINH -->
+                    <h4 class="mb-4 section-title">III. Hạng Mục Vệ Sinh</h4>
+                    <label class="form-label d-block mb-3 required">6. Quý khách có yêu cầu dọn vệ sinh như thế nào? </label>
+
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh cơ bản" id="cb1">
+                        <label class="form-check-label" for="cb1">Vệ sinh cơ bản</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh nội thất" id="cb2">
+                        <label class="form-check-label" for="cb2">Vệ sinh nội thất</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh không gian" id="cb3">
+                        <label class="form-check-label" for="cb3">Vệ sinh không gian</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh đồ dùng cá nhân" id="cb4">
+                        <label class="form-check-label" for="cb4">Vệ sinh đồ dùng cá nhân, đồ trang trí</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Sắp xếp vật dụng" id="cb5">
+                        <label class="form-check-label" for="cb5">Sắp xếp vật dụng, đồ trang trí</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh bếp" id="cb6">
+                        <label class="form-check-label" for="cb6">Vệ sinh bếp (tẩy dầu mỡ)</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh xây dựng" id="cb7">
+                        <label class="form-check-label" for="cb7">Vệ sinh xây dựng (cạo sơn, tẩy keo)</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Tẩy mốc, ố, cặn canxi" id="cb8">
+                        <label class="form-check-label" for="cb8">Tẩy mốc, tẩy ố, tẩy cặn canxi</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh máy lạnh" id="cb9">
+                        <label class="form-check-label" for="cb9">Vệ sinh máy lạnh</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh máy giặt" id="cb10">
+                        <label class="form-check-label" for="cb10">Vệ sinh máy giặt</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Vệ sinh máy nước nóng" id="cb11">
+                        <label class="form-check-label" for="cb11">Vệ sinh máy nước nóng</label>
+                        </div>
+                        <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="Đổ rác xây dựng" id="cb12">
+                        <label class="form-check-label" for="cb12">Đổ rác xây dựng ngoài bãi</label>
+                        </div>
+                    </div>
+                    </div>
+
+
+                    <!-- Ghi chú -->
+                    <div class="mb-4">
+                        <label class="form-label">Ghi chú thêm (diện tích chi tiết, giờ dự kiến, yêu cầu đặc biệt)</label>
+                        <textarea class="form-control" name="ghiChu" id="ghiChu" rows="4" placeholder="Ví dụ: 3 phòng ngủ, ưu tiên buổi sáng..."></textarea>
+                    </div>
+
+                    <!-- Nút Gửi -->
+                    <div class="col-12 text-center">
+                      <button id="submitBtn" class="btn btn-primary btn-lg rounded-pill py-3 px-5 fw-bold fs-5" type="submit">
+                      Gửi Yêu Cầu Đặt Lịch
+                      </button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start (Phục hồi footer cũ) -->
+    <div
+      class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn"
+      data-wow-delay="0.1s"
+      id="footer"
+    >
+      <div class="container py-5">
+        <div class="row g-4 justify-content-between">
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h1 class="text-white mb-4 d-flex align-items-center">
+              <img src="img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-3">
+              <span>Việt Sáng</span>
+            </h1>
+            <p>
+              Đơn vị hàng đầu cung cấp dịch vụ trọn gói vệ sinh nhà ở và chuyển
+              nhà chuyên nghiệp tại TP. Hồ Chí Minh.
+            </p>
+            <div class="d-flex pt-2">
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.youtube.com/@HaiMeNhaXinh"><i class="fab fa-youtube"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.tiktok.com/@haimenhaxinh?_t=ZS-8ziwxJPjZOZ&_r=1"><i class="fab fa-tiktok"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" 
+                href="https://zalo.me/0931992089" target="_blank">
+                <img src="img/logo/zalo.png" alt="Zalo" style="width:20px; height:20px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h4 class="text-light mb-4">Thông Tin Liên Hệ</h4>
+            <p><i class="fa fa-map-marker-alt me-3"></i>Linh Đông, Thủ Đức, TP. HCM</p>
+            <p><i class="fa fa-phone-alt me-3"></i>0931 992 089</p>
+            <p><i class="fa fa-envelope me-3"></i>vietsanghome@gmail.com</p>
+            <p><img src="img/logo/zalo.png" alt="Zalo" style="height: 20px; width: 20px; margin-right: 8px;">
+              <a href="https://zalo.me/0931992089" target="_blank" style="color: #999999; text-decoration: none;">
+                Zalo: 0931 992 089
+              </a>
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h4 class="text-light mb-4">Links Nhanh</h4>
+            <a class="btn btn-link" href="#about">Về Chúng Tôi</a>
+            <a class="btn btn-link" href="#services">Dịch Vụ</a>
+            <a class="btn btn-link" href="#projects">Công Trình</a>
+            <a class="btn btn-link" href="#testimonials">Phản Hồi</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              &copy; <a href="#">Việt Sáng</a>, All Right Reserved.
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+              <br />Distributed By:
+              <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Thư viện mới cho Portfolio/Project -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- ===== SCRIPT TÙY CHỈNH CỦA BẠN ===== -->
+    <script src="js/form-handler.js"></script>
+    <!-- (Sao chép toàn bộ script từ cuối file index.html) -->
+  </body>
+</html>

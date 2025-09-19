@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Đặt Lịch Chuyển Nhà - Việt Sáng</title>
+    <!-- (Toàn bộ thẻ <head> được sao chép từ index.html để đảm bảo đồng bộ) -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="img/logo.png" rel="icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light p-0">
+      <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+          <div
+            class="h-100 d-inline-flex align-items-center border-start border-end px-3"
+          >
+            <small class="fa fa-phone-alt me-2"></small>
+            <small>0853 052 768</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center border-end px-3">
+            <small class="far fa-envelope-open me-2"></small>
+            <small>vietsanghome@gmail.com</small>
+          </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+          <div class="h-100 d-inline-flex align-items-center">
+            <a class="btn btn-square border-end border-start" href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-square border-end" href="https://www.youtube.com/@HaiMeNhaXinh"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a class="btn btn-square border-end" href="https://www.tiktok.com/@haimenhaxinh?_t=ZS-8ziwxJPjZOZ&_r=1"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+            <a
+              class="btn btn-square border-end"
+              href="https://zalo.me/0931992089"
+              target="_blank"
+              title="Chat Zalo"
+            >
+             <i class="bi bi-chat-dots-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start (Thiết kế lại liên hệ) -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <img src="img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-2">
+        <h1 class="m-0 fw-bold text-primary">Việt Sáng</h1>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-3 py-lg-0 d-flex align-items-center gap-3">
+
+          <!-- Phone -->
+          <a href="tel:0931992089" class="nav-item nav-link d-flex align-items-center contact-link">
+            <div class="icon-circle bg-primary text-white me-2">
+              <i class="fa fa-phone-alt"></i>
+            </div>
+            <strong class="text-primary">0931 992 089</strong>
+          </a>
+
+          <!-- Zalo -->
+          <a href="https://zalo.me/0931992089" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="img/logo/zalo.png" alt="Zalo" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">Zalo</strong>
+          </a>
+
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="img/logo/fb.png" alt="Facebook" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">Facebook</strong>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@haimenhaxinh?_t=ZS-8ziwxJPjZOZ&_r=1" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="img/logo/tiktok.png" alt="TikTok" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">TikTok</strong>
+          </a>
+
+          <!-- Button -->
+          <a href="#services" class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3">
+            Đặt lịch ngay
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start (Nâng cấp) -->
+    <div class="container-fluid page-header page-header-form-moving py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="display-4 text-white animated slideInDown mb-4">
+        Đặt Lịch Dịch Vụ Chuyển Nhà
+        </h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a class="text-white" href="index.html">Trang Chủ</a></li>
+                <li class="breadcrumb-item text-primary active" aria-current="page">Đặt Lịch</li>
+            </ol>
+        </nav>
+    </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- ===== THÊM VÀO ĐÂY: Nút Quay Lại ===== -->
+    <!-- <div class="row justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+      <div class="col-lg-10 col-md-12 text-start mb-4">
+        <button onclick="history.back()" class="btn btn-outline-secondary btn-back">
+          <i class="fas fa-arrow-left me-2"></i> Quay Lại Trang Trước
+        </button>
+      </div>
+    </div> -->
+    <!-- ===== Kết thúc phần thêm vào ===== -->
+
+    <!-- Main Content: Form Đặt Lịch Chuyển Nhà (Thiết kế thông minh) -->
+    <div class="container-xxl py-5">
+    <div class="container">
+        <!-- Tiêu đề trang -->
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+        <div class="border-start border-5 border-primary d-inline-block ps-4 mb-3">
+            <h6 class="text-body text-uppercase mb-2">Đặt Lịch Dịch Vụ</h6>
+            <h1 class="display-6 mb-0">Phiếu Đặt Lịch Chuyển Nhà</h1>
+        </div>
+        <p class="mb-0 text-muted">Thông tin càng chi tiết, báo giá càng chính xác. Các mục có dấu <span class="text-danger">*</span> là bắt buộc.</p>
+        </div>
+
+        <!-- Form chính -->
+        <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <form id="movingForm" class="p-4 p-md-5 bg-white shadow-lg rounded-3" novalidate>
+            <!-- I. THÔNG TIN CƠ BẢN -->
+            <div class="mb-5">
+                <h4 class="mb-4 section-title">I. Thông Tin Cơ Bản</h4>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label required">1. Tên người đặt dịch vụ</label>
+                        <input type="text" class="form-control" name="tenNguoiDat" placeholder="Tên của bạn" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label required">2. Số điện thoại liên hệ</label>
+                        <input type="tel" class="form-control" name="soDienThoai" placeholder="0xx xxx xxxx" pattern="^[0-9+\-\s]{7,20}$" required>
+                        <div class="invalid-feedback">Số điện thoại không hợp lệ.</div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label required">3. Địa chỉ nhà cũ (nơi chuyển đi)</label>
+                        <input type="text" class="form-control" name="diaChiCu" placeholder="Số nhà, đường, phường/quận..." required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label required">4. Địa chỉ nhà mới (nơi chuyển đến)</label>
+                        <input type="text" class="form-control" name="diaChiMoi" placeholder="Số nhà, đường, phường/quận..." required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label required">5. Loại công trình</label>
+                        <table class="table table-bordered matrix-form">
+                        <thead><tr><th style="width:50%;"></th><th class="text-center">Nhà Cũ</th><th class="text-center">Nhà Mới</th></tr></thead>
+                        <tbody>
+                            <tr><td>Chung cư</td><td class="text-center"><input type="radio" class="form-check-input" name="loaiNhaCu" value="Chung cư" required></td><td class="text-center"><input type="radio" class="form-check-input" name="loaiNhaMoi" value="Chung cư" required></td></tr>
+                            <tr><td>Nhà phố</td><td class="text-center"><input type="radio" class="form-check-input" name="loaiNhaCu" value="Nhà phố"></td><td class="text-center"><input type="radio" class="form-check-input" name="loaiNhaMoi" value="Nhà phố"></td></tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">6. Đặc điểm chung cư</label>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemChungCu" value="Thang máy"><label class="form-check-label">Thang máy</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemChungCu" value="Thang bộ"><label class="form-check-label">Thang bộ</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemChungCu" value="Xe tải vào sảnh"><label class="form-check-label">Xe tải vào tầng trệt/sảnh</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemChungCu" value="Xe vào hầm"><label class="form-check-label">Xe vào hầm</label></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">7. Đặc điểm nhà phố</label>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemNhaPho" value="Xe tải đậu trước nhà"><label class="form-check-label">Xe tải đậu trước nhà</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemNhaPho" value="Xe tải không vào được"><label class="form-check-label">Xe tải không vào được</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemNhaPho" value="Chuyển đồ tầng trệt"><label class="form-check-label">Chuyển đồ ở tầng trệt</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="dacDiemNhaPho" value="Chuyển đồ trên lầu"><label class="form-check-label">Chuyển đồ từ trên lầu</label></div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label required">8. Dịch vụ yêu cầu (Chọn ít nhất 1)</label>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Tháo lắp nội thất">
+                              <label>Tháo lắp nội thất</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Tháo lắp máy lạnh">
+                                <label>Tháo lắp máy lạnh</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Tháo lắp máy giặt">
+                                <label>Tháo lắp máy giặt</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Tháo lắp máy nước nóng">
+                                <label>Tháo lắp máy nước nóng</label>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Tháo lắp tivi">
+                              <label>Tháo lắp tivi</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Bao bọc chống sốc">
+                              <label>Bao bọc chống sốc</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Đóng thùng, đóng bọc">
+                              <label>Đóng thùng, đóng bọc</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Bốc xếp đồ đạc">
+                              <label>Bốc xếp đồ đạc, nội thất</label>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Vận chuyển">
+                              <label>Vận chuyển</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Sắp xếp đồ đạc">
+                              <label>Sắp xếp  vật dụng vào nhà mới </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Vệ sinh trả nhà cũ">
+                              <label>Vệ sinh trả nhà cũ</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="dichVuYeuCau" value="Vệ sinh nhà mới">
+                              <label>Vệ sinh nhà mới</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sử dụng Accordion cho các mục khảo sát chi tiết -->
+            <div class="accordion" id="surveyAccordion">
+
+                <!-- II. THÔNG TIN NỘI THẤT -->
+                <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"><strong>II. Thông Tin Nội Thất Cần Chuyển</strong></button></h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#surveyAccordion">
+                    <div class="accordion-body">
+                    <p class="text-muted small">Nhập số lượng cho các món đồ bạn có. Các thông tin còn lại là tùy chọn nhưng sẽ giúp báo giá chính xác hơn. Bỏ trống nếu không có.</p>
+                    <div class="row g-3 item-survey-row align-items-center"><div class="col-lg-3"><label class="form-label fw-bold">Bàn</label></div><div class="col-lg-2 col-md-3 col-6"><input type="number" class="form-control" name="sl_ban" placeholder="Số lượng" min="0"></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="cl_ban"><option value="">Chất liệu</option><option>Gỗ</option><option>Kính</option><option>Kim loại</option><option>Nhựa</option></select></div><div class="col-lg-3 col-md-3 col-6"><select class="form-select" name="kt_ban"><option value="">Kích thước</option><option>Hơn 2m</option><option>Từ 1m - 2m</option><option>Dưới 1m</option></select></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="kl_ban"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-lg-3"><label class="form-label fw-bold">Ghế</label></div><div class="col-lg-2 col-md-3 col-6"><input type="number" class="form-control" name="sl_ghe" placeholder="Số lượng" min="0"></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="cl_ghe"><option value="">Chất liệu</option><option>Gỗ</option><option>Kính</option><option>Kim loại</option><option>Nhựa</option></select></div><div class="col-lg-3 col-md-3 col-6"><select class="form-select" name="kt_ghe"><option value="">Kích thước</option><option>Hơn 2m</option><option>Từ 1m - 2m</option><option>Dưới 1m</option></select></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="kl_ghe"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-lg-3"><label class="form-label fw-bold">Tủ</label></div><div class="col-lg-2 col-md-3 col-6"><input type="number" class="form-control" name="sl_tu" placeholder="Số lượng" min="0"></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="cl_tu"><option value="">Chất liệu</option><option>Gỗ</option><option>Kính</option><option>Kim loại</option><option>Nhựa</option></select></div><div class="col-lg-3 col-md-3 col-6"><select class="form-select" name="kt_tu"><option value="">Kích thước</option><option>Hơn 2m</option><option>Từ 1m - 2m</option><option>Dưới 1m</option></select></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="kl_tu"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-lg-3"><label class="form-label fw-bold">Giường</label></div><div class="col-lg-2 col-md-3 col-6"><input type="number" class="form-control" name="sl_giuong" placeholder="Số lượng" min="0"></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="cl_giuong"><option value="">Chất liệu</option><option>Gỗ</option><option>Kính</option><option>Kim loại</option><option>Nhựa</option></select></div><div class="col-lg-3 col-md-3 col-6"><select class="form-select" name="kt_giuong"><option value="">Kích thước</option><option>Hơn 2m</option><option>Từ 1m - 2m</option><option>Dưới 1m</option></select></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="kl_giuong"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-lg-3"><label class="form-label fw-bold">Kệ</label></div><div class="col-lg-2 col-md-3 col-6"><input type="number" class="form-control" name="sl_ke" placeholder="Số lượng" min="0"></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="cl_ke"><option value="">Chất liệu</option><option>Gỗ</option><option>Kính</option><option>Kim loại</option><option>Nhựa</option></select></div><div class="col-lg-3 col-md-3 col-6"><select class="form-select" name="kt_ke"><option value="">Kích thước</option><option>Hơn 2m</option><option>Từ 1m - 2m</option><option>Dưới 1m</option></select></div><div class="col-lg-2 col-md-3 col-6"><select class="form-select" name="kl_ke"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- III. THÔNG TIN THIẾT BỊ ĐIỆN TỬ -->
+                <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"><strong>III. Thông Tin Thiết Bị Điện Tử - Điện Lạnh</strong></button></h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#surveyAccordion">
+                    <div class="accordion-body">
+                    <div class="row g-3 item-survey-row align-items-center">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Máy lạnh</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" class="form-control" name="sl_maylanh" placeholder="Số lượng">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" name="kl_maylanh">
+                                <option value="">Khối lượng</option>
+                                <option>Trên 50kg</option>
+                                <option>20-50kg</option>
+                                <option>Dưới 20kg</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Máy nước nóng</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_mnn" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_mnn"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Máy giặt</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_maygiat" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_maygiat"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Tủ lạnh</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_tulanh" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_tulanh"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Tivi</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_tivi" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_tivi"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Loa/Âm li</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_loa" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_loa"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Máy tính bàn</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_mtb" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_mtb"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Máy lọc nước</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_mln" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_mln"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Quạt điều hòa</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_quatdh" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_quatdh"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    <div class="row g-3 item-survey-row align-items-center mt-2"><div class="col-md-6"><label class="form-label fw-bold">Quạt treo tường</label></div><div class="col-md-3"><input type="number" class="form-control" name="sl_quattreotuong" placeholder="Số lượng"></div><div class="col-md-3"><select class="form-select" name="kl_quattreotuong"><option value="">Khối lượng</option><option>Trên 50kg</option><option>20-50kg</option><option>Dưới 20kg</option></select></div></div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- IV. NỆM VÀ ĐỒ DÙNG CÁC PHÒNG -->
+                <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"><strong>IV. Nệm Và Đồ Dùng Các Phòng</strong></button></h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#surveyAccordion">
+                    <div class="accordion-body">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Nệm</label>
+                            <div class="input-group"><input type="number" class="form-control" name="sl_nem" placeholder="Số lượng (cái)">
+                                <input type="number" class="form-control" name="doday_nem" placeholder="Độ dày (cm)">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Quần áo/Mền gối...</label>
+                            <input type="number" class="form-control" name="thung_quanao" placeholder="Ước tính số thùng (60x40x40cm)">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Đồ dễ vỡ (thủy tinh...)</label>
+                            <input type="number" class="form-control" name="thung_dovo" placeholder="Ước tính số thùng (60x40x40cm)">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Đồ dùng học tập, làm việc</label>
+                            <input type="number" class="form-control" name="thung_hoctap" placeholder="Ước tính số thùng (60x40x40cm)">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Vật dụng cá nhân, đồ trang trí</label>
+                            <input type="number" class="form-control" name="thung_canhan" placeholder="Ước tính số thùng (60x40x40cm)">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Đồ bếp (Không vỡ)</label>
+                            <input type="text" class="form-control" name="doBep" placeholder="Liệt kê đồ lớn: nồi cơm, lò vi sóng...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Cần đóng gói thực phẩm?</label>
+                            <select class="form-select" name="dongGoiThucPham">
+                                <option value="Không">Không</option><option value="Có">Có</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Đồ phòng tắm</label>
+                            <input type="number" class="form-control" name="thung_phongtam" placeholder="Ước tính số thùng (60x40x40cm)">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- V. DỊCH VỤ VỆ SINH KÈM THEO -->
+                <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"><strong>V. Dịch Vụ Vệ Sinh Kèm Theo (Tùy chọn)</strong></button></h2>
+                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#surveyAccordion">
+                    <div class="accordion-body">
+                    <div class="form-check form-switch form-check-lg mb-4">
+                        <input class="form-check-input" type="checkbox" role="switch" id="needCleaningService">
+                        <label class="form-check-label" for="needCleaningService">
+                            <strong>Tôi muốn đặt thêm dịch vụ vệ sinh</strong>
+                        </label>
+                    </div>
+                    <div class="collapse" id="cleaningOptions">
+                        <div class="row g-3">
+                        <div class="col-12">
+                          <label class="form-label required">22. Loại vệ sinh yêu cầu</label>
+                          <div class="btn-group w-100" role="group">
+                            <input type="radio" class="btn-check" name="loaiVeSinh" id="vs1" value="Vệ sinh trả nhà cũ (miễn phí)">
+                            <label class="btn btn-outline-primary" for="vs1">Trả nhà cũ (Miễn phí)</label>
+                            <input type="radio" class="btn-check" name="loaiVeSinh" id="vs2" value="VS nhà mới, sau xây dựng">
+                            <label class="btn btn-outline-primary" for="vs2">Nhà mới (Sau XD)</label>
+                            <input type="radio" class="btn-check" name="loaiVeSinh" id="vs3" value="VS nhà mới, còn mới">
+                            <label class="btn btn-outline-primary" for="vs3">Nhà mới (Còn mới)</label>
+                            <input type="radio" class="btn-check" name="loaiVeSinh" id="vs4" value="VS nhà mới, đã cũ">
+                            <label class="btn btn-outline-primary" for="vs4">Nhà mới (Đã cũ)</label>
+                            <input type="radio" class="btn-check" name="loaiVeSinh" id="vs5" value="VS máy lạnh">
+                            <label class="btn btn-outline-primary" for="vs5">VS máy lạnh</label>
+                          </div>
+                        </div>
+                        <div class="col-12"><label class="form-label">23. Diện tích nhà mới (m²)</label>
+                            <input type="number" class="form-control" name="dienTichVS" placeholder="Nếu cần vệ sinh nhà mới">
+                        </div>
+                        <div class="col-12"><label class="form-label">24. Số tầng/phòng/toilet nhà mới</label><div class="input-group">
+                            <input type="number" class="form-control" name="soTangVS" placeholder="Số tầng">
+                            <input type="number" class="form-control" name="soPhongNguVS" placeholder="Số phòng">
+                            <input type="number" class="form-control" name="soToiletVS" placeholder="Toilet">
+                        </div>
+                    </div>
+                        <div class="col-12"><label class="form-label">25. Hạng mục vệ sinh nhà mới</label><div class="row"><div class="col-md-6"><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Vệ sinh cơ bản"><label>Vệ sinh cơ bản</label></div><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Vệ sinh nội thất"><label>Vệ sinh nội thất</label></div><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Vệ sinh không gian"><label>Vệ sinh không gian</label></div><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Vệ sinh đồ dùng cá nhân"><label>Vệ sinh đồ dùng</label></div></div><div class="col-md-6"><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Sắp xếp vật dụng"><label>Sắp xếp vật dụng</label></div><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Vệ sinh bếp (tẩy dầu mỡ)"><label>Vệ sinh bếp</label></div><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Cạo sơn, tẩy keo"><label>Cạo sơn, tẩy keo</... </label></div><div class="form-check"><input class="form-check-input" type="checkbox" name="hangMucVS" value="Vệ sinh máy lạnh"><label>Vệ sinh máy lạnh</label></div></div></div></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="col-12 text-center mt-5">
+                <button class="btn btn-primary btn-lg rounded-pill py-3 px-5 fw-bold fs-5" type="submit">Gửi Yêu Cầu Đặt Lịch</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Footer Start (Phục hồi footer cũ) -->
+    <div
+      class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn"
+      data-wow-delay="0.1s"
+      id="footer"
+    >
+      <div class="container py-5">
+        <div class="row g-4 justify-content-between">
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h1 class="text-white mb-4 d-flex align-items-center">
+              <img src="img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-3">
+              <span>Việt Sáng</span>
+            </h1>
+            <p>
+              Đơn vị hàng đầu cung cấp dịch vụ trọn gói vệ sinh nhà ở và chuyển
+              nhà chuyên nghiệp tại TP. Hồ Chí Minh.
+            </p>
+            <div class="d-flex pt-2">
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.youtube.com/@HaiMeNhaXinh"><i class="fab fa-youtube"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.tiktok.com/@haimenhaxinh?_t=ZS-8ziwxJPjZOZ&_r=1"><i class="fab fa-tiktok"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" 
+                href="https://zalo.me/0931992089" target="_blank">
+                <img src="img/logo/zalo.png" alt="Zalo" style="width:20px; height:20px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h4 class="text-light mb-4">Thông Tin Liên Hệ</h4>
+            <p><i class="fa fa-map-marker-alt me-3"></i>Linh Đông, Thủ Đức, TP. HCM</p>
+            <p><i class="fa fa-phone-alt me-3"></i>0931 992 089</p>
+            <p><i class="fa fa-envelope me-3"></i>vietsanghome@gmail.com</p>
+            <p><img src="img/logo/zalo.png" alt="Zalo" style="height: 20px; width: 20px; margin-right: 8px;">
+              <a href="https://zalo.me/0931992089" target="_blank" style="color: #999999; text-decoration: none;">
+                Zalo: 0931 992 089
+              </a>
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h4 class="text-light mb-4">Links Nhanh</h4>
+            <a class="btn btn-link" href="#about">Về Chúng Tôi</a>
+            <a class="btn btn-link" href="#services">Dịch Vụ</a>
+            <a class="btn btn-link" href="#projects">Công Trình</a>
+            <a class="btn btn-link" href="#testimonials">Phản Hồi</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              &copy; <a href="#">Việt Sáng</a>, All Right Reserved.
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+              <br />Distributed By:
+              <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Thư viện mới cho Portfolio/Project -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script>
+        // --- Logic hiển thị Form Vệ sinh Kèm theo ---
+        const needCleaningCheckbox = document.getElementById('needCleaningService');
+        const cleaningOptionsCollapse = new bootstrap.Collapse(document.getElementById('cleaningOptions'), {
+            toggle: false // Quan trọng: Khởi tạo ở trạng thái đóng
+        });
+
+        if (needCleaningCheckbox) {
+            needCleaningCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                cleaningOptionsCollapse.show(); // Hiện form
+                // Thêm thuộc tính required cho các trường bắt buộc trong form vệ sinh
+                document.querySelector('input[name="loaiVeSinh"]').setAttribute('required', 'required');
+
+            } else {
+                cleaningOptionsCollapse.hide(); // Ẩn form
+                // Xóa thuộc tính required để người dùng có thể gửi form mà không cần điền
+                document.querySelector('input[name="loaiVeSinh"]').removeAttribute('required');
+            }
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- ===== SCRIPT TÙY CHỈNH CỦA BẠN ===== -->
+    <script src="js/form-handler.js"></script>
+    <!-- (Sao chép toàn bộ script từ cuối file index.html) -->
+  </body>
+</html>
