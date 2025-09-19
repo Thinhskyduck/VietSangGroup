@@ -781,6 +781,7 @@
     /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
     background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-3.png') center center no-repeat;
     background-size: cover;
+    
 }
 
 .page-header-form-moving {
