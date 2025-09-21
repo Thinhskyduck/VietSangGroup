@@ -1,9 +1,15 @@
-const feedbackData = [
+const feedbackData = [ 
     {
         imageNumber: 1,
         quote: "Phản hồi vui vẻ khi sử dụng dịch vụ vệ sinh lớp học từ Việt Sáng Clean. Rất chuyên nghiệp và sạch sẽ!",
         author: "Chị Hạnh",
         info: "Giáo viên trường Tiểu học Lương Thế Vinh, Thủ Đức"
+    },
+    {
+        imageNumber: 10,
+        quote: "Phản hồi hài lòng sau khi sử dụng dịch vụ chuyển nhà của Việt Sáng Moving.",
+        author: "Đạo diễn, Nhiếp ảnh gia Nguyễn Xuân Huy",
+        info: ""
     },
     {
         imageNumber: 2,
@@ -53,4 +59,5 @@ const feedbackData = [
         author: "Chị Kiều",
         info: "Linh Đông, Thủ Đức"
     }
+    
 ];

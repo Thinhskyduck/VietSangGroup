@@ -74,16 +74,26 @@
       transitionDuration: '0.6s'
   });
   
+  // --- THAY THẾ BẰNG ĐOẠN MÃ NÀY ---
   $('#portfolio-flters li').on('click', function () {
       $("#portfolio-flters li").removeClass('active');
       $(this).addClass('active');
       
       var filterValue = $(this).data('filter');
+
+      // BƯỚC 1: Chuẩn bị các item bằng cách reset lại trạng thái "Xem Thêm".
+      // Thao tác này chỉ thay đổi class, không gây ra animation.
+      projectContainer.find('.portfolio-item').addClass('portfolio-hidden');
+      const itemsToShow = (filterValue === "*") ? projectContainer.find('.portfolio-item') : projectContainer.find(filterValue);
+      itemsToShow.slice(0, initialItems).removeClass('portfolio-hidden');
+      
+      // BƯỚC 2: Gọi Isotope MỘT LẦN DUY NHẤT.
+      // Isotope sẽ vừa lọc theo danh mục, vừa sắp xếp lại layout trong một hiệu ứng mượt mà.
+      // Nó cũng sẽ tự động ẩn các mục có class 'portfolio-hidden' của chúng ta.
       portfolioIsotope.isotope({ filter: filterValue });
 
-      setTimeout(function() {
-          resetPortfolioView(filterValue);
-      }, 300);
+      // BƯỚC 3: Cập nhật lại trạng thái của nút "Xem Thêm" / "Thu Gọn".
+      updateButtons(filterValue);
   });
 
   // --- LOGIC NÂNG CẤP CHO NÚT "XEM THÊM" VÀ "THU GỌN" ---
