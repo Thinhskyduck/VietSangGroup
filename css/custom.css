@@ -9,18 +9,36 @@
 
 /* Nút "Liên Hệ Ngay" nổi bật hơn */
 .btn-contact-nav {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    font-weight: 600;
+    background: linear-gradient(45deg, #fcb900, #ff5722); /* Gradient nổi bật */
+    color: #fff;
+    border: none;
+    font-weight: 900;
+    padding: 12px 26px;
+    border-radius: 50px; /* bo tròn kiểu pill button */
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6); /* phát sáng cam */
+    animation: pulse 2s infinite; /* hiệu ứng nhịp tim */
 }
 
+/* Hover */
 .btn-contact-nav:hover {
-    background-color: var(--primary);
-    color: #fff;
-    transform: translateY(-2px); /* Hiệu ứng nhấc lên khi hover */
-    box-shadow: 0 6px 20px rgba(252, 185, 0, 0.4);
+    transform: translateY(-3px) scale(1.1); /* nhấc lên + phóng to */
+    box-shadow: 0 0 30px rgba(252, 185, 0, 0.9); /* sáng mạnh hơn khi hover */
+}
+
+/* Hiệu ứng pulse */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(252, 185, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(252, 185, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(252, 185, 0, 0);
+    }
 }
 
 
@@ -292,32 +310,6 @@
     color: var(--light) !important; /* var(--light) chính là màu #faefe0 */
 }
 
-
-/* --- Thiết kế lại Bộ lọc Công trình (Thanh trượt ngang) --- */
-.portfolio-flters-container {
-    width: 100%;
-    overflow-x: auto; /* Cho phép cuộn ngang */
-    padding-bottom: 20px; /* Tạo khoảng trống để bóng đổ không bị cắt */
-    margin-bottom: 20px;
-    -webkit-overflow-scrolling: touch; /* Hỗ trợ cuộn mượt trên mobile */
-}
-
-/* Ẩn thanh scrollbar trên trình duyệt Webkit (Chrome, Safari) */
-.portfolio-flters-container::-webkit-scrollbar {
-    display: none;
-}
-
-.portfolio-flters-container ul {
-    display: flex; /* Hiển thị các nút trên một hàng */
-    flex-wrap: nowrap; /* Không cho phép xuống dòng */
-    white-space: nowrap; /* Giữ các nút trên một hàng */
-    justify-content: center;
-}
-
-#portfolio-flters li {
-    flex-shrink: 0; /* Ngăn các nút bị co lại */
-    margin: 0 5px;
-}
 
 /* --- Hiệu ứng động cho Navbar --- */
 @keyframes pulse-animation {
@@ -819,23 +811,7 @@
     color: #fff;
     border-color: var(--secondary);
 }
-/* --- Tùy chỉnh cho Video trong Carousel --- */
-.carousel-video-item {
-    position: relative;
-    height: 100%;
-}
 
-.carousel-video-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 0;
-}
 
 /* --- Tùy chỉnh cho Nút Âm thanh Video --- */
 .video-controls {
@@ -862,4 +838,235 @@
     opacity: 1;
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Giữ nguyên overlay và nút (từ CSS cũ của bạn) */
+.hero-video-wrapper .video-overlay {
+  border-radius: inherit; /* Bo góc cho overlay */
+}
+
+.hero-video-wrapper .video-controls button {
+  z-index: 3; /* Đảm bảo nút trên cùng */
+}
+
+/* Hover/Active: Thêm hiệu ứng nhẹ cho video section */
+.hero-video-wrapper:hover {
+  transform: scale(1.02); /* Phóng to nhẹ toàn section */
+  transition: transform 0.3s ease;
+}
+
+/* --- Kết thúc Tùy chỉnh cho Nút Quay Lại --- */
+
+/* =================================================================== */
+/*                          PHẦN TÙY CHỈNH CHÍNH                       */
+/* =================================================================== */
+
+/* --- Tối ưu Carousel cho Mobile --- */
+/* Sửa lỗi khoảng trắng thừa phía trên Carousel */
+.p-0.mb-5.wow.fadeIn {
+    margin-bottom: 0 !important; /* Ghi đè margin-bottom mặc định */
+}
+@media (max-width: 768px) {
+  #header-carousel .carousel-item {
+      position: relative;
+      height: 60vh;
+      max-height: 450px;
+      overflow: hidden; /* tránh tràn nền */
+  }
+
+  /* Lớp nền mờ phía sau */
+  #header-carousel .carousel-item::before {
+      content: "";
+      position: absolute;
+      inset: 0; /* top, right, bottom, left = 0 */
+      background: url("../img/banner/banner-1.png") center center / cover no-repeat;
+      filter: blur(10px) brightness(0.85);
+      z-index: 0; /* nằm dưới ảnh */
+  }
+
+  /* Ảnh gốc */
+  #header-carousel .carousel-item img {
+      position: relative;
+      z-index: 1; /* nằm trên nền mờ */
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+  }
+
+  #header-carousel .carousel-caption {
+    position: absolute !important; /* Ghi đè style mặc định */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    padding-bottom: 3rem !important; /* Đẩy nút lên cao hơn */
+    background: rgba(0,0,0,0.1); /* Thêm lớp phủ mờ nhẹ để nút nổi bật */
+  }
+
+  /* THÊM MỚI: Thu nhỏ nút CTA trên Mobile */
+  #header-carousel .custom-cta {
+      padding: 16px 32px;
+      font-size: 1rem;
+  }
+}
+
+/* --- Thiết kế cho Video Section mới --- */
+.hero-video-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.hero-video-wrapper:hover {
+    transform: scale(1.03);
+}
+
+.hero-video-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.hero-video-wrapper .video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+  z-index: 1;
+}
+
+.hero-video-wrapper .video-controls {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2;
+}
+
+/* Desktop: Giữ tỷ lệ ngang 16:9 */
+@media (min-width: 769px) {
+  .hero-video-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Mobile: Giữ tỷ lệ dọc 9:16 (TikTok) */
+@media (max-width: 768px) {
+  .hero-video-wrapper {
+    aspect-ratio: 9 / 16;
+    max-height: 80vh; /* Giới hạn chiều cao để không chiếm hết màn hình */
+    margin: 0 auto;
+  }
+}
+
+
+/* --- Tối ưu Ảnh About & Lưới Công Trình cho Mobile --- */
+@media (max-width: 991.98px) {
+  /* Fix crop ảnh About */
+  #about .position-relative img {
+    object-fit: contain !important;
+    position: static !important; /* Bỏ position absolute để không bị crop */
+    height: auto !important;
+  }
+  #about .position-relative {
+      padding: 0 !important;
+  }
+  /* THÊM MỚI: Đảo ngược thứ tự cột trong phần "Về Chúng Tôi" */
+  #about .row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  /* Lưới Công trình: 2 ảnh/hàng */
+  #projects .portfolio-container .col-md-6 {
+    width: 50% !important; /* Buộc mỗi item chiếm 50% chiều rộng */
+  }
+
+  /* Giảm khoảng cách giữa các Section trên Mobile */
+  .container-xxl.py-5 {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+  }
+
+  /* THÊM MỚI: Bố cục 2x2 cho Facts trên Mobile */
+  .my-5.p-0 .row .col-sm-6 {
+      flex: 0 0 auto;
+      width: 50% !important;
+  }
+}
+
+/* --- Sửa lỗi Bộ lọc Công trình bị cắt xén trên Mobile --- */
+.portfolio-flters-container {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.portfolio-flters-container::-webkit-scrollbar {
+    display: none;
+}
+
+.portfolio-flters-container ul {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    /* KHÔNG CĂN GIỮA NỮA để người dùng biết có thể cuộn */
+    justify-content: flex-start; 
+}
+
+/* --- Tùy chỉnh cho Video Section Dọc (TikTok Style) --- */
+.video-section {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+  height: 500px; /* bạn chỉnh chiều cao section */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Background mờ */
+.video-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+}
+.video-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(20px) brightness(0.9);
+}
+
+/* Video chính */
+#hero-video-player {
+  position: relative;
+  z-index: 2;
+  height: 100%;          /* cao bằng khung */
+  aspect-ratio: 9/16;    /* giữ tỉ lệ dọc */
+  display: block;
+  margin: auto;
+  border-radius: 15px;
+}
+
+/* Nút điều khiển */
+.video-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+@media (max-width: 576px) { /* Chỉ áp dụng cho màn hình điện thoại (sm) */
+  .facts-container .position-relative {
+      min-height: 400px; /* Tăng chiều cao tối thiểu, bạn có thể điều chỉnh số này */
+      height: auto; /* Bỏ chiều cao cố định, để nó tự co giãn */
+  }
 }

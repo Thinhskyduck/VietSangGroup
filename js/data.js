@@ -7,39 +7,39 @@ const feedbackData = [
     },
     {
         imageNumber: 2,
-        quote: "Phản hồi hài lòng khi sử dụng dịch vụ vệ sinh lớp học bán trú từ Việt Sáng Clean.",
-        author: "Chị Quyên",
-        info: "Phụ huynh học sinh, Thủ Đức"
-    },
-    {
-        imageNumber: 3,
         quote: "Hài lòng và giới thiệu dịch vụ đến mọi người sau 3 lần sử dụng dịch vụ vệ sinh và chuyển nhà trọn gói từ đội ngũ Việt Sáng.",
-        author: "Chị Oanh",
+        author: "Anh Oanh",
         info: "Căn hộ Bình Khánh, Quận 2"
     },
     {
-        imageNumber: 4,
+        imageNumber: 3,
         quote: "Phản hồi hài lòng về dịch vụ tổng vệ sinh căn hộ lâu năm.",
         author: "Chị Uyên",
         info: "Khu đô thị Cityland Park Hill, Gò Vấp"
     },
     {
-        imageNumber: 5, // Ảnh 5 và 6 dùng chung nội dung
+        imageNumber: 4,
+        quote: "Phản hồi hài lòng khi sử dụng dịch vụ vệ sinh lớp học bán trú từ Việt Sáng Clean.",
+        author: "Chị Quyên",
+        info: "Phụ huynh học sinh trường Tiểu học Lương Thế Vinh, Thủ Đức"
+    },
+    {
+        imageNumber: 5, 
         quote: "Phản hồi rất hài lòng về dịch vụ chuyển nhà từ Việt Sáng Moving.",
         author: "Ms Lan Anh",
         info: "Tân Bình"
     },
     {
-        imageNumber: 6, // Ảnh 5 và 6 dùng chung nội dung
-        quote: "Phản hồi rất hài lòng về dịch vụ chuyển nhà từ Việt Sáng Moving.",
-        author: "Ms Lan Anh",
-        info: "Tân Bình"
-    },
-    {
-        imageNumber: 7,
+        imageNumber: 6,
         quote: "Phản hồi hài lòng về dịch vụ chuyển trọ từ Việt Sáng Moving.",
         author: "Ms Thi",
         info: "Xô Viết Nghệ Tĩnh, Bình Thạnh"
+    },
+    {
+        imageNumber: 7,
+        quote: "Phản hồi rất hài lòng về dịch vụ chuyển nhà từ Việt Sáng Moving.",
+        author: "Ms Lan Anh",
+        info: "Tân Bình"
     },
     {
         imageNumber: 8,

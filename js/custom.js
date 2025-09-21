@@ -1,7 +1,7 @@
 (function ($) {
   "use strict";
   
-  // --- Hàm tạo HTML cho một item phản hồi ---
+  // --- HÀM TẠO HTML CHO MỘT ITEM PHẢN HỒI ---
   function createFeedbackItem(item) {
     const imageName = `viet-sang-dich-vu-ve-sinh-va-chuyen-nha-tron-goi-tphcm-feedback-${item.imageNumber}.jpg`;
     const imagePath = `img/feedback/${imageName}`;
@@ -9,7 +9,7 @@
     return `
       <div class="testimonial-item-new">
         <div class="testimonial-img-container">
-          <img src="${imagePath}" alt="Phản hồi từ ${item.author}">
+          <img src="${imagePath}" alt="Phản hồi từ ${item.author}" loading="lazy">
         </div>
         <div class="testimonial-text-container">
           <i class="fa fa-quote-left fa-3x text-primary mb-4"></i>
@@ -25,208 +25,179 @@
     `;
   }
 
-  // --- Đổ dữ liệu Phản hồi và khởi tạo Carousel ---
+  // --- ĐỔ DỮ LIỆU PHẢN HỒI VÀ KHỞI TẠO CAROUSEL ---
   const feedbackContainer = $('.testimonial-carousel');
-  
-  // Lặp qua mảng feedbackData (từ file data.js) và tạo HTML
-  feedbackData.forEach(item => {
-    const itemHtml = createFeedbackItem(item);
-    feedbackContainer.append(itemHtml);
-  });
+  if (typeof feedbackData !== 'undefined' && feedbackContainer.length) {
+    feedbackData.forEach(item => {
+      const itemHtml = createFeedbackItem(item);
+      feedbackContainer.append(itemHtml);
+    });
 
-  // Khởi tạo Owl Carousel SAU KHI đã thêm tất cả các item
-  feedbackContainer.owlCarousel({
-      autoplay: true,
-      smartSpeed: 1000,
-      items: 1, // Luôn hiển thị 1 item mỗi lần
-      dots: false,
-      loop: true,
-      nav: true,
-      navText : [
-          '<i class="bi bi-chevron-left"></i>',
-          '<i class="bi bi-chevron-right"></i>'
-      ]
-  });
-  // --- Khởi tạo và xử lý Bộ lọc Công trình (Isotope) ---
+    feedbackContainer.owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        items: 1,
+        dots: false,
+        loop: true,
+        nav: true,
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ]
+    });
+  }
+
+  // --- TẠO LƯỚI ẢNH CÔNG TRÌNH TỰ ĐỘNG ---
+  const projectContainer = $('.portfolio-container');
+  if (typeof projectData !== 'undefined' && projectContainer.length) {
+    projectData.forEach(item => {
+      const itemHtml = `
+        <div class="col-lg-4 col-md-6 portfolio-item ${item.category}">
+          <div class="portfolio-img rounded overflow-hidden">
+            <img class="img-fluid" src="${item.imageUrl}" alt="Công trình Việt Sáng" loading="lazy">
+            <div class="portfolio-btn">
+              <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="${item.imageUrl}" data-lightbox="portfolio">
+                <i class="fa fa-eye"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+      projectContainer.append(itemHtml);
+    });
+  }
+  
+  // --- KHỞI TẠO VÀ XỬ LÝ BỘ LỌC CÔNG TRÌNH (ISOTOPE) ---
   var portfolioIsotope = $('.portfolio-container').isotope({
       itemSelector: '.portfolio-item',
       layoutMode: 'fitRows',
-      // Thêm hiệu ứng chuyển động mượt mà hơn
       transitionDuration: '0.6s'
   });
   
   $('#portfolio-flters li').on('click', function () {
       $("#portfolio-flters li").removeClass('active');
       $(this).addClass('active');
-      portfolioIsotope.isotope({ filter: $(this).data('filter') });
       
-      // Reset lại trạng thái Xem Thêm / Thu Gọn khi người dùng lọc
-      resetPortfolioView();
+      var filterValue = $(this).data('filter');
+      portfolioIsotope.isotope({ filter: filterValue });
+
+      setTimeout(function() {
+          resetPortfolioView(filterValue);
+      }, 300);
   });
 
+  // --- LOGIC NÂNG CẤP CHO NÚT "XEM THÊM" VÀ "THU GỌN" ---
+  var initialItems = 6;
 
-  // --- Xử lý Modal Lựa Chọn Đặt Lịch ---
-  const bookingOptionsModal = new bootstrap.Modal(document.getElementById('bookingOptionsModal'));
-  let formPageUrl = ''; // Biến để lưu trữ URL trang form đích
-
-  // Bắt sự kiện khi modal lựa chọn sắp được hiển thị
-  $('#bookingOptionsModal').on('show.bs.modal', function (event) {
-    const button = $(event.relatedTarget);
-    const serviceName = button.data('service');
-    const formTarget = button.data('form-target'); // Lấy target, ví dụ: '#movingModal'
-
-    // Cập nhật tên dịch vụ trong modal
-    $('#modal-service-name').text(`Bạn muốn đặt lịch cho dịch vụ "${serviceName}"?`);
-    
-    // Xác định URL trang form dựa trên target
-    if (formTarget === '#movingModal') {
-      // Sửa tên file 'dat-lich-chuyen-nha.html' nếu bạn đặt khác
-      formPageUrl = 'dat-lich-chuyen-nha.html'; 
-    } else if (formTarget === '#cleaningModal') {
-      formPageUrl = 'dat-lich-ve-sinh.html';
-    }
-  });
-
-  // Sự kiện click cho nút "Điền Form Đặt Lịch"
-  $('#option-website').on('click', function() {
-    if (formPageUrl) {
-      window.location.href = formPageUrl; // Chuyển hướng người dùng
-    }
-  });
-  
-  
-  // --- Logic nâng cấp cho nút "Xem Thêm" và "Thu Gọn" ---
-  var initialItems = 6; // Số lượng item hiển thị ban đầu
-
-  // Hàm ẩn các item thừa
-  function hideItems() {
-    $('.portfolio-item:gt(' + (initialItems - 1) + ')').addClass('portfolio-hidden');
-    // Cập nhật lại layout của Isotope sau khi ẩn
+  function hideItems(filter = "*") {
+    projectContainer.find('.portfolio-item').addClass('portfolio-hidden');
+    const itemsToShow = (filter === "*") ? projectContainer.find('.portfolio-item') : projectContainer.find(filter);
+    itemsToShow.slice(0, initialItems).removeClass('portfolio-hidden');
     portfolioIsotope.isotope('layout');
   }
 
-  // Hàm kiểm tra và cập nhật trạng thái các nút
-  function updateButtons() {
-    var hiddenItems = $('.portfolio-item.portfolio-hidden').length;
-    var totalItems = $('.portfolio-item').length;
-
+  function updateButtons(filter = "*") {
+    const hiddenItems = projectContainer.find('.portfolio-hidden' + (filter === "*" ? '' : filter)).length;
+    const totalItems = projectContainer.find('.portfolio-item' + (filter === "*" ? '' : filter)).length;
+    
     if (totalItems <= initialItems) {
-      // Nếu có 6 item hoặc ít hơn, ẩn cả 2 nút
       $('#load-more-btn, #collapse-btn').addClass('d-none');
     } else if (hiddenItems > 0) {
-      // Nếu còn item đang ẩn, hiện nút "Xem Thêm"
       $('#load-more-btn').removeClass('d-none');
       $('#collapse-btn').addClass('d-none');
     } else {
-      // Nếu đã hiện tất cả, hiện nút "Thu Gọn"
       $('#load-more-btn').addClass('d-none');
       $('#collapse-btn').removeClass('d-none');
     }
   }
-
-  // Hàm reset về trạng thái ban đầu (dùng khi lọc)
-  function resetPortfolioView() {
-    hideItems();
-    updateButtons();
+  
+  function resetPortfolioView(filter = "*") {
+    hideItems(filter);
+    updateButtons(filter);
   }
 
   // Chạy lần đầu khi tải trang
   resetPortfolioView();
 
-  // Sự kiện click cho nút "Xem Thêm"
   $('#load-more-btn').on('click', function (e) {
       e.preventDefault();
-      
-      // Hiện tất cả các item đang ẩn
-      $('.portfolio-item.portfolio-hidden').removeClass('portfolio-hidden');
+      var currentFilter = $('#portfolio-flters li.active').data('filter') || "*";
+      projectContainer.find('.portfolio-hidden' + (currentFilter === "*" ? '' : currentFilter)).removeClass('portfolio-hidden');
       portfolioIsotope.isotope('layout');
-      
-      // Cập nhật lại trạng thái nút
-      updateButtons();
+      updateButtons(currentFilter);
   });
 
-  // Sự kiện click cho nút "Thu Gọn"
   $('#collapse-btn').on('click', function (e) {
     e.preventDefault();
-    
-    // Cuộn trang lên đầu khu vực công trình một cách mượt mà
+    var currentFilter = $('#portfolio-flters li.active').data('filter') || "*";
     $('html, body').animate({
-        scrollTop: $('#projects').offset().top - 100 // -100 để chừa khoảng trống cho navbar
+        scrollTop: $('#projects').offset().top - 100
     }, 300, function() {
-        // Sau khi cuộn xong, mới thu gọn
-        hideItems();
-        updateButtons();
+        resetPortfolioView(currentFilter);
     });
   });
-    // --- Logic điều khiển Video trong Carousel (Nâng cấp với nút Âm thanh) ---
-  const carousel = document.getElementById('header-carousel');
-  const muteBtn = document.getElementById('mute-toggle-btn');
-  let player; // Biến để lưu trữ đối tượng player của YouTube
 
-  // 1. Tải YouTube IFrame API
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  // --- XỬ LÝ MODAL LỰA CHỌN ĐẶT LỊCH ---
+  const bookingOptionsModalEl = document.getElementById('bookingOptionsModal');
+  if (bookingOptionsModalEl) {
+    const bookingOptionsModal = new bootstrap.Modal(bookingOptionsModalEl);
+    let formPageUrl = '';
 
-  // 2. Hàm này sẽ được gọi tự động sau khi API tải xong
-  window.onYouTubeIframeAPIReady = function() {
-    player = new YT.Player('youtube-player', {
-      events: {
-        'onReady': onPlayerReady
+    $('#bookingOptionsModal').on('show.bs.modal', function (event) {
+      const button = $(event.relatedTarget);
+      const serviceName = button.data('service');
+      const formTarget = button.data('form-target');
+      
+      $('#modal-service-name').text(`Bạn muốn đặt lịch cho dịch vụ "${serviceName}"?`);
+      
+      if (formTarget === '#movingModal') {
+        formPageUrl = 'dat-lich-chuyen-nha.html'; 
+      } else if (formTarget === '#cleaningModal') {
+        formPageUrl = 'dat-lich-ve-sinh.html';
+      }
+    });
+
+    $('#option-website').on('click', function() {
+      if (formPageUrl) {
+        window.location.href = formPageUrl;
       }
     });
   }
-
-  // 3. Hàm này sẽ chạy khi video đã sẵn sàng
-  function onPlayerReady(event) {
-    // Mặc định video sẽ tắt tiếng
-    event.target.mute();
-    // Bắt đầu lắng nghe các sự kiện của carousel
-    setupCarouselListener(event.target);
-  }
-
-  // 4. Hàm thiết lập trình lắng nghe sự kiện cho carousel
-  function setupCarouselListener(videoPlayer) {
-    if (carousel && muteBtn) {
-      const muteIcon = muteBtn.querySelector('i');
-
-      // Sự kiện khi click vào nút bật/tắt âm thanh
-      muteBtn.addEventListener('click', function() {
-        if (videoPlayer.isMuted()) {
-          videoPlayer.unMute();
-          muteIcon.classList.remove('fa-volume-mute');
-          muteIcon.classList.add('fa-volume-up');
-        } else {
-          videoPlayer.mute();
-          muteIcon.classList.remove('fa-volume-up');
-          muteIcon.classList.add('fa-volume-mute');
+  
+  // --- TỰ ĐỘNG TẠO NỀN MỜ CHO CAROUSEL TRÊN MOBILE ---
+  function setCarouselBlurBackground() {
+    if (window.innerWidth <= 768) {
+      $('#header-carousel .carousel-item').each(function() {
+        var $item = $(this);
+        var imgSrc = $item.find('img').attr('src');
+        
+        if (imgSrc && !$item.hasClass('has-blur-bg')) {
+          $item.addClass('has-blur-bg');
+          // Sử dụng biến CSS để gán ảnh nền, an toàn hơn
+          this.style.setProperty('--bg-image', `url(${imgSrc})`);
         }
       });
-
-      // Sự kiện khi carousel bắt đầu chuyển slide
-      carousel.addEventListener('slide.bs.carousel', function (event) {
-        const videoSlideIndex = 3; // Index của slide video (bắt đầu từ 0)
-
-        // Nếu đang rời khỏi slide video
-        if (event.from === videoSlideIndex) {
-          videoPlayer.pauseVideo(); // Tạm dừng video
-          muteBtn.style.display = 'none'; // Ẩn nút âm thanh
-        }
-
-        // Nếu sắp chuyển đến slide video
-        if (event.to === videoSlideIndex) {
-          videoPlayer.playVideo(); // Chạy lại video
-          muteBtn.style.display = 'block'; // Hiện lại nút âm thanh
-        }
-      });
-      
-      // Kiểm tra trạng thái ban đầu khi tải trang
-      if (document.querySelector('.carousel-item.active') === document.querySelector('.carousel-video-item')) {
-         muteBtn.style.display = 'block';
-      } else {
-         muteBtn.style.display = 'none';
-      }
     }
   }
+
+  // Chạy khi trang tải xong
+  $(document).ready(function() {
+    setCarouselBlurBackground();
+  });
+
+  // Chạy lại khi thay đổi kích thước cửa sổ
+  var resizeTimer;
+  $(window).on('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(setCarouselBlurBackground, 250);
+  });
+
+  // Thêm rule CSS vào trang để sử dụng biến --bg-image
+  if (!$('style#carousel-blur-style').length) {
+    $('<style id="carousel-blur-style">')
+      .prop('type', 'text/css')
+      .html('#header-carousel .carousel-item.has-blur-bg::before { background-image: var(--bg-image); }')
+      .appendTo('head');
+  }
+
 })(jQuery);
