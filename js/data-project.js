@@ -20,28 +20,28 @@ const veSinh = generateFileNames(
 // Mapping ảnh theo từng quận
 const quanImageConfig = {
     'khu-vuc-thuduc': [
-        chuyenNha[0], chuyenNha[1], veSinh[0], chuyenTro[0]
+        chuyenNha[0], chuyenNha[1], chuyenNha[18], chuyenNha[19], chuyenTro[0], veSinh[4]
     ],
     'khu-vuc-tanbinh': [
-        chuyenNha[2], chuyenNha[3], veSinh[1], chuyenTro[1]
+        chuyenNha[0], chuyenNha[23], veSinh[2], chuyenTro[2], veSinh[5], veSinh[9]
     ],
     'khu-vuc-quan7': [
-        chuyenNha[4], chuyenNha[5], veSinh[2]
+        chuyenNha[5], chuyenNha[10], chuyenNha[16], chuyenNha[25], chuyenTro[2], veSinh[1]
     ],
     'khu-vuc-quan2': [
-        chuyenNha[6], chuyenNha[7], veSinh[3]
+        chuyenNha[8], chuyenNha[12],chuyenNha[14], chuyenNha[17], veSinh[0],veSinh[8] 
     ],
     'khu-vuc-govap': [
-        chuyenNha[8], chuyenNha[9], veSinh[4], chuyenTro[2]
+        chuyenNha[15], chuyenNha[20], veSinh[10], chuyenTro[2], veSinh[2], veSinh[7]
     ],
     'khu-vuc-binhthanh': [
-        chuyenNha[10], chuyenNha[11], veSinh[5]
+        chuyenNha[3], chuyenNha[6], chuyenNha[22], chuyenTro[1], veSinh[3], veSinh[10]
     ],
     'khu-vuc-phunhuan': [
-        chuyenNha[12], chuyenNha[13], veSinh[6]
+        chuyenNha[0], chuyenNha[5], chuyenTro[2], chuyenTro[2], veSinh[4], veSinh[6]
     ],
     'khu-vuc-binhtan': [
-        chuyenNha[14], chuyenNha[15], veSinh[7]
+        veSinh[7], chuyenTro[1], chuyenNha[10], chuyenNha[15],  chuyenTro[0], chuyenNha[5]
     ]
     // 👉 Các ảnh còn lại (nếu chưa phân) bạn có thể tự thêm vào đây
 };
