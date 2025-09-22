@@ -1070,3 +1070,59 @@
       height: auto; /* Bỏ chiều cao cố định, để nó tự co giãn */
   }
 }
+
+/* =================================================================== */
+/*        CĂN CHỈNH NAVBAR TRÊN MOBILE - PHIÊN BẢN NÂNG CẤP           */
+/* =================================================================== */
+
+/* Chỉ áp dụng cho màn hình nhỏ hơn 992px */
+@media (max-width: 991.98px) {
+
+  /* 
+    1. Căn giữa toàn bộ khối menu trên màn hình.
+  */
+  #navbarCollapse .navbar-nav {
+    align-items: center;
+    width: 100%; 
+  }
+
+  /* 
+    2. Tùy chỉnh cho TỪNG MỤC LIÊN KẾT (Phone, Zalo, FB...).
+       Đây là bước quan trọng nhất.
+  */
+  #navbarCollapse .contact-link {
+    /* Ép tất cả các mục phải có chiều rộng bằng nhau */
+    width: 250px; 
+    
+    /* Thay vì căn giữa, ta sẽ căn nội dung (icon + chữ) về phía BÊN TRÁI 
+       bên trong mỗi mục. */
+    justify-content: flex-start;
+    
+    /* Thêm một chút padding bên trái để trông thoáng hơn */
+    padding-left: 15px;
+
+    /* Khoảng cách giữa các mục */
+    margin-bottom: 1rem;
+  }
+  
+  /* 
+    3. Đảm bảo các icon có khoảng cách đều nhau với chữ.
+  */
+  #navbarCollapse .contact-link > .icon-circle {
+    /* Tăng khoảng cách một chút cho đồng bộ */
+    margin-right: 16px; 
+  }
+  
+  #navbarCollapse .contact-link > img {
+     /* Tăng khoảng cách một chút cho đồng bộ */
+    margin-right: 16px;
+  }
+
+  /* 
+    4. Tùy chỉnh riêng cho nút "Đặt Lịch Ngay".
+  */
+  #navbarCollapse .btn-contact-nav {
+    margin-top: 10px;
+    width: 250px; /* Cho nút có chiều rộng bằng các mục ở trên */
+  }
+}
