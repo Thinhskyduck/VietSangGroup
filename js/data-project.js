@@ -49,7 +49,7 @@ const quanImageConfig = {
 // Chuyển thành projectData
 const projectData = Object.entries(quanImageConfig).flatMap(([quan, images]) =>
     images.map(img => ({
-        imageUrl: `img/project/${img}`,
+        imageUrl: `../img/project/${img}`,
         category: quan
     }))
 );

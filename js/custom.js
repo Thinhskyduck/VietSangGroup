@@ -4,7 +4,7 @@
   // --- HÀM TẠO HTML CHO MỘT ITEM PHẢN HỒI ---
   function createFeedbackItem(item) {
     const imageName = `viet-sang-dich-vu-ve-sinh-va-chuyen-nha-tron-goi-tphcm-feedback-${item.imageNumber}.jpg`;
-    const imagePath = `img/feedback/${imageName}`;
+    const imagePath = `../img/feedback/${imageName}`;
 
     return `
       <div class="testimonial-item-new">
@@ -161,9 +161,9 @@
       $('#modal-service-name').text(`Bạn muốn đặt lịch cho dịch vụ "${serviceName}"?`);
       
       if (formTarget === '#movingModal') {
-        formPageUrl = 'dat-lich-chuyen-nha.html'; 
+        formPageUrl = '/dat-lich-chuyen-nha/'; 
       } else if (formTarget === '#cleaningModal') {
-        formPageUrl = 'dat-lich-ve-sinh.html';
+        formPageUrl = '/dat-lich-ve-sinh/';
       }
     });
 

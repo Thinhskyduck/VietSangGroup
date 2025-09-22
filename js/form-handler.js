@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fetch(url, { method: 'POST', body: new FormData(form)})
                 .then(response => {
                     console.log('Success!', response);
-                    window.location.href = 'cam-on-quy-khach.html';
+                    window.location.href = '/cam-on-quy-khach/';
                 })
                 .catch(error => {
                     console.error('Error!', error);
