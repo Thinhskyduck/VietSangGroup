@@ -1,0 +1,23 @@
+# Tiêu đề và mô tả website (Quan trọng cho SEO)
+title: Việt Sáng - Dịch Vụ Vệ Sinh & Chuyển Nhà Trọn Gói TP.HCM
+description: >- # Dấu >- cho phép viết mô tả trên nhiều dòng
+  Dịch vụ vệ sinh công nghiệp & chuyển nhà trọn gói Việt Sáng tại TP.HCM. 
+  Chuyên nghiệp - Nhanh chóng - An toàn. Báo giá minh bạch, không phát sinh. 
+  Gọi ngay 0931 992 089 để được tư vấn miễn phí!
+
+# URL chính thức của website bạn (CỰC KỲ QUAN TRỌNG)
+# Plugin sitemap sẽ dùng URL này để tạo các đường dẫn tuyệt đối.
+url: "https://vietsanghome.com.vn"
+baseurl: "" # Để trống nếu website nằm ở thư mục gốc của tên miền
+
+# Kích hoạt plugin sitemap
+plugins:
+  - jekyll-sitemap
+
+# (Tùy chọn) Loại trừ các tệp không muốn xuất hiện trong sitemap
+# Ví dụ: Tệp index.html ở gốc chỉ dùng để redirect, không nên có trong sitemap.
+exclude:
+  - index.html 
+  - README.md
+  # - Gemfile
+  # - Gemfile.lock
