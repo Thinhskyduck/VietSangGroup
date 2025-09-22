@@ -16,8 +16,7 @@ plugins:
 
 # (Tùy chọn) Loại trừ các tệp không muốn xuất hiện trong sitemap
 # Ví dụ: Tệp index.html ở gốc chỉ dùng để redirect, không nên có trong sitemap.
-exclude:
-  - index.html 
+exclude: 
   - README.md
   # - Gemfile
   # - Gemfile.lock
