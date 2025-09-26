@@ -43,7 +43,6 @@ const quanImageConfig = {
     'khu-vuc-binhtan': [
         veSinh[7], chuyenTro[1], chuyenNha[10], chuyenNha[15],  chuyenTro[0], chuyenNha[5]
     ]
-    // 👉 Các ảnh còn lại (nếu chưa phân) bạn có thể tự thêm vào đây
 };
 
 // Chuyển thành projectData

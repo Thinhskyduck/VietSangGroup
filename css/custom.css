@@ -771,20 +771,20 @@
 /* --- Tùy chỉnh cho Page Header của trang Form --- */
 .page-header-form-cleaning {
     /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-3.png') center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-3.webp') center center no-repeat;
     background-size: cover;
     
 }
 
 .page-header-form-moving {
     /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-2.png') center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-2.webp') center center no-repeat;
     background-size: cover;
 }
 
 .page-header-form-thanks {
     /* THAY ĐỔI ẢNH NỀN CỦA BẠN TẠI ĐÂY */
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-1.png') center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/banner/banner-1.webp') center center no-repeat;
     background-size: cover;
 }
 
@@ -880,7 +880,7 @@
       content: "";
       position: absolute;
       inset: 0; /* top, right, bottom, left = 0 */
-      background: url("../img/banner/banner-1.png") center center / cover no-repeat;
+      background: url("../img/banner/banner-1.webp") center center / cover no-repeat;
       filter: blur(10px) brightness(0.85);
       z-index: 0; /* nằm dưới ảnh */
   }
