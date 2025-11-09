@@ -5,95 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản Trị Nội Dung - Việt Sáng</title>
 
-    <!-- Tải script chính của Decap CMS và TinyMCE -->
+    <!-- BƯỚC 1: Ra lệnh cho CMS chờ, phải đặt TRƯỚC script decap-cms -->
+    <script>
+        window.CMS_MANUAL_INIT = true;
+    </script>
+    
+    <!-- BƯỚC 2: Tải các script cần thiết -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tinymce@7.0.0/tinymce.min.js"></script>
 </head>
 <body>
+    <!-- BƯỚC 3: Script khởi tạo, chạy sau khi các thư viện đã được tải -->
     <script>
-        // Chờ cho cả window.CMS và window.tinymce sẵn sàng
-        function initializeCMS() {
-            if (window.CMS && window.tinymce) {
-                
-                // ✅ Phần widget React hiện đại, tương thích CMS 3.x 
-                const React = window.CMS.getWidget("string").control.prototype.React || window.React;
-                const h = React.createElement;
+        // Lấy React từ chính Decap CMS để đảm bảo tương thích
+        const React = CMS.getWidget("string").control.prototype.React || window.React;
+        const h = React.createElement;
 
-                const TinymceControl = (props) => {
-                    const textareaRef = React.useRef(null);
+        // Widget TinyMCE viết bằng React Hooks hiện đại
+        const TinymceControl = (props) => {
+            const textareaRef = React.useRef(null);
 
-                    React.useEffect(() => {
-                        const el = textareaRef.current;
-                        if (!el) return undefined;
+            React.useEffect(() => {
+                const el = textareaRef.current;
+                if (!el) return undefined;
 
-                        tinymce.init({
-                            target: el,
-                            height: 600,
-                            menubar: false,
-                            plugins: "link image lists code table media wordcount anchor autoresize textcolor",
-                            toolbar: "undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | removeformat | code",
-                            setup: (editor) => {
-                                editor.on("init", () => {
-                                    if (props.value) editor.setContent(props.value);
-                                });
-                                editor.on("change keyup", () => {
-                                    props.onChange(editor.getContent());
-                                });
-                            },
+                tinymce.init({
+                    target: el,
+                    height: 600,
+                    menubar: false,
+                    plugins: "link image lists code table media wordcount anchor autoresize textcolor",
+                    toolbar: "undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | removeformat | code",
+                    setup: (editor) => {
+                        editor.on("init", () => {
+                            if (props.value) editor.setContent(props.value);
                         });
-                        
-                        // Hàm cleanup để xóa instance TinyMCE khi component bị unmount
-                        return () => {
-                            const editor = tinymce.get(el.id);
-                            if (editor) {
-                                tinymce.remove(editor);
-                            }
-                        };
-                    }, []);
-
-                    return h("textarea", { ref: textareaRef });
-                };
-
-                // Đăng ký widget đã được sửa lỗi
-                CMS.registerWidget("tinymce", TinymceControl);
-
-                // ✅ Phần backend Netlify đã hoạt động tốt của BẠN
-                CMS.init({
-                    config: {
-                        backend: {
-                            name: "github",
-                            repo: "Thinhskyduck/VietSangGroup",
-                            branch: "blog-dev"
-                        },
-                        media_folder: "img/uploads",
-                        public_folder: "/img/uploads",
-                        collections: [{
-                            name: "blog",
-                            label: "Tin Tức & Bài Viết",
-                            folder: "_posts",
-                            create: true,
-                            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
-                            extension: "md",
-                            fields: [
-                                { label: "Tiêu đề", name: "title", widget: "string" },
-                                { label: "Ngày đăng", name: "date", widget: "datetime" },
-                                { label: "Tác giả", name: "author", widget: "string", default: "Việt Sáng Home" },
-                                { label: "Ảnh đại diện", name: "image", widget: "image", required: false },
-                                { label: "Tóm tắt ngắn", name: "summary", widget: "text", required: false },
-                                { label: "Nội dung chi tiết", name: "body", widget: "tinymce" }
-                            ],
-                        }],
+                        editor.on("change keyup", () => {
+                            props.onChange(editor.getContent());
+                        });
                     },
                 });
+                
+                return () => {
+                    const editor = tinymce.get(el.id);
+                    if (editor) tinymce.remove(editor);
+                };
+            }, []);
 
-            } else {
-                // Nếu chưa sẵn sàng, thử lại sau 100ms
-                setTimeout(initializeCMS, 100);
-            }
-        }
-        
-        // Bắt đầu quá trình khởi tạo
-        initializeCMS();
+            return h("textarea", { ref: textareaRef });
+        };
+
+        // Đăng ký widget
+        CMS.registerWidget("tinymce", TinymceControl);
+
+        // Khởi tạo CMS với cấu hình inline
+        CMS.init({
+            config: {
+                backend: {
+                    name: "github",
+                    repo: "Thinhskyduck/VietSangGroup",
+                    branch: "blog-dev"
+                },
+                media_folder: "img/uploads",
+                public_folder: "/img/uploads",
+                collections: [{
+                    name: "blog",
+                    label: "Tin Tức & Bài Viết",
+                    folder: "_posts",
+                    create: true,
+                    slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+                    extension: "md",
+                    fields: [
+                        { label: "Tiêu đề", name: "title", widget: "string" },
+                        { label: "Ngày đăng", name: "date", widget: "datetime" },
+                        { label: "Tác giả", name: "author", widget: "string", default: "Việt Sáng Home" },
+                        { label: "Ảnh đại diện", name: "image", widget: "image", required: false },
+                        { label: "Tóm tắt ngắn", name: "summary", widget: "text", required: false },
+                        { label: "Nội dung chi tiết", name: "body", widget: "tinymce" }
+                    ],
+                }],
+            },
+        });
     </script>
 </body>
 </html>
