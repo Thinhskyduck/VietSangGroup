@@ -13,10 +13,26 @@ baseurl: "" # Để trống nếu website nằm ở thư mục gốc của tên 
 # Kích hoạt plugin sitemap
 plugins:
   - jekyll-sitemap
+  - jekyll-feed # Thêm plugin này để tạo RSS Feed, cũng tốt cho SEO
 
 # (Tùy chọn) Loại trừ các tệp không muốn xuất hiện trong sitemap
 # Ví dụ: Tệp index.html ở gốc chỉ dùng để redirect, không nên có trong sitemap.
 exclude: 
   - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
   # - Gemfile
   # - Gemfile.lock
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Trị Nội Dung - Việt Sáng</title>
+
+    <!-- 1. Bật chế độ khởi tạo thủ công cho CMS -->
+    <script>
+        window.CMS_MANUAL_INIT = true;
+    </script>
+    
+    <!-- 2. Tải các thư viện cần thiết từ CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.0.0/tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/decap-cms/3.9.0/decap-cms.min.js"></script>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            // Lấy React từ window object
+            const React = window.React;
+            const h = React.createElement;
+
+            // --- Component để tạo trình soạn thảo TinyMCE ---
+            class TinyMCEControl extends React.Component {
+                componentDidMount() {
+                    const el = document.createElement("textarea");
+                    el.value = this.props.value || "";
+                    this.container.appendChild(el);
+                    const props = this.props;
+
+                    tinymce.init({
+                        target: el,
+                        height: 600,
+                        menubar: false,
+                        // Nâng cấp plugins và toolbar để có nhiều chức năng hơn
+                        plugins: "link image lists code table media wordcount anchor autoresize textcolor",
+                        toolbar: "undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | removeformat | code",
+                        setup: (editor) => {
+                            editor.on("init", () => {
+                                if (props.value) editor.setContent(props.value);
+                            });
+                            editor.on("change keyup", () => {
+                                props.onChange(editor.getContent());
+                            });
+                        },
+                    });
+                }
+
+                componentWillUnmount() {
+                    if (this.container && this.container.firstChild) {
+                        tinymce.remove(this.container.firstChild);
+                    }
+                }
+
+                render() {
+                    return h("div", {
+                        ref: (el) => (this.container = el),
+                    });
+                }
+            }
+
+            // --- Đăng ký widget TinyMCE ---
+            CMS.registerWidget("tinymce", TinyMCEControl);
+
+            // --- Khởi tạo Decap CMS ---
+            CMS.init({
+                config: {
+                    // Cấu hình backend để kết nối với GitHub (QUAN TRỌNG NHẤT)
+                    backend: {
+                        name: "github",
+                        repo: "Thinhskyduck/VietSangGroup", // Thay đúng "tên-user/tên-repo"
+                        branch: "main" // Nhánh chính của bạn
+                    },
+
+                    // Cấu hình media
+                    media_folder: "img/uploads",
+                    public_folder: "/img/uploads",
+
+                    // Cấu hình collections (nơi quản lý bài viết)
+                    collections: [{
+                        name: "blog",
+                        label: "Tin Tức & Bài Viết",
+                        folder: "_posts",
+                        create: true,
+                        slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+                        extension: "md", // Lưu bài dưới dạng markdown
+                        fields: [
+                            { label: "Tiêu đề", name: "title", widget: "string" },
+                            { label: "Ngày đăng", name: "date", widget: "datetime" },
+                            { label: "Tác giả", name: "author", widget: "string", default: "Việt Sáng Home" },
+                            { label: "Ảnh đại diện", name: "image", widget: "image", required: false },
+                            { label: "Tóm tắt ngắn", name: "summary", widget: "text", required: false },
+                            { label: "Nội dung chi tiết", name: "body", widget: "tinymce" } // Sử dụng widget đã đăng ký
+                        ],
+                    }, ],
+                },
+            });
+        };
+    </script>
+</body>
+</html>
