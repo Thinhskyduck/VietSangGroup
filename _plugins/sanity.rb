@@ -69,6 +69,9 @@ Jekyll::Hooks.register :site, :after_init do |site|
       filename = "#{date}-#{slug}.md"
       path = File.join(posts_dir, filename)
 
+      json_str = post['body'].to_json
+      escaped_json = json_str.gsub(/\\/, '\\\\').gsub(/"/, '\\"')
+
       content = <<~MARKDOWN
         ---
         layout: post
@@ -76,7 +79,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
         date: #{post['publishedAt']}
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
-        body_json: "#{post['body'].to_json.gsub('"', '\"')}"
+        body_json: "#{escaped_json}"
         ---
       MARKDOWN
 
