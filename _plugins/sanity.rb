@@ -5,21 +5,16 @@ require 'json'
 require 'fileutils'
 require 'time'
 
-# --- PHẦN 1: LIQUID FILTER ĐỂ RENDER PORTABLE TEXT ---
 module Jekyll
   module SanityFilter
     def portable_text_to_html(input)
-      # input ở đây là một chuỗi JSON, cần parse nó trước
       blocks = JSON.parse(input) rescue []
       return "" unless blocks.is_a?(Array)
-
       html = ""
       blocks.each do |block|
         next unless block['_type'] == 'block' && block['children']
-
         content = block['children'].map { |c| c['text'] }.join
         style = block['style'] || 'normal'
-
         case style
         when 'h1' then html += "<h1>#{content}</h1>"
         when 'h2' then html += "<h2>#{content}</h2>"
@@ -32,36 +27,25 @@ module Jekyll
     end
   end
 end
-
 Liquid::Template.register_filter(Jekyll::SanityFilter)
 
-# --- PHẦN 2: FETCH DATA VÀ TẠO FILE BÀI VIẾT ẢO ---
-Jekyll::Hooks.register :site, :before_build do |site|
-  # Chỉ chạy nếu có token
+Jekyll::Hooks.register :site, :after_init do |site|
   next unless ENV['SANITY_API_TOKEN']
-
   puts "Fetching data from Sanity.io..."
-
-  project_id = '7psj6s2s' # Project ID của bạn
+  project_id = '7psj6s2s'
   dataset = 'production'
   token = ENV['SANITY_API_TOKEN']
-  
   query = '*[_type == "post"] { title, slug, publishedAt, "author": author->name, "image": mainImage.asset->url, body } | order(publishedAt desc)'
   url = "https://#{project_id}.api.sanity.io/v1/data/query/#{dataset}?query=#{URI.encode(query)}"
-  
   response = HTTParty.get(url, headers: { 'Authorization' => "Bearer #{token}" })
-
   if response.success?
     posts = JSON.parse(response.body)['result']
     posts_dir = site.in_source_dir('_posts')
     FileUtils.mkdir_p(posts_dir)
-
     posts.each do |post|
       slug = post['slug']['current']
       date = Time.parse(post['publishedAt']).strftime('%Y-%m-%d')
       path = File.join(posts_dir, "#{date}-#{slug}.md")
-
-      # Tạo nội dung file Markdown với Front Matter
       content = <<~MARKDOWN
         ---
         layout: post
@@ -69,11 +53,9 @@ Jekyll::Hooks.register :site, :before_build do |site|
         date: #{post['publishedAt']}
         author: #{post['author'] ? post['author'].inspect : 'Việt Sáng Home'}
         image: #{post['image'].inspect if post['image']}
-        # Lưu Portable Text dưới dạng một chuỗi JSON hợp lệ
         body_json: #{post['body'].to_json}
         ---
       MARKDOWN
-
       File.write(path, content)
     end
     puts "=> Successfully created #{posts.length} post files from Sanity."
