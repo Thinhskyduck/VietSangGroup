@@ -121,7 +121,9 @@
           </a>
 
           <!-- Button -->
-          <a href="#dich-vu" class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3">
+          <a href="{{ '/' | relative_url }}#dich-vu" 
+            class="btn btn-primary rounded-pill py-2 px-4 ms-lg-3 text-white"
+            style="font-family: 'Mulish', sans-serif; font-weight: 900;">
             Đặt lịch ngay
           </a>
         </div>
@@ -166,10 +168,10 @@
           </div>
           <div class="col-lg-4 col-md-12 d-flex flex-column">
             <h4 class="text-light mb-4">Links Nhanh</h4>
-            <a class="btn btn-link" href="#about">Về Chúng Tôi</a>
-            <a class="btn btn-link" href="#dich-vu">Dịch Vụ</a>
-            <a class="btn btn-link" href="#projects">Công Trình</a>
-            <a class="btn btn-link" href="#testimonials">Phản Hồi</a>
+            <a class="btn btn-link" href="{{ '/' | relative_url }}#about">Về Chúng Tôi</a>
+            <a class="btn btn-link" href="{{ '/' | relative_url }}#dich-vu">Dịch Vụ</a>
+            <a class="btn btn-link" href="{{ '/' | relative_url }}#projects">Công Trình</a>
+            <a class="btn btn-link" href="{{ '/' | relative_url }}#testimonials">Phản Hồi</a>
           </div>
         </div>
       </div>
