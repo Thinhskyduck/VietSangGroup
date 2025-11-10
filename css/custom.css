@@ -1184,28 +1184,3 @@
   margin: 1.5rem 0;
 }
 
-/* Thêm vào css/custom.css */
-
-.blog-card {
-  transition: all 0.3s ease;
-  border: none;
-  border-radius: 8px; /* Bo góc card */
-}
-
-.blog-card:hover {
-  transform: translateY(-5px); /* Hiệu ứng nhấc lên khi hover */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important; /* Đổ bóng rõ hơn */
-}
-
-.blog-card .card-img-top {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.blog-card .blog-card-title {
-  transition: color 0.2s ease;
-}
-
-.blog-card .blog-card-title:hover {
-  color: var(--primary); /* Đổi màu title khi hover (dùng màu primary của bạn) */
-}
