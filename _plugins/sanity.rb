@@ -4,7 +4,7 @@ require 'httparty'
 require 'json'
 require 'fileutils'
 require 'time'
-require 'cgi' # Dùng để escape HTML
+require 'cgi' 
 
 # --- PHẦN 1: LIQUID FILTER ĐỂ RENDER PORTABLE TEXT (NÂNG CẤP) ---
 module Jekyll
@@ -22,7 +22,6 @@ module Jekyll
       return "" unless blocks.is_a?(Array)
 
       html = ""
-      # Biến để xử lý logic đóng/mở thẻ <ul>
       list_open = false 
 
       blocks.each_with_index do |block, index|
@@ -30,37 +29,29 @@ module Jekyll
         # --- Xử lý block kiểu 'block' (text, headings, list) ---
         if block['_type'] == 'block' && block['children']
           
-          # --- Xử lý danh sách (List) ---
-          is_list_item = block['listItem'] == 'bullet' # Bạn có thể thêm 'number'
+          is_list_item = block['listItem'] == 'bullet'
           
-          # Mở thẻ <ul> nếu đây là item đầu tiên của list
           if is_list_item && !list_open
             html += "<ul>\n"
             list_open = true
           end
           
-          # Đóng thẻ </ul> nếu item này không phải list, hoặc là block cuối cùng
           if !is_list_item && list_open
              html += "</ul>\n"
              list_open = false
           end
 
-          # --- Xử lý children (spans) ---
           content = ""
           block['children'].each do |child|
             next unless child['_type'] == 'span' && child['text']
+            text = CGI.escapeHTML(child['text']) 
             
-            text = CGI.escapeHTML(child['text']) # Chống XSS
-            
-            # Xử lý marks (bold, italic, links)
             if child['marks']&.any?
               (child['marks'] || []).reverse.each do |mark_key|
-                # Kiểm tra xem mark_key có trong markDefs không (cho links)
                 if mark = block['markDefs']&.find { |md| md['_key'] == mark_key }
                   if mark['_type'] == 'link'
                     text = "<a href='#{CGI.escapeHTML(mark['href'])}' target='_blank' rel='noopener noreferrer'>#{text}</a>"
                   end
-                # Xử lý marks đơn giản (strong, em)
                 elsif mark_key == 'strong'
                   text = "<strong>#{text}</strong>"
                 elsif mark_key == 'em'
@@ -69,9 +60,8 @@ module Jekyll
               end
             end
             content += text
-          end # end children.each
+          end 
 
-          # --- Render HTML dựa trên style ---
           style = block['style'] || 'normal'
           
           if is_list_item
@@ -86,35 +76,35 @@ module Jekyll
             end
           end
           
-        # --- Xử lý block kiểu 'image' (nếu có) ---
-        elsif block['_type'] == 'image' && block['asset']
-          # TODO: Bạn cần query URL của ảnh trong GROQ
-          # Ví dụ: body[] { ..., asset->{url} }
-          # Giả sử đã có URL: img_url = block['asset']['url']
-          # html += "<img src='#{img_url}' alt='Nội dung ảnh' class='img-fluid rounded my-3'>\n"
-          
-          # Đóng thẻ list nếu đang mở
-          if list_open
+        # === SỬA LỖI ẢNH Ở ĐÂY ===
+        # --- Xử lý block kiểu 'image' (ảnh inline) ---
+        elsif block['_type'] == 'image'
+          if list_open # Đóng thẻ list nếu đang mở
              html += "</ul>\n"
              list_open = false
           end
-          html += "<p><em>[Render ảnh ở đây]</em></p>\n"
           
-        # Xử lý các block không xác định
+          # Kiểm tra xem 'asset' và 'url' có tồn tại không
+          if block['asset'] && block['asset']['url']
+            img_url = block['asset']['url']
+            html += "<img src='#{img_url}' alt='Hình ảnh trong bài' class='img-fluid rounded my-3'>\n"
+          else
+            html += "<p><em>[Lỗi ảnh: không tìm thấy URL]</em></p>\n"
+          end
+        # === === ===
+          
         else
-          # Đóng thẻ list nếu đang mở
           if list_open
              html += "</ul>\n"
              list_open = false
           end
-        end # end if block['_type']
+        end
         
-        # Đóng thẻ <ul> nếu đây là block cuối cùng VÀ đang là list
         if index == blocks.length - 1 && list_open
           html += "</ul>\n"
         end
         
-      end # end blocks.each
+      end
       
       html
     end
@@ -133,11 +123,11 @@ Jekyll::Hooks.register :site, :after_init do |site|
 
   puts "Fetching data from Sanity.io..."
 
-  project_id = '7psj6s2s' # Thay project_id của bạn
-  dataset = 'production'  # Thay dataset của bạn
+  project_id = '7psj6s2s'
+  dataset = 'production'
 
-  # CẬP NHẬT QUERY: Thêm 'description' (cho SEO)
-  # Và 'markDefs' trong 'body' (cho links)
+  # === SỬA LỖI ẢNH Ở ĐÂY ===
+  # CẬP NHẬT QUERY: Thêm 'asset->{url}' cho 'body'
   query = <<~GROQ
     *[_type == "post"] { 
       title, 
@@ -148,6 +138,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
       description,
       body[] {
         ...,
+        _type == "image" => { asset->{url} }, 
         markDefs[] {
           ...,
           _type == "link" => { "href": href }
@@ -155,6 +146,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
       }
     } | order(publishedAt desc)
   GROQ
+  # === === ===
   
   url = "https://#{project_id}.api.sanity.io/v1/data/query/#{dataset}?query=#{CGI.escape(query)}"
 
@@ -166,15 +158,10 @@ Jekyll::Hooks.register :site, :after_init do |site|
     FileUtils.mkdir_p(posts_dir)
 
     posts.each do |post|
-      next unless post['slug'] && post['slug']['current']
-      unless post['publishedAt']
-          puts "Bỏ qua post '#{post['title']}' vì không có publishedAt."
-          next
-      end
-
+      next unless post['slug'] && post['slug']['current'] && post['publishedAt']
+      
       slug = post['slug']['current']
-      date_str = post['publishedAt']
-      date = Time.parse(date_str).strftime('%Y-%m-%d')
+      date = Time.parse(post['publishedAt']).strftime('%Y-%m-%d')
       filename = "#{date}-#{slug}.md"
       path = File.join(posts_dir, filename)
 
@@ -184,14 +171,10 @@ Jekyll::Hooks.register :site, :after_init do |site|
         ---
         layout: post
         title: #{post['title'].inspect}
-        date: #{date_str}
+        date: #{post['publishedAt']}
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
-
-        # CẬP NHẬT: Thêm description cho jekyll-seo-tag
         description: #{post['description'].inspect if post['description']}
-        
-        # Dùng .inspect để escape chuỗi JSON cho YAML
         body_json: #{json_string.inspect}
         ---
       MARKDOWN
@@ -201,7 +184,6 @@ Jekyll::Hooks.register :site, :after_init do |site|
     puts "=> Tạo thành công #{posts.length} bài viết từ Sanity."
   else
     puts "Lỗi fetch Sanity: #{response.code} - #{response.message}"
-    puts "Response body: #{response.body}"
   end
 rescue => e
   puts "Lỗi plugin Sanity: #{e.message}"

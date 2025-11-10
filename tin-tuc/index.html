@@ -9,26 +9,30 @@ title: Tin tức - Việt Sáng Home
     </div>
 
     <div class="row g-4 justify-content-center">
-      <!-- Dùng vòng lặp site.posts chuẩn, không cần parse_json -->
       {% for post in site.posts %}
         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-sm blog-card"> 
             {% if post.image %}
-              <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+              <a href="{{ post.url | relative_url }}">
+                <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+              </a>
             {% endif %}
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{ post.title }}</h5>
-              <p class="card-text text-muted small">
-                <!-- Dùng biến 'date' chuẩn của Jekyll -->
+              <h5 class="card-title">
+                <a href="{{ post.url | relative_url }}" class="text-dark text-decoration-none blog-card-title">{{ post.title }}</a>
+              </h5>
+              <p class="card-text text-muted small mb-2">
                 Ngày đăng: {{ post.date | date: "%d/%m/%Y" }}
               </p>
-              <!-- Dùng biến 'url' chuẩn của Jekyll, nó sẽ tự tạo link đúng -->
-              <a href="{{ post.url | relative_url }}" class="btn btn-primary mt-auto">Xem chi tiết</a>
+              
+              {% if post.description %}
+                <p class="card-text text-secondary mb-auto">{{ post.description }}</p>
+              {% endif %}
+              <a href="{{ post.url | relative_url }}" class="btn btn-sm btn-outline-primary mt-3 align-self-start">Xem chi tiết</a>
             </div>
           </div>
         </div>
       {% endfor %}
     </div>
-
   </div>
 </div>

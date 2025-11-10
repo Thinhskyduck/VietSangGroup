@@ -35,24 +35,183 @@
   </head>
 
   <body>
+    <!-- Spinner Start -->
     <div
       id="spinner"
       class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
     >
-      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
-        <span class="sr-only">Loading...</span>
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light p-0">
+      <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+          <div
+            class="h-100 d-inline-flex align-items-center border-start border-end px-3"
+          >
+            <small class="fa fa-phone-alt me-2"></small>
+            <small>0931 992 089</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center border-end px-3">
+            <small class="far fa-envelope-open me-2"></small>
+            <small>vietsanghome@gmail.com</small>
+          </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+          <div class="h-100 d-inline-flex align-items-center">
+            <a class="btn btn-square border-end border-start" href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-square border-end" href="https://www.youtube.com/@vietsanghome" target="_blank"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a class="btn btn-square border-end" href="https://www.tiktok.com/@vietsanghome?_t=ZS-8zvuJUqg5bD&_r=1"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+            <a
+              class="btn btn-square border-end"
+              href="https://zalo.me/0931992089"
+              target="_blank"
+              title="Chat Zalo"
+            >
+             <i class="bi bi-chat-dots-fill"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-      </nav>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start (Thiết kế lại liên hệ) -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+      <a href="/trang-chu/" class="navbar-brand d-flex align-items-center">
+        <img src="../img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-2">
+        <h1 class="m-0 fw-bold text-primary">Việt Sáng</h1>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-3 py-lg-0 d-flex align-items-center gap-3">
+
+          <!-- Phone -->
+          <a href="tel:0931992089" class="nav-item nav-link d-flex align-items-center contact-link">
+            <div class="icon-circle bg-primary text-white me-2">
+              <i class="fa fa-phone-alt"></i>
+            </div>
+            <strong class="text-primary">0931 992 089</strong>
+          </a>
+
+          <!-- Zalo -->
+          <a href="https://zalo.me/0931992089" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="../img/logo/zalo.png" alt="Zalo" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">Zalo</strong>
+          </a>
+
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="../img/logo/fb.png" alt="Facebook" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">Facebook</strong>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@vietsanghome?_t=ZS-8zvuJUqg5bD&_r=1" target="_blank" 
+            class="nav-item nav-link d-flex align-items-center contact-link">
+            <img src="../img/logo/tiktok.png" alt="TikTok" 
+                style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <strong class="text-primary">TikTok</strong>
+          </a>
+
+          <a href="/tin-tuc/" class="nav-item nav-link  d-flex align-items-center contact-link">
+            <strong class="text-primary bi bi-newspaper"> Tin tức</strong>
+          </a>
+
+          <!-- Button -->
+          <a href="#dich-vu" class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3">
+            Đặt lịch ngay
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+     
     {{ content }}
 
+    <!-- Footer Start (Phục hồi footer cũ) -->
     <div
-      class="container-fluid bg-dark text-light footer pt-5 wow fadeIn"
+      class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn"
       data-wow-delay="0.1s"
-      style="margin-top: 6rem"
+      id="footer"
     >
+      <div class="container py-5">
+        <div class="row g-4 justify-content-between">
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h1 class="text-white mb-4 d-flex align-items-center">
+              <img src="../img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-3">
+              <span>Việt Sáng</span>
+            </h1>
+            <p>
+              Đơn vị hàng đầu cung cấp dịch vụ trọn gói vệ sinh nhà ở và chuyển
+              nhà chuyên nghiệp tại TP. Hồ Chí Minh.
+            </p>
+            <div class="d-flex pt-2">
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.youtube.com/@vietsanghome" target="_blank"><i class="fab fa-youtube"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" href="https://www.tiktok.com/@vietsanghome?_t=ZS-8zvuJUqg5bD&_r=1"><i class="fab fa-tiktok"></i></a>
+              <a class="btn btn-square btn-outline-primary me-1" 
+                href="https://zalo.me/0931992089" target="_blank">
+                <img src="../img/logo/zalo.png" alt="Zalo" style="width:20px; height:20px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h4 class="text-light mb-4">Thông Tin Liên Hệ</h4>
+            <p><i class="fa fa-map-marker-alt me-3"></i>Linh Đông, Thủ Đức, TP. HCM</p>
+            <p><i class="fa fa-phone-alt me-3"></i>0931 992 089</p>
+            <p><i class="fa fa-envelope me-3"></i>vietsanghome@gmail.com</p>
+            <p><img src="../img/logo/zalo.png" alt="Zalo" style="height: 20px; width: 20px; margin-right: 8px;">
+              <a href="https://zalo.me/0931992089" target="_blank" style="color: #999999; text-decoration: none;">
+                Zalo: 0931 992 089
+              </a>
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex flex-column">
+            <h4 class="text-light mb-4">Links Nhanh</h4>
+            <a class="btn btn-link" href="#about">Về Chúng Tôi</a>
+            <a class="btn btn-link" href="#dich-vu">Dịch Vụ</a>
+            <a class="btn btn-link" href="#projects">Công Trình</a>
+            <a class="btn btn-link" href="#testimonials">Phản Hồi</a>
+          </div>
+        </div>
       </div>
+      <div class="container-fluid copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              &copy; 2025 <a href="/trang-chu/">Việt Sáng</a>, All Rights Reserved.
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+              <br />Distributed By:
+              <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

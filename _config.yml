@@ -34,6 +34,9 @@ exclude:
   - vendor/ruby/
   # - Gemfile
   # - Gemfile.lock
+  
+# Cấu hình permalink cho bài viết
+permalink: /tin-tuc/:title/
 
 defaults:
   - scope:
