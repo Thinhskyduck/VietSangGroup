@@ -4,9 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quản Trị Nội Dung</title>
-  <!-- Tải script Decap CMS. Chỉ cần duy nhất dòng này. -->
+
+  <!-- Tải script Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Tải React và CKEditor -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
 </head>
 <body>
+  <script>
+    // Chờ cho tất cả các thư viện sẵn sàng
+    window.addEventListener('load', function() {
+      const h = React.createElement;
+
+      // Component CKEditor viết bằng React Hooks
+      const CKEditorControl = (props) => {
+        const editorRef = React.useRef(null);
+        const editorInstance = React.useRef(null);
+
+        React.useEffect(() => {
+          if (editorRef.current) {
+            ClassicEditor
+              .create(editorRef.current, {
+                // Cấu hình thanh công cụ của CKEditor
+                toolbar: [
+                  'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
+                  'outdent', 'indent', '|', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo'
+                ]
+              })
+              .then(editor => {
+                editorInstance.current = editor;
+                editor.setData(props.value || '');
+                editor.model.document.on('change:data', () => {
+                  const data = editor.getData();
+                  props.onChange(data);
+                });
+              })
+              .catch(error => {
+                console.error('Lỗi khi khởi tạo CKEditor:', error);
+              });
+          }
+
+          // Hàm cleanup
+          return () => {
+            if (editorInstance.current) {
+              editorInstance.current.destroy().catch(error => {
+                console.error('Lỗi khi hủy CKEditor:', error);
+              });
+              editorInstance.current = null;
+            }
+          };
+        }, []);
+
+        return h('div', { ref: editorRef });
+      };
+
+      // Đăng ký widget và khởi tạo CMS
+      CMS.registerWidget('ckeditor', CKEditorControl);
+      CMS.init();
+    });
+  </script>
 </body>
 </html>
