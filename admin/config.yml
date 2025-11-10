@@ -1,0 +1,26 @@
+# Cấu hình backend kết nối với GitHub
+backend:
+  name: github
+  repo: Thinhskyduck/VietSangGroup # Tên repo của bạn
+  branch: blog-dev # Nhánh bạn đang làm việc
+
+# Nơi lưu trữ media (hình ảnh...)
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+# Cấu trúc của các bài viết
+collections:
+  - name: "blog" # Tên định danh
+    label: "Tin Tức & Bài Viết" # Tên hiển thị trên giao diện
+    folder: "_posts" # Thư mục lưu bài viết
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Tiêu đề", name: "title", widget: "string" }
+      - { label: "Ngày đăng", name: "date", widget: "datetime" }
+      - { label: "Tác giả", name: "author", widget: "string", default: "Việt Sáng Home" }
+      - { label: "Ảnh đại diện", name: "image", widget: "image", required: false }
+      - { label: "Tóm tắt ngắn", name: "summary", widget: "text", required: false }
+      # Sử dụng widget markdown có sẵn, cực kỳ ổn định
+      - { label: "Nội dung chi tiết", name: "body", widget: "markdown" }

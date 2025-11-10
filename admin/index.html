@@ -1,104 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quản Trị Nội Dung - Việt Sáng</title>
-
-  <!-- 1. Chỉ tải Decap CMS và TinyMCE -->
+  <title>Quản Trị Nội Dung</title>
+  <!-- Tải script Decap CMS. Chỉ cần duy nhất dòng này. -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tinymce@7.0.0/tinymce.min.js"></script>
-  
-  <!-- 2. Tải HTM và Preact, công cụ được khuyến nghị để tạo widget -->
-  <script src="https://unpkg.com/htm@3/dist/htm.umd.js"></script>
-  <script src="https://unpkg.com/preact@10/dist/preact.umd.js"></script>
-  <script src="https://unpkg.com/preact-compat@3/dist/preact-compat.umd.js"></script>
-
 </head>
 <body>
-  <script type="module">
-    // 3. Gán Preact và HTM vào biến để sử dụng
-    const { h, createClass, Component } = preact;
-    const html = htm.bind(h);
-
-    // 4. Tạo Widget bằng Preact Component, hoàn toàn không xung đột
-    class TinymceControl extends Component {
-      componentDidMount() {
-        const { value, onChange } = this.props;
-
-        tinymce.init({
-          target: this.base, // Gắn TinyMCE vào element gốc của component
-          height: 600,
-          menubar: false,
-          plugins: "link image lists code table media wordcount anchor autoresize textcolor",
-          toolbar:
-            "undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | " +
-            "alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | " +
-            "link image table media | removeformat | code",
-          setup: (editor) => {
-            this.editor = editor;
-            editor.on("init", () => {
-              editor.setContent(value || "");
-            });
-            editor.on("change keyup", () => {
-              const content = editor.getContent();
-              onChange(content);
-            });
-          },
-        });
-      }
-
-      componentWillUnmount() {
-        if (this.editor) {
-          tinymce.remove(this.editor);
-          this.editor = null;
-        }
-      }
-
-      render() {
-        // Chỉ cần render một thẻ div, TinyMCE sẽ tự gắn vào
-        return html`<div></div>`;
-      }
-    }
-
-    // 5. Đăng ký Widget và Khởi tạo CMS
-    CMS.registerWidget("tinymce", TinymceControl);
-    CMS.init(); // Bây giờ có thể gọi init() trực tiếp mà không cần config
-  </script>
-
-  <!-- 6. Cấu hình CMS được đặt trong file config.yml riêng biệt, sạch sẽ hơn -->
-  <script>
-    window.CMS_CONFIG = {
-      backend: {
-        name: "github",
-        repo: "Thinhskyduck/VietSangGroup",
-        branch: "blog-dev",
-      },
-      media_folder: "img/uploads",
-      public_folder: "/img/uploads",
-      collections: [
-        {
-          name: "blog",
-          label: "Tin Tức & Bài Viết",
-          folder: "_posts",
-          create: true,
-          slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
-          extension: "md",
-          fields: [
-            { label: "Tiêu đề", name: "title", widget: "string" },
-            { label: "Ngày đăng", name: "date", widget: "datetime" },
-            { label: "Tác giả", name: "author", widget: "string", default: "Việt Sáng Home" },
-            { label: "Ảnh đại diện", name: "image", widget: "image", required: false },
-            { label: "Tóm tắt ngắn", name: "summary", widget: "text", required: false },
-            { label: "Nội dung chi tiết", name: "body", widget: "tinymce" },
-          ],
-        },
-      ],
-    };
-    
-    // Gán cấu hình này cho CMS
-    CMS.init({ config: window.CMS_CONFIG });
-  </script>
-
 </body>
 </html>
