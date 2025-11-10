@@ -5,6 +5,12 @@ description: >- # Dấu >- cho phép viết mô tả trên nhiều dòng
   Chuyên nghiệp - Nhanh chóng - An toàn. Báo giá minh bạch, không phát sinh. 
   Gọi ngay 0931 992 089 để được tư vấn miễn phí!
 
+# Cấu hình Sanity
+sanity:
+  project_id: "7psj6s2s"  # Lấy từ file sanity.json hoặc sanity.io/manage
+  dataset: "production"
+  # Không cần token ở đây, chúng ta sẽ dùng biến môi trường
+
 # URL chính thức của website bạn (CỰC KỲ QUAN TRỌNG)
 # Plugin sitemap sẽ dùng URL này để tạo các đường dẫn tuyệt đối.
 url: "https://vietsanghome.com.vn"
@@ -14,7 +20,7 @@ baseurl: "" # Để trống nếu website nằm ở thư mục gốc của tên 
 plugins:
   - jekyll-sitemap
   - jekyll-feed # Thêm plugin này để tạo RSS Feed, cũng tốt cho SEO
-
+  - jekyll-portabletext
 # (Tùy chọn) Loại trừ các tệp không muốn xuất hiện trong sitemap
 # Ví dụ: Tệp index.html ở gốc chỉ dùng để redirect, không nên có trong sitemap.
 exclude: 
