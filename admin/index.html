@@ -5,27 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quản Trị Nội Dung - Việt Sáng</title>
 
+  <!-- 1. Ra lệnh cho CMS chờ -->
   <script>window.CMS_MANUAL_INIT = true;</script>
+  
+  <!-- 2. Tải các thư viện cần thiết, BAO GỒM CẢ REACT -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tinymce@7.0.0/tinymce.min.js"></script>
 </head>
 <body>
   <script>
     function initializeCMS() {
-      // kiểm tra cả 3 thứ: CMS, tinymce và React từ CMS
-      if (window.CMS && window.tinymce && window.CMS.getWidget("string")?.control?.prototype?.React) {
-        console.log("✅ CMS, TinyMCE và React đã sẵn sàng!");
-
-        const React = window.CMS.getWidget("string").control.prototype.React;
+      // Bây giờ chỉ cần chờ CMS và TinyMCE, vì React chúng ta đã tự tải
+      if (window.CMS && window.tinymce) {
+        
+        // 3. Lấy React từ window object, nơi chúng ta vừa tải nó vào
+        const React = window.React;
         const h = React.createElement;
 
         const TinymceControl = (props) => {
           const textareaRef = React.useRef(null);
-
           React.useEffect(() => {
             const el = textareaRef.current;
             if (!el) return undefined;
-
             tinymce.init({
               target: el,
               height: 600,
@@ -36,21 +39,15 @@
                 "alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | " +
                 "link image table media | removeformat | code",
               setup: (editor) => {
-                editor.on("init", () => {
-                  if (props.value) editor.setContent(props.value);
-                });
-                editor.on("change keyup", () => {
-                  props.onChange(editor.getContent());
-                });
+                editor.on("init", () => { if (props.value) editor.setContent(props.value); });
+                editor.on("change keyup", () => { props.onChange(editor.getContent()); });
               },
             });
-
             return () => {
               const editor = tinymce.get(el.id);
               if (editor) tinymce.remove(editor);
             };
           }, []);
-
           return h("textarea", { ref: textareaRef });
         };
 
@@ -85,13 +82,14 @@
             ],
           },
         });
+
       } else {
-        console.log("⏳ Đang chờ CMS, TinyMCE hoặc React sẵn sàng...");
+        console.log("⏳ Đang chờ CMS và TinyMCE...");
         setTimeout(initializeCMS, 200);
       }
     }
 
-    // khởi động quy trình
+    // Khởi động quy trình
     initializeCMS();
   </script>
 </body>
