@@ -21,4 +21,15 @@ collections:
       - { label: "Tác giả", name: "author", widget: "string", default: "Việt Sáng Home" }
       - { label: "Ảnh đại diện", name: "image", widget: "image", required: false }
       - { label: "Tóm tắt ngắn", name: "summary", widget: "text", required: false }
-      - { label: "Nội dung chi tiết", name: "body", widget: "ckeditor" }
+      # SỬ DỤNG WIDGET MARKDOWN CÓ SẴN VÀ BẬT WYSIWYG
+      - label: "Nội dung chi tiết"
+        name: "body"
+        widget: "markdown"
+        editor_components: [] # Dòng này để tắt các tính năng nâng cao không cần thiết
+        buttons: # Liệt kê các nút bạn muốn có trên thanh công cụ
+          - bold
+          - italic
+          - link
+          - quote
+          - bulleted-list
+          - numbered-list

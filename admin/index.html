@@ -2,59 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quản Trị Nội Dung</title>
-
-  <!-- Tải các thư viện cần thiết -->
+  
+  <!-- Chỉ cần duy nhất dòng này. CMS sẽ tự tìm và đọc file config.yml -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 </head>
 <body>
-  <script>
-    // SỬ DỤNG SỰ KIỆN NÀY ĐỂ ĐẢM BẢO MỌI THỨ ĐÃ TẢI XONG
-    window.addEventListener('DOMContentLoaded', () => {
-      
-      // Lúc này, CMS, React, và CKEditor chắc chắn đã tồn tại
-      const h = React.createElement;
-
-      const CKEditorControl = (props) => {
-        const editorRef = React.useRef(null);
-        const editorInstance = React.useRef(null);
-
-        React.useEffect(() => {
-          if (editorRef.current) {
-            ClassicEditor
-              .create(editorRef.current, {
-                toolbar: [
-                  'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
-                  'outdent', 'indent', '|', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo'
-                ]
-              })
-              .then(editor => {
-                editorInstance.current = editor;
-                editor.setData(props.value || '');
-                editor.model.document.on('change:data', () => {
-                  const data = editor.getData();
-                  props.onChange(data);
-                });
-              })
-              .catch(error => { console.error(error); });
-          }
-          return () => {
-            if (editorInstance.current) {
-              editorInstance.current.destroy().catch(error => { console.error(error); });
-              editorInstance.current = null;
-            }
-          };
-        }, []);
-        return h('div', { ref: editorRef });
-      };
-
-      // Đăng ký widget và khởi tạo CMS
-      CMS.registerWidget('ckeditor', CKEditorControl);
-      CMS.init();
-    });
-  </script>
 </body>
 </html>
