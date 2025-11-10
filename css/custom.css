@@ -1209,3 +1209,121 @@
 .blog-card .blog-card-title:hover {
   color: var(--primary); /* Đổi màu title khi hover (dùng màu primary của bạn) */
 }
+
+/* =================================== */
+/* ========= Custom Post Style ========= */
+/* =================================== */
+
+.post-content h2, 
+.post-content h3, 
+.post-content h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.post-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem; /* Tăng kích thước chữ cho dễ đọc */
+  line-height: 1.8;
+  color: #444;
+}
+
+.post-content blockquote {
+  border-left: 4px solid #0d6efd; /* Sử dụng màu primary của bạn */
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #6c757d;
+}
+
+.post-content ul, 
+.post-content ol {
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem; /* Bo góc nhẹ cho hình ảnh */
+  margin: 1.5rem 0;
+}
+
+/* ========================================= */
+/* ===== NÂNG CẤP TRANG DANH SÁCH TIN TỨC ===== */
+/* ========================================= */
+
+/* BÀI VIẾT NỔI BẬT (FEATURED POST) */
+.featured-post-card {
+    border: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease-in-out;
+}
+
+.featured-post-card .featured-image {
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.featured-post-card:hover .featured-image {
+    transform: scale(1.05);
+}
+
+.featured-post-content {
+    padding: 2.5rem;
+}
+
+.featured-post-content .post-title a {
+    color: #1A2A56; /* Màu xanh đậm thương hiệu */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.featured-post-content .post-title a:hover {
+    color: #0d6efd; /* Màu xanh primary */
+}
+
+/* TINH CHỈNH THẺ BÀI VIẾT (BLOG CARD) */
+.blog-card {
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+.blog-card .card-title {
+    line-height: 1.4;
+}
+
+.blog-card .blog-card-title {
+    transition: color 0.3s ease;
+}
+
+.blog-card .blog-card-title:hover {
+    color: #0d6efd !important;
+}
+
+/* Đảm bảo responsiveness cho bài viết nổi bật */
+@media (max-width: 991.98px) {
+    .featured-post-card .featured-image {
+        min-height: 300px;
+        border-radius: 12px 12px 0 0;
+    }
+    .featured-post-content {
+        padding: 2rem;
+    }
+}
