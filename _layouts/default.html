@@ -122,8 +122,8 @@
 
           <!-- Button -->
           <a href="{{ '/' | relative_url }}#dich-vu" 
-            class="btn btn-primary rounded-pill py-2 px-4 ms-lg-3 text-white"
-            style="font-family: 'Mulish', sans-serif; font-weight: 900;">
+            class="btn-dat-lich btn btn-primary rounded-pill py-2 px-4 ms-lg-3 text-white shadow-sm"
+            style="font-family: 'Roboto', sans-serif; font-weight: 600; font-size: 1rem;">
             Đặt lịch ngay
           </a>
         </div>
@@ -209,5 +209,46 @@
     <script src="{{ '/js/data-project.js' | relative_url }}"></script>
     <script src="{{ '/js/custom.js' | relative_url }}"></script>
     <script src="{{ '/js/form-handler.js' | relative_url }}"></script>
+    <script>
+      // Scroll mượt khi bấm vào #dich-vu từ trang khác
+      document.addEventListener('DOMContentLoaded', function () {
+        const datLichBtn = document.querySelector('.btn-dat-lich');
+        if (datLichBtn) {
+          datLichBtn.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href.includes('#dich-vu')) {
+              // Nếu đang ở trang khác → chuyển về trang chủ rồi scroll
+              if (!window.location.pathname.includes('trang-chu') && !window.location.pathname.endsWith('/')) {
+                window.location.href = href;
+                return;
+              }
+
+              // Nếu đang ở trang chủ → scroll mượt
+              e.preventDefault();
+              const target = document.getElementById('dich-vu');
+              if (target) {
+                window.scrollTo({
+                  top: target.offsetTop - 100,
+                  behavior: 'smooth'
+                });
+              }
+            }
+          });
+        }
+
+        // Xử lý khi load trang từ URL có #dich-vu
+        if (window.location.hash === '#dich-vu') {
+          setTimeout(() => {
+            const target = document.getElementById('dich-vu');
+            if (target) {
+              window.scrollTo({
+                top: target.offsetTop - 100,
+                behavior: 'smooth'
+              });
+            }
+          }, 500);
+        }
+      });
+    </script>
   </body>
 </html>
