@@ -8,48 +8,58 @@
   <!-- 1. Ra lệnh cho CMS chờ -->
   <script>window.CMS_MANUAL_INIT = true;</script>
   
-  <!-- 2. Tải các thư viện cần thiết, BAO GỒM CẢ REACT -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- 2. Chỉ tải Decap CMS và TinyMCE. KHÔNG TẢI REACT BÊN NGOÀI -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tinymce@7.0.0/tinymce.min.js"></script>
 </head>
 <body>
   <script>
     function initializeCMS() {
-      // Bây giờ chỉ cần chờ CMS và TinyMCE, vì React chúng ta đã tự tải
+      // Chờ cho CMS và TinyMCE sẵn sàng
       if (window.CMS && window.tinymce) {
         
-        // 3. Lấy React từ window object, nơi chúng ta vừa tải nó vào
-        const React = window.React;
-        const h = React.createElement;
+        // 3. Lấy hàm `createElement` (biến 'h') TRỰC TIẾP từ Decap CMS
+        const h = window.CMS.h;
 
-        const TinymceControl = (props) => {
-          const textareaRef = React.useRef(null);
-          React.useEffect(() => {
-            const el = textareaRef.current;
-            if (!el) return undefined;
+        // 4. Tạo Widget bằng class. Đây là cách làm ổn định nhất
+        //    và không gây xung đột React.
+        var TinymceControl = createClass({
+          componentDidMount: function() {
+            const el = document.createElement("textarea");
+            el.value = this.props.value || "";
+            this.el.appendChild(el);
+
             tinymce.init({
               target: el,
               height: 600,
               menubar: false,
               plugins: "link image lists code table media wordcount anchor autoresize textcolor",
-              toolbar:
-                "undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | " +
-                "alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | " +
-                "link image table media | removeformat | code",
+              toolbar: "undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table media | removeformat | code",
               setup: (editor) => {
-                editor.on("init", () => { if (props.value) editor.setContent(props.value); });
-                editor.on("change keyup", () => { props.onChange(editor.getContent()); });
+                editor.on("init", () => {
+                  if (this.props.value) editor.setContent(this.props.value);
+                });
+                editor.on("change keyup", () => {
+                  this.props.onChange(editor.getContent());
+                });
               },
             });
-            return () => {
-              const editor = tinymce.get(el.id);
-              if (editor) tinymce.remove(editor);
-            };
-          }, []);
-          return h("textarea", { ref: textareaRef });
-        };
+          },
+
+          componentWillUnmount: function() {
+            if (this.el && this.el.firstChild) {
+              tinymce.remove(this.el.firstChild);
+            }
+          },
+
+          render: function() {
+            return h("div", {
+              ref: (el) => {
+                this.el = el;
+              },
+            });
+          },
+        });
 
         CMS.registerWidget("tinymce", TinymceControl);
 
@@ -84,12 +94,9 @@
         });
 
       } else {
-        console.log("⏳ Đang chờ CMS và TinyMCE...");
         setTimeout(initializeCMS, 200);
       }
     }
-
-    // Khởi động quy trình
     initializeCMS();
   </script>
 </body>
