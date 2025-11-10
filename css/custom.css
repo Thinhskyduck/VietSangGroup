@@ -7,7 +7,7 @@
     gap: 8px; /* Khoảng cách giữa icon và chữ */
 }
 
-/* Nút "Liên Hệ Ngay" nổi bật hơn */
+/* Nút "Đặt lịch ngay" nổi bật hơn */
 .btn-contact-nav {
     background: linear-gradient(45deg, #fcb900, #ff5722); /* Gradient nổi bật */
     color: #fff;
@@ -789,8 +789,19 @@
 }
 
 /* Tùy chỉnh breadcrumb */
-.breadcrumb-item + .breadcrumb-item::before {
+/* .breadcrumb-item + .breadcrumb-item::before {
     color: rgba(255, 255, 255, 0.5);
+} */
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">"; /* Thay đổi dấu ngăn cách mặc định thành dấu ">" */
+  color: #084172; /* Tùy chỉnh màu sắc cho dấu > */
+}
+
+/* Bỏ đi nền mặc định và căn chỉnh lại */
+.breadcrumb {
+    background-color: transparent; 
+    padding-left: 0;
 }
 
 /* --- Tùy chỉnh cho Nút Quay Lại --- */
@@ -1214,10 +1225,6 @@
 /* ========= NÂNG CẤP TRANG BÀI VIẾT ========= */
 /* ===================================== */
 
-/* [[MỚI]] Thêm màu nền cho trang để thẻ trắng nổi bật */
-body {
-    background-color: #f4f6f9;
-}
 
 /* [[MỚI]] Thẻ nội dung chính màu trắng */
 .post-content-card {
@@ -1375,30 +1382,3 @@ body {
     }
 }
 
-/* Nút Đặt lịch ngay - Đẹp như trang chủ */
-.btn-dat-lich {
-  background: linear-gradient(45deg, #007bff, #0056b3) !important;
-  border: none !important;
-  color: white !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3) !important;
-}
-
-.btn-dat-lich:hover {
-  background: linear-gradient(45deg, #0056b3, #004085) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4) !important;
-  color: white !important;
-}
-
-.btn-dat-lich:active,
-.btn-dat-lich:focus {
-  outline: none !important;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3) !important;
-}
-
-/* Đảm bảo font đúng */
-.btn-dat-lich {
-  font-family: 'Roboto', sans-serif !important;
-  font-weight: 600 !important;
-}
