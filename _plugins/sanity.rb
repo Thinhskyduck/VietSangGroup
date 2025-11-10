@@ -12,11 +12,8 @@ module Jekyll
     def portable_text_to_html(input)
       return "" if input.nil? || input.empty?
 
-      begin
-        blocks = JSON.parse(input)
-      rescue JSON::ParserError
-        return "<p>Lỗi nội dung</p>"
-      end
+      # Nếu input đã là Array, không cần parse nữa
+      blocks = input.is_a?(Array) ? input : JSON.parse(input)
 
       return "" unless blocks.is_a?(Array)
 
@@ -79,7 +76,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
         date: #{post['publishedAt']}
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
-        body_json: #{post['body'].to_json}
+        body_json: "#{post['body'].to_json.gsub('"', '\"')}"
         ---
       MARKDOWN
 
