@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     
-    <link href="{{ '/favicon.ico' | relative_url }}" rel="icon" />
+    <link href="{{ '/favicon.ico' | absolute_url }}" rel="icon" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,13 +22,13 @@
       rel="stylesheet"
     />
 
-    <link href="{{ '/lib/animate/animate.min.css' | relative_url }}" rel="stylesheet" />
-    <link href="{{ '/lib/owlcarousel/assets/owl.carousel.min.css' | relative_url }}" rel="stylesheet" />
+    <link href="{{ '/lib/animate/animate.min.css' | absolute_url }}" rel="stylesheet" />
+    <link href="{{ '/lib/owlcarousel/assets/owl.carousel.min.css' | absolute_url }}" rel="stylesheet" />
 
-    <link href="{{ '/css/bootstrap.min.css' | relative_url }}" rel="stylesheet" />
+    <link href="{{ '/css/bootstrap.min.css' | absolute_url }}" rel="stylesheet" />
 
-    <link href="{{ '/css/style.css' | relative_url }}" rel="stylesheet" />
-    <link href="{{ '/css/custom.css' | relative_url }}" rel="stylesheet" />
+    <link href="{{ '/css/style.css' | absolute_url }}" rel="stylesheet" />
+    <link href="{{ '/css/custom.css' | absolute_url }}" rel="stylesheet" />
     
     {% seo %}
 
@@ -79,8 +79,8 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-      <a href="{{ '/' | relative_url }}" class="navbar-brand d-flex align-items-center">
-        <img src="{{ '/img/logo.png' | relative_url }}" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-2">
+      <a href="{{ '/' | absolute_url }}" class="navbar-brand d-flex align-items-center">
+        <img src="{{ '/img/logo.png' | absolute_url }}" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-2">
         <h1 class="m-0 fw-bold text-primary">Việt Sáng</h1>
       </a>
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -100,28 +100,28 @@
 
           <!-- Zalo -->
           <a href="https://zalo.me/0931992089" target="_blank" class="nav-item nav-link d-flex align-items-center contact-link">
-            <img src="{{ '/img/logo/zalo.png' | relative_url }}" alt="Zalo" style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <img src="{{ '/img/logo/zalo.png' | absolute_url }}" alt="Zalo" style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
             <strong class="text-primary">Zalo</strong>
           </a>
 
           <!-- Facebook -->
           <a href="https://www.facebook.com/share/1A3goK46L5/?mibextid=wwXIfr" target="_blank" class="nav-item nav-link d-flex align-items-center contact-link">
-            <img src="{{ '/img/logo/fb.png' | relative_url }}" alt="Facebook" style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <img src="{{ '/img/logo/fb.png' | absolute_url }}" alt="Facebook" style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
             <strong class="text-primary">Facebook</strong>
           </a>
 
           <!-- TikTok -->
           <a href="https://www.tiktok.com/@vietsanghome?_t=ZS-8zvuJUqg5bD&_r=1" target="_blank" class="nav-item nav-link d-flex align-items-center contact-link">
-            <img src="{{ '/img/logo/tiktok.png' | relative_url }}" alt="TikTok" style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
+            <img src="{{ '/img/logo/tiktok.png' | absolute_url }}" alt="TikTok" style="width:32px; height:32px; object-fit:contain; margin-right:8px;">
             <strong class="text-primary">TikTok</strong>
           </a>
 
-          <a href="{{ '/tin-tuc/' | relative_url }}" class="nav-item nav-link d-flex align-items-center contact-link">
+          <a href="{{ '/tin-tuc/' | absolute_url }}" class="nav-item nav-link d-flex align-items-center contact-link">
             <strong class="text-primary"><i class="bi bi-newspaper"></i> Tin tức</strong>
           </a>
 
           <!-- Button -->
-          <a href="{{ '/' | relative_url }}#dich-vu" 
+          <a href="{{ '/' | absolute_url }}#dich-vu" 
             class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3 text-white">
             Đặt lịch ngay
           </a>
@@ -138,7 +138,7 @@
         <div class="row g-4 justify-content-between">
           <div class="col-lg-4 col-md-12 d-flex flex-column">
             <h1 class="text-white mb-4 d-flex align-items-center">
-              <img src="{{ '/img/logo.png' | relative_url }}" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-3">
+              <img src="{{ '/img/logo.png' | absolute_url }}" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-3">
               <span>Việt Sáng</span>
             </h1>
             <p>
@@ -149,7 +149,7 @@
               <a class="btn btn-square btn-outline-primary me-1" href="https://www.youtube.com/@vietsanghome" target="_blank"><i class="fab fa-youtube"></i></a>
               <a class="btn btn-square btn-outline-primary me-1" href="https://www.tiktok.com/@vietsanghome?_t=ZS-8zvuJUqg5bD&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
               <a class="btn btn-square btn-outline-primary me-1" href="https://zalo.me/0931992089" target="_blank">
-                <img src="{{ '/img/logo/zalo.png' | relative_url }}" alt="Zalo" style="width:20px; height:20px;">
+                <img src="{{ '/img/logo/zalo.png' | absolute_url }}" alt="Zalo" style="width:20px; height:20px;">
               </a>
             </div>
           </div>
@@ -159,7 +159,7 @@
             <p><i class="fa fa-phone-alt me-3"></i>0931 992 089</p>
             <p><i class="fa fa-envelope me-3"></i>vietsanghome@gmail.com</p>
             <p>
-              <img src="{{ '/img/logo/zalo.png' | relative_url }}" alt="Zalo" style="height: 20px; width: 20px; margin-right: 8px;">
+              <img src="{{ '/img/logo/zalo.png' | absolute_url }}" alt="Zalo" style="height: 20px; width: 20px; margin-right: 8px;">
               <a href="https://zalo.me/0931992089" target="_blank" style="color: #999999; text-decoration: none;">
                 Zalo: 0931 992 089
               </a>
@@ -167,10 +167,10 @@
           </div>
           <div class="col-lg-4 col-md-12 d-flex flex-column">
             <h4 class="text-light mb-4">Links Nhanh</h4>
-            <a class="btn btn-link" href="{{ '/' | relative_url }}#about">Về Chúng Tôi</a>
-            <a class="btn btn-link" href="{{ '/' | relative_url }}#dich-vu">Dịch Vụ</a>
-            <a class="btn btn-link" href="{{ '/' | relative_url }}#projects">Công Trình</a>
-            <a class="btn btn-link" href="{{ '/' | relative_url }}#testimonials">Phản Hồi</a>
+            <a class="btn btn-link" href="{{ '/' | absolute_url }}#about">Về Chúng Tôi</a>
+            <a class="btn btn-link" href="{{ '/' | absolute_url }}#dich-vu">Dịch Vụ</a>
+            <a class="btn btn-link" href="{{ '/' | absolute_url }}#projects">Công Trình</a>
+            <a class="btn btn-link" href="{{ '/' | absolute_url }}#testimonials">Phản Hồi</a>
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-              &copy; 2025 <a href="{{ '/' | relative_url }}">Việt Sáng</a>, All Rights Reserved.
+              &copy; 2025 <a href="{{ '/' | absolute_url }}">Việt Sáng</a>, All Rights Reserved.
             </div>
             <div class="col-md-6 text-center text-md-end">
               Designed By <a href="https://htmlcodex.com">HTML Codex</a>
@@ -195,19 +195,19 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ '/lib/wow/wow.min.js' | relative_url }}"></script>
-    <script src="{{ '/lib/easing/easing.min.js' | relative_url }}"></script>
-    <script src="{{ '/lib/waypoints/waypoints.min.js' | relative_url }}"></script>
-    <script src="{{ '/lib/owlcarousel/owl.carousel.min.js' | relative_url }}"></script>
+    <script src="{{ '/lib/wow/wow.min.js' | absolute_url }}"></script>
+    <script src="{{ '/lib/easing/easing.min.js' | absolute_url }}"></script>
+    <script src="{{ '/lib/waypoints/waypoints.min.js' | absolute_url }}"></script>
+    <script src="{{ '/lib/owlcarousel/owl.carousel.min.js' | absolute_url }}"></script>
     
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
     
-    <script src="{{ '/js/main.js' | relative_url }}"></script>
-    <script src="{{ '/js/data.js' | relative_url }}"></script>
-    <script src="{{ '/js/data-project.js' | relative_url }}"></script>
-    <script src="{{ '/js/custom.js' | relative_url }}"></script>
-    <script src="{{ '/js/form-handler.js' | relative_url }}"></script>
+    <script src="{{ '/js/main.js' | absolute_url }}"></script>
+    <script src="{{ '/js/data.js' | absolute_url }}"></script>
+    <script src="{{ '/js/data-project.js' | absolute_url }}"></script>
+    <script src="{{ '/js/custom.js' | absolute_url }}"></script>
+    <script src="{{ '/js/form-handler.js' | absolute_url }}"></script>
     <script>
       // Scroll mượt khi bấm vào #dich-vu từ trang khác
       document.addEventListener('DOMContentLoaded', function () {
