@@ -1382,3 +1382,32 @@
     }
 }
 
+/* ========================================= */
+/* ===== SỬA LỖI HÌNH ẢNH BÀI NỔI BẬT ===== */
+/* ========================================= */
+
+.featured-image-wrapper {
+    max-height: 450px; /* Giới hạn chiều cao tối đa của ảnh */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Thêm màu nền cho đẹp khi ảnh tải */
+}
+
+.featured-image-wrapper .featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đây là thuộc tính quan trọng nhất */
+    transition: transform 0.4s ease;
+}
+
+.featured-post-card:hover .featured-image {
+    transform: scale(1.05);
+}
+
+/* Ghi đè lại style cũ không cần thiết */
+.featured-post-card .featured-image {
+    min-height: auto; /* Bỏ min-height cũ */
+}
+

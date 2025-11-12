@@ -15,17 +15,19 @@ title: Tin tức - Việt Sáng Home
     {% assign featured_post = site.posts.first %}
     <div class="row g-0 align-items-center mb-5 wow fadeInUp featured-post-card" data-wow-delay="0.2s">
       <div class="col-lg-6">
-        {% if featured_post.image %}
-          <a href="{{ featured_post.url | relative_url }}">
-            <img class="img-fluid featured-image" src="{{ featured_post.image }}" alt="{{ featured_post.title }}">
-          </a>
-        {% endif %}
+        <div class="featured-image-wrapper">
+          {% if featured_post.image %}
+            <a href="{{ featured_post.url | absolute_url }}">
+              <img class="img-fluid featured-image" src="{{ featured_post.image }}" alt="{{ featured_post.title }}">
+            </a>
+          {% endif %}
+        </div>
       </div>
       <div class="col-lg-6">
         <div class="featured-post-content">
           <p class="text-primary fw-bold mb-2">Bài viết mới nhất</p>
           <h2 class="display-6 fw-bold post-title mb-3">
-            <a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a>
+            <a href="{{ featured_post.url | absolute_url }}">{{ featured_post.title }}</a>
           </h2>
           <p class="text-muted mb-3"><small>Ngày đăng: {{ featured_post.date | date: "%d/%m/%Y" }}</small></p>
           
@@ -33,7 +35,7 @@ title: Tin tức - Việt Sáng Home
             <p class="lead text-secondary">{{ featured_post.description }}</p>
           {% endif %}
           
-          <a href="{{ featured_post.url | relative_url }}" class="btn btn-primary rounded-pill py-2 px-4 mt-3 text-white">Đọc tiếp &rarr;</a>
+          <a href="{{ featured_post.url | absolute_url }}" class="btn btn-primary rounded-pill py-2 px-4 mt-3 text-white">Đọc tiếp &rarr;</a>
         </div>
       </div>
     </div>
@@ -52,13 +54,13 @@ title: Tin tức - Việt Sáng Home
         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ 4 | plus: forloop.index }}s">
           <div class="card h-100 shadow-sm blog-card"> 
             {% if post.image %}
-              <a href="{{ post.url | relative_url }}">
+              <a href="{{ post.url | absolute_url }}">
                 <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}" style="height: 220px; object-fit: cover;">
               </a>
             {% endif %}
             <div class="card-body d-flex flex-column">
               <h5 class="card-title mb-auto">
-                <a href="{{ post.url | relative_url }}" class="text-dark text-decoration-none blog-card-title">{{ post.title }}</a>
+                <a href="{{ post.url | absolute_url }}" class="text-dark text-decoration-none blog-card-title">{{ post.title }}</a>
               </h5>
               <p class="card-text text-muted small my-2">
                 Ngày đăng: {{ post.date | date: "%d/%m/%Y" }}
@@ -67,7 +69,7 @@ title: Tin tức - Việt Sáng Home
               {% if post.description %}
                 <p class="card-text text-secondary mb-3 small">{{ post.description | truncatewords: 15 }}</p>
               {% endif %}
-              <a href="{{ post.url | relative_url }}" class="btn btn-sm btn-outline-primary mt-auto align-self-start">Xem chi tiết</a>
+              <a href="{{ post.url | absolute_url }}" class="btn btn-sm btn-outline-primary mt-auto align-self-start">Xem chi tiết</a>
             </div>
           </div>
         </div>
