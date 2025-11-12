@@ -13,7 +13,7 @@ sanity:
 
 # URL chính thức của website bạn (CỰC KỲ QUAN TRỌNG)
 # Plugin sitemap sẽ dùng URL này để tạo các đường dẫn tuyệt đối.
-url: "https://vietsanghome.com.vn"
+url: "https://vietsanghome.netlify.app"
 baseurl: "" # Để trống nếu website nằm ở thư mục gốc của tên miền
 
 # Kích hoạt plugin sitemap
