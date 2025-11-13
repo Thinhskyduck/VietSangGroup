@@ -132,6 +132,7 @@ module Jekyll
       
       html
     end
+    puts "DEBUG HTML: #{html[0..500]}"  # chỉ in 500 ký tự đầu
   end
 end
 
