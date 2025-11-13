@@ -42,7 +42,7 @@ layout: default
             {{ page.body_json | portable_text_to_html | raw}}
           </div>
           <!-- Debug raw JSON -->
-          <pre>CLASS: {{ page.body_json.class }}</pre>
+          <pre>{{ page.body_json | portable_text_to_html }}</pre>
         </div>
       </div>
 
