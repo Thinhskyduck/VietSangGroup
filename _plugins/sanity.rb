@@ -6,21 +6,26 @@ require 'fileutils'
 require 'time'
 require 'cgi' 
 
-# --- PHẦN 1: LIQUID FILTER ĐỂ RENDER PORTABLE TEXT (GIỮ NGUYÊN) ---
 module Jekyll
   module SanityFilter
     def portable_text_to_html(input)
       return "" if input.nil? || input.empty?
 
       begin
-        # Logic này giờ sẽ hoạt động hoàn hảo vì input sẽ luôn là String
         blocks = input.is_a?(String) ? JSON.parse(input) : input
       rescue JSON::ParserError => e
-        puts "Lỗi JSON Parse trong portable_text_to_html: #{e.message}"
         return "<p>Lỗi render nội dung.</p>"
       end
 
       return "" unless blocks.is_a?(Array)
+
+      # =================================================================
+      # === [[ĐÂY LÀ SỬA LỖI QUAN TRỌNG NHẤT]] ===
+      # "Bình thường hóa" dữ liệu: Chuyển mảng Ruby (có thể chứa symbol key)
+      # về lại chuỗi JSON rồi parse lại ngay lập tức.
+      # Thao tác này đảm bảo tất cả các key đều là dạng CHUỖI (string).
+      # =================================================================
+      blocks = JSON.parse(blocks.to_json)
 
       html = ""
       list_open = false 
@@ -106,7 +111,7 @@ end
 
 Liquid::Template.register_filter(Jekyll::SanityFilter)
 
-# --- PHẦN 2: FETCH DATA VÀ TẠO FILE BÀI VIẾT ẢO ---
+# PHẦN 2: FETCH DATA - DÙNG LẠI PHIÊN BẢN GHI `body_json` VỚI `|` ĐỂ TRÁNH LỖI YAML
 Jekyll::Hooks.register :site, :after_init do |site|
   token = ENV['SANITY_API_TOKEN']
   unless token
@@ -147,11 +152,6 @@ Jekyll::Hooks.register :site, :after_init do |site|
 
       json_string = (post['body'] || []).to_json
       
-      # =================================================================
-      # === [[THAY ĐỔI QUAN TRỌNG NHẤT LÀ Ở ĐÂY]] ===
-      # Chúng ta sẽ dùng cú pháp `|` của YAML để lưu body_json như một
-      # khối văn bản nhiều dòng, đảm bảo nó luôn là một chuỗi JSON hợp lệ.
-      # =================================================================
       content = <<~MARKDOWN
         ---
         layout: post
