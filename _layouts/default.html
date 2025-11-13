@@ -8,29 +8,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <link href="{{ '/lib/animate/animate.min.css' | absolute_url }}" rel="stylesheet" />
-    <link href="{{ '/lib/owlcarousel/assets/owl.carousel.min.css' | absolute_url }}" rel="stylesheet" />
-
+    <!-- [[SỬA LỖI TRIỆT ĐỂ]] THÊM DẤU VÂN TAY CHO TẤT CẢ CÁC FILE -->
+    <link href="{{ '/lib/animate/animate.min.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
+    <link href="{{ '/lib/owlcarousel/assets/owl.carousel.min.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     <link href="{{ '/css/bootstrap.min.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     <link href="{{ '/css/style.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     <link href="{{ '/css/custom.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     
     {% seo %}
-
   </head>
 
   <body>
@@ -194,19 +184,21 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ '/lib/wow/wow.min.js' | absolute_url }}"></script>
-    <script src="{{ '/lib/easing/easing.min.js' | absolute_url }}"></script>
-    <script src="{{ '/lib/waypoints/waypoints.min.js' | absolute_url }}"></script>
-    <script src="{{ '/lib/owlcarousel/owl.carousel.min.js' | absolute_url }}"></script>
-    
+
+    <!-- [[SỬA LỖI TRIỆT ĐỂ]] THÊM DẤU VÂN TAY CHO TẤT CẢ CÁC FILE -->
+    <script src="{{ '/lib/wow/wow.min.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/lib/easing/easing.min.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/lib/waypoints/waypoints.min.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/lib/owlcarousel/owl.carousel.min.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
-    
-    <script src="{{ '/js/main.js' | absolute_url }}"></script>
-    <script src="{{ '/js/data.js' | absolute_url }}"></script>
-    <script src="{{ '/js/data-project.js' | absolute_url }}"></script>
-    <script src="{{ '/js/custom.js' | absolute_url }}"></script>
-    <script src="{{ '/js/form-handler.js' | absolute_url }}"></script>
+
+    <script src="{{ '/js/main.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/data.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/data-project.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/custom.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ '/js/form-handler.js' | absolute_url }}?v={{ site.time | date: '%s' }}"></script>
     <script>
       // Scroll mượt khi bấm vào #dich-vu từ trang khác
       document.addEventListener('DOMContentLoaded', function () {
