@@ -58,6 +58,42 @@ const feedbackData = [
         quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Clean.",
         author: "Chị Kiều",
         info: "Linh Đông, Thủ Đức"
-    }
+    },
+    {
+        imageNumber: 11,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Home.",
+        author: "Khách hàng của Việt Sáng Home",
+        info: "Thành phố Hồ Chí Minh"
+    },
+    {
+        imageNumber: 12,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Home.",
+        author: "Bạn Minh Anh",
+        info: "Quận 11, Thành phố Hồ Chí Minh"
+    },
+    {
+        imageNumber: 13,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Home.",
+        author: "Chị Tú",
+        info: "Quận 2, Thành phố Hồ Chí Minh"
+    },
+    {
+        imageNumber: 14,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Home.",
+        author: "Anh Phương",
+        info: "Quận Bình Thạnh, Thành phố Hồ Chí Minh"
+    },
+    {
+        imageNumber: 15,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Home.",
+        author: "Chị Linh",
+        info: "Quận Tân Bình, Thành phố Hồ Chí Minh"
+    },
+    {
+        imageNumber: 16,
+        quote: "Rất hài lòng và tiếp tục sử dụng dịch vụ vệ sinh chuyên nghiệp từ Việt Sáng Home.",
+        author: "Anh Bí Bự",
+        info: "Quận 4, Thành phố Hồ Chí Minh"
+    },
     
 ];
