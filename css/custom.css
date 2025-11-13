@@ -1443,4 +1443,27 @@
 }
 
 
+/* ======================================================= */
+.fab {
+    font-family: "Font Awesome 5 Brands" !important;
+    font-weight: 400; /* Font Awesome Brands chỉ có độ đậm 400 */
+}
+
+/* 
+  Phần này đảm bảo các icon dạng đặc (solid) như fa-phone-alt
+  sẽ luôn được lấy từ bộ font "Free" và có độ đậm 900.
+*/
+.fas {
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 900 !important;
+}
+
+/* 
+  Phần này đảm bảo các icon dạng thường (regular) như far fa-envelope-open
+  sẽ luôn được lấy từ bộ font "Free" và có độ đậm 400.
+*/
+.far {
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 400 !important;
+}
 
