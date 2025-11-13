@@ -25,10 +25,9 @@
     <link href="{{ '/lib/animate/animate.min.css' | absolute_url }}" rel="stylesheet" />
     <link href="{{ '/lib/owlcarousel/assets/owl.carousel.min.css' | absolute_url }}" rel="stylesheet" />
 
-    <link href="{{ '/css/bootstrap.min.css' | absolute_url }}" rel="stylesheet" />
-
-    <link href="{{ '/css/style.css' | absolute_url }}" rel="stylesheet" />
-    <link href="{{ '/css/custom.css' | absolute_url }}" rel="stylesheet" />
+    <link href="{{ '/css/bootstrap.min.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
+    <link href="{{ '/css/style.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
+    <link href="{{ '/css/custom.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     
     {% seo %}
 

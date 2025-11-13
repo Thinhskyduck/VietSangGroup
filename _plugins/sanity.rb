@@ -125,7 +125,9 @@ Jekyll::Hooks.register :site, :after_init do |site|
   query = <<~GROQ
     *[_type == "post"] { 
       title, slug, publishedAt, 
-      "author": author->name, "image": mainImage.asset->url,
+      "author": author->name, 
+      "image": mainImage.asset->url,
+      "tags": categories[]->title,
       description,
       body[] {
         ...,
@@ -159,6 +161,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
         date: #{post['publishedAt']}
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
+        tags: [#{ (post['tags'] || []).map(&:inspect).join(', ') }]
         description: #{post['description'].inspect if post['description']}
         body_json: |
           #{json_string}
