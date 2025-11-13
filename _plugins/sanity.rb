@@ -23,7 +23,7 @@ module Jekyll
 
       html = ""
       list_open = false 
-
+      puts "DEBUG BLOCKS: #{blocks.inspect[0..1000]}"
       blocks.each_with_index do |block, index|
         
         # --- Xử lý block kiểu 'block' (text, headings, list) ---
