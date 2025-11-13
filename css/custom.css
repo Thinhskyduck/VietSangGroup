@@ -1442,8 +1442,5 @@
     box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
 }
 
-/* ===== SỬA LỖI DỨT ĐIỂM MẤT ICON FONT AWESOME ===== */
-.fab {
-    font-family: "Font Awesome 5 Brands" !important;
-}
+
 
