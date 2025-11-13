@@ -30,7 +30,7 @@ module Jekyll
       # puts "\n===== DEBUG SANITY PORTABLE TEXT ====="
       # puts JSON.pretty_generate(blocks[0..2]) # chỉ in 2 block đầu để đủ thông tin
       # puts "======================================\n"
-
+      puts "DEBUG HTML: #{html[0..500]}"  # chỉ in 500 ký tự đầu
       blocks.each_with_index do |block, index|
         
         # --- Xử lý block kiểu 'block' (text, headings, list) ---
@@ -132,7 +132,6 @@ module Jekyll
       
       html
     end
-    puts "DEBUG HTML: #{html[0..500]}"  # chỉ in 500 ký tự đầu
   end
 end
 
