@@ -196,7 +196,8 @@ Jekyll::Hooks.register :site, :after_init do |site|
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
         description: #{post['description'].inspect if post['description']}
-        body_json: #{json_string}
+        body_json: |
+          #{(post['body'] || []).to_json.gsub(/^/, '    ')}
         ---
       MARKDOWN
 

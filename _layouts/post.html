@@ -41,6 +41,8 @@ layout: default
           <div class="post-body" id="post-body">
             {{ page.body_json | portable_text_to_html }}
           </div>
+          <!-- Debug raw JSON -->
+          <pre>{{ page.body_json | jsonify }}</pre>
         </div>
       </div>
 
