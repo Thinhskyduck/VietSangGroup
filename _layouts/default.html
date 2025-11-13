@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
     <!-- [[SỬA LỖI]] SỬ DỤNG PHIÊN BẢN FONT AWESOME MỚI NHẤT -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
     <!-- [[SỬA LỖI TRIỆT ĐỂ]] THÊM DẤU VÂN TAY CHO TẤT CẢ CÁC FILE -->
@@ -138,9 +138,23 @@
             <strong class="text-primary">TikTok</strong>
           </a>
 
-          <a href="{{ '/tin-tuc/' | absolute_url }}" class="nav-item nav-link d-flex align-items-center contact-link">
-            <strong class="text-primary"><i class="bi bi-newspaper"></i> Tin tức</strong>
-          </a>
+          <!-- === MỤC DROPDOWN MỚI (ĐÃ CẬP NHẬT ĐƯỜNG DẪN) === -->
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center contact-link" data-bs-toggle="dropdown">
+                <strong class="text-primary">Thông tin</strong>
+            </a>
+            <div class="dropdown-menu bg-light m-0">
+                <a href="{{ '/dang-ky-tuyen-dung/' | absolute_url }}" class="dropdown-item">
+                    <img src="{{ '/img/logo/tuyen-dung.svg' | absolute_url }}" alt="Tuyển dụng" style="width: 24px; height: 24px; margin-right: 8px;">
+                    Tuyển dụng
+                </a>
+                <a href="{{ '/tin-tuc/' | absolute_url }}" class="dropdown-item">
+                    <img src="{{ '/img/logo/tin-tuc.svg' | absolute_url }}" alt="Tin tức" style="width: 24px; height: 24px; margin-right: 8px;">
+                    Tin tức
+                </a>
+            </div>
+          </div>
+          <!-- === HẾT DROPDOWN === -->
 
           <!-- Button -->
           <a href="{{ '/' | absolute_url }}#dich-vu" 
