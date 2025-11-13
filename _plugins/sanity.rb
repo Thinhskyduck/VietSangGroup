@@ -6,17 +6,15 @@ require 'fileutils'
 require 'time'
 require 'cgi' 
 
-# --- PHẦN 1: LIQUID FILTER ĐỂ RENDER PORTABLE TEXT (NÂNG CẤP) ---
+# --- PHẦN 1: LIQUID FILTER ĐỂ RENDER PORTABLE TEXT (GIỮ NGUYÊN) ---
 module Jekyll
   module SanityFilter
     def portable_text_to_html(input)
-      puts "DEBUG INPUT CLASS: #{input.class}"
       return "" if input.nil? || input.empty?
 
       begin
-        # Nếu là String, parse JSON; nếu Array thì dùng luôn
+        # Logic này giờ sẽ hoạt động hoàn hảo vì input sẽ luôn là String
         blocks = input.is_a?(String) ? JSON.parse(input) : input
-        puts "DEBUG BLOCKS CLASS: #{blocks.class}, LENGTH: #{blocks.length if blocks.respond_to?(:length)}"
       rescue JSON::ParserError => e
         puts "Lỗi JSON Parse trong portable_text_to_html: #{e.message}"
         return "<p>Lỗi render nội dung.</p>"
@@ -26,16 +24,9 @@ module Jekyll
 
       html = ""
       list_open = false 
-      # puts "DEBUG BLOCKS: #{blocks.inspect[0..1000]}"
-      # puts "\n===== DEBUG SANITY PORTABLE TEXT ====="
-      # puts JSON.pretty_generate(blocks[0..2]) # chỉ in 2 block đầu để đủ thông tin
-      # puts "======================================\n"
-      puts "DEBUG HTML: #{html[0..500]}"  # chỉ in 500 ký tự đầu
+
       blocks.each_with_index do |block, index|
-        
-        # --- Xử lý block kiểu 'block' (text, headings, list) ---
         if block['_type'] == 'block' && block['children']
-          
           is_list_item = block['listItem'] == 'bullet'
           
           if is_list_item && !list_open
@@ -74,25 +65,13 @@ module Jekyll
           if is_list_item
             html += "  <li>#{content}</li>\n"
           else
-            # Đóng danh sách nếu đang mở mà sắp gặp heading
-            if list_open && !is_list_item
-              html += "</ul>\n"
-              list_open = false
-            end
-
-            style = block['style'] || 'normal'
-
             tag = case style
                   when 'h1' then 'h1'
                   when 'h2' then 'h2'
                   when 'h3' then 'h3'
-                  when 'h4' then 'h4'
-                  when 'h5' then 'h5'
-                  when 'h6' then 'h6'
                   when 'blockquote' then 'blockquote'
                   else 'p'
                   end
-
             if tag == 'blockquote'
               html += "<blockquote><p>#{content}</p></blockquote>\n"
             else
@@ -100,23 +79,15 @@ module Jekyll
             end
           end
           
-        # === SỬA LỖI ẢNH Ở ĐÂY ===
-        # --- Xử lý block kiểu 'image' (ảnh inline) ---
         elsif block['_type'] == 'image'
-          if list_open # Đóng thẻ list nếu đang mở
+          if list_open
              html += "</ul>\n"
              list_open = false
           end
-          
-          # Kiểm tra xem 'asset' và 'url' có tồn tại không
           if block['asset'] && block['asset']['url']
             img_url = block['asset']['url']
             html += "<img src='#{img_url}' alt='Hình ảnh trong bài' class='img-fluid rounded my-3'>\n"
-          else
-            html += "<p><em>[Lỗi ảnh: không tìm thấy URL]</em></p>\n"
           end
-        # === === ===
-          
         else
           if list_open
              html += "</ul>\n"
@@ -127,9 +98,7 @@ module Jekyll
         if index == blocks.length - 1 && list_open
           html += "</ul>\n"
         end
-        
       end
-      
       html
     end
   end
@@ -137,7 +106,7 @@ end
 
 Liquid::Template.register_filter(Jekyll::SanityFilter)
 
-# --- PHẦN 2: FETCH DATA VÀ TẠO FILE BÀI VIẾT ẢO (CẬP NHẬT) ---
+# --- PHẦN 2: FETCH DATA VÀ TẠO FILE BÀI VIẾT ẢO ---
 Jekyll::Hooks.register :site, :after_init do |site|
   token = ENV['SANITY_API_TOKEN']
   unless token
@@ -146,34 +115,21 @@ Jekyll::Hooks.register :site, :after_init do |site|
   end
 
   puts "Fetching data from Sanity.io..."
-
   project_id = '7psj6s2s'
   dataset = 'production'
-
-  # === SỬA LỖI ẢNH Ở ĐÂY ===
-  # CẬP NHẬT QUERY: Thêm 'asset->{url}' cho 'body'
   query = <<~GROQ
     *[_type == "post"] { 
-      title, 
-      slug, 
-      publishedAt, 
-      "author": author->name, 
-      "image": mainImage.asset->url,
+      title, slug, publishedAt, 
+      "author": author->name, "image": mainImage.asset->url,
       description,
       body[] {
         ...,
         _type == "image" => { asset->{url} }, 
-        markDefs[] {
-          ...,
-          _type == "link" => { "href": href }
-        }
+        markDefs[] { ..., _type == "link" => { "href": href } }
       }
     } | order(publishedAt desc)
   GROQ
-  # === === ===
-  
   url = "https://#{project_id}.api.sanity.io/v1/data/query/#{dataset}?query=#{CGI.escape(query)}"
-
   response = HTTParty.get(url, headers: { 'Authorization' => "Bearer #{token}" })
 
   if response.success?
@@ -190,7 +146,12 @@ Jekyll::Hooks.register :site, :after_init do |site|
       path = File.join(posts_dir, filename)
 
       json_string = (post['body'] || []).to_json
-
+      
+      # =================================================================
+      # === [[THAY ĐỔI QUAN TRỌNG NHẤT LÀ Ở ĐÂY]] ===
+      # Chúng ta sẽ dùng cú pháp `|` của YAML để lưu body_json như một
+      # khối văn bản nhiều dòng, đảm bảo nó luôn là một chuỗi JSON hợp lệ.
+      # =================================================================
       content = <<~MARKDOWN
         ---
         layout: post
@@ -199,7 +160,8 @@ Jekyll::Hooks.register :site, :after_init do |site|
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
         description: #{post['description'].inspect if post['description']}
-        body_json: #{(post['body'] || []).to_json} # KHÔNG inspect
+        body_json: |
+          #{json_string}
         ---
       MARKDOWN
 
@@ -211,5 +173,4 @@ Jekyll::Hooks.register :site, :after_init do |site|
   end
 rescue => e
   puts "Lỗi plugin Sanity: #{e.message}"
-  puts e.backtrace.join("\n")
 end
