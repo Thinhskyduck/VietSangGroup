@@ -10,10 +10,13 @@ require 'cgi'
 module Jekyll
   module SanityFilter
     def portable_text_to_html(input)
+      puts "DEBUG INPUT CLASS: #{input.class}"
       return "" if input.nil? || input.empty?
 
       begin
-        blocks = input.is_a?(Array) ? input : JSON.parse(input)
+        # Nếu là String, parse JSON; nếu Array thì dùng luôn
+        blocks = input.is_a?(String) ? JSON.parse(input) : input
+        puts "DEBUG BLOCKS CLASS: #{blocks.class}, LENGTH: #{blocks.length if blocks.respond_to?(:length)}"
       rescue JSON::ParserError => e
         puts "Lỗi JSON Parse trong portable_text_to_html: #{e.message}"
         return "<p>Lỗi render nội dung.</p>"
