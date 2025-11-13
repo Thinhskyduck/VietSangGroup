@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css?v=1" rel="stylesheet" />
+    <!-- [[SỬA LỖI]] SỬ DỤNG PHIÊN BẢN FONT AWESOME MỚI NHẤT -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
     <!-- [[SỬA LỖI TRIỆT ĐỂ]] THÊM DẤU VÂN TAY CHO TẤT CẢ CÁC FILE -->
@@ -19,7 +20,39 @@
     <link href="{{ '/css/bootstrap.min.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     <link href="{{ '/css/style.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
     <link href="{{ '/css/custom.css' | absolute_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" />
-    
+    <style>
+      /* ======================================================= */
+      /* ===== SỬA LỖI TƯƠNG THÍCH FONT AWESOME V5.15.4 ===== */
+      /* ======================================================= */
+
+      /* 
+        Ép buộc các icon thương hiệu (Facebook, TikTok, YouTube) 
+        phải sử dụng bộ font "Brands" và có độ đậm 400.
+      */
+      .fab {
+          font-family: "Font Awesome 5 Brands" !important;
+          font-weight: 400; 
+      }
+
+      /* 
+        Ép buộc các icon dạng đặc (solid) như fa-phone-alt
+        phải sử dụng bộ font "Free" và có độ đậm 900.
+      */
+      .fas {
+          font-family: "Font Awesome 5 Free" !important;
+          font-weight: 900 !important;
+      }
+
+      /* 
+        Ép buộc các icon dạng thường (regular) như far fa-envelope-open
+        phải sử dụng bộ font "Free" và có độ đậm 400.
+      */
+      .far {
+          font-family: "Font Awesome 5 Free" !important;
+          font-weight: 400 !important;
+      }
+
+    </style>
     {% seo %}
   </head>
 
