@@ -39,10 +39,10 @@ layout: default
 
           <!-- Nội dung chính của bài viết -->
           <div class="post-body" id="post-body">
-            {{ page.body_json | portable_text_to_html }}
+            {{ page.body_json | portable_text_to_html | raw}}
           </div>
           <!-- Debug raw JSON -->
-          <pre>{{ page.body_json | jsonify }}</pre>
+          <pre>CLASS: {{ page.body_json.class }}</pre>
         </div>
       </div>
 
