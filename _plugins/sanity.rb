@@ -23,10 +23,10 @@ module Jekyll
 
       html = ""
       list_open = false 
-      puts "DEBUG BLOCKS: #{blocks.inspect[0..1000]}"
-      puts "\n===== DEBUG SANITY PORTABLE TEXT ====="
-      puts JSON.pretty_generate(blocks[0..2]) # chỉ in 2 block đầu để đủ thông tin
-      puts "======================================\n"
+      # puts "DEBUG BLOCKS: #{blocks.inspect[0..1000]}"
+      # puts "\n===== DEBUG SANITY PORTABLE TEXT ====="
+      # puts JSON.pretty_generate(blocks[0..2]) # chỉ in 2 block đầu để đủ thông tin
+      # puts "======================================\n"
 
       blocks.each_with_index do |block, index|
         
@@ -196,7 +196,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
         author: #{post['author'] ? post['author'].inspect : '"Việt Sáng Home"'}
         image: #{post['image'].inspect if post['image']}
         description: #{post['description'].inspect if post['description']}
-        body_json: #{json_string.inspect}
+        body_json: #{json_string}
         ---
       MARKDOWN
 
