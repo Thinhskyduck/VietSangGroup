@@ -9,17 +9,22 @@
 
 /* Nút "Đặt lịch ngay" nổi bật hơn */
 .btn-contact-nav {
-    background: linear-gradient(45deg, #fcb900, #ff5722); /* Gradient nổi bật */
+    background: linear-gradient(45deg, #fcb900, #ff5722);
     color: #fff;
     border: none;
-    font-weight: 900;
+    
+    /* === SỬA LỖI FONT CHỮ TẠI ĐÂY === */
+    font-family: 'Roboto', sans-serif; /* Chỉ định rõ font Roboto */
+    font-weight: 700;                 /* Giảm độ đậm xuống 700 (Bold) cho đẹp hơn */
+    /* ================================= */
+
     padding: 12px 26px;
-    border-radius: 50px; /* bo tròn kiểu pill button */
+    border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6); /* phát sáng cam */
-    animation: pulse 2s infinite; /* hiệu ứng nhịp tim */
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6);
+    animation: pulse 2s infinite;
 }
 
 /* Hover */
@@ -1435,5 +1440,10 @@
     background-color: #0d6efd; /* Màu primary của bạn */
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+/* ===== SỬA LỖI DỨT ĐIỂM MẤT ICON FONT AWESOME ===== */
+.fab {
+    font-family: "Font Awesome 5 Brands" !important;
 }
 
