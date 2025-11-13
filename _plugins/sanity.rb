@@ -24,6 +24,10 @@ module Jekyll
       html = ""
       list_open = false 
       puts "DEBUG BLOCKS: #{blocks.inspect[0..1000]}"
+      puts "\n===== DEBUG SANITY PORTABLE TEXT ====="
+      puts JSON.pretty_generate(blocks[0..2]) # chỉ in 2 block đầu để đủ thông tin
+      puts "======================================\n"
+
       blocks.each_with_index do |block, index|
         
         # --- Xử lý block kiểu 'block' (text, headings, list) ---
@@ -67,12 +71,29 @@ module Jekyll
           if is_list_item
             html += "  <li>#{content}</li>\n"
           else
-            case style
-            when 'h1' then html += "<h1>#{content}</h1>\n"
-            when 'h2' then html += "<h2>#{content}</h2>\n"
-            when 'h3' then html += "<h3>#{content}</h3>\n"
-            when 'blockquote' then html += "<blockquote><p>#{content}</p></blockquote>\n"
-            else html += "<p>#{content}</p>\n"
+            # Đóng danh sách nếu đang mở mà sắp gặp heading
+            if list_open && !is_list_item
+              html += "</ul>\n"
+              list_open = false
+            end
+
+            style = block['style'] || 'normal'
+
+            tag = case style
+                  when 'h1' then 'h1'
+                  when 'h2' then 'h2'
+                  when 'h3' then 'h3'
+                  when 'h4' then 'h4'
+                  when 'h5' then 'h5'
+                  when 'h6' then 'h6'
+                  when 'blockquote' then 'blockquote'
+                  else 'p'
+                  end
+
+            if tag == 'blockquote'
+              html += "<blockquote><p>#{content}</p></blockquote>\n"
+            else
+              html += "<#{tag}>#{content}</#{tag}>\n"
             end
           end
           
