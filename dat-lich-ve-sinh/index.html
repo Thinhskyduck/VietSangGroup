@@ -123,7 +123,7 @@
     </div>
     <!-- Topbar End -->
 
-    <!-- Navbar Start (Thiết kế lại liên hệ) -->
+    <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
       <a href="/trang-chu/" class="navbar-brand d-flex align-items-center">
         <img src="../img/logo.png" alt="Việt Sáng Logo" style="height: 45px; width: 35px;" class="me-2">
@@ -142,7 +142,7 @@
         <div class="navbar-nav ms-auto py-3 py-lg-0 d-flex align-items-center gap-3">
 
           <!-- Phone -->
-          <a href="tel:0853052768" class="nav-item nav-link d-flex align-items-center contact-link">
+          <a href="tel:0931992089" class="nav-item nav-link d-flex align-items-center contact-link">
             <div class="icon-circle bg-primary text-white me-2">
               <i class="fa fa-phone-alt"></i>
             </div>
@@ -173,8 +173,26 @@
             <strong class="text-primary">TikTok</strong>
           </a>
 
+          <!-- === MỤC DROPDOWN MỚI === -->
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center contact-link" data-bs-toggle="dropdown">
+                <strong class="text-primary">Thông tin</strong>
+            </a>
+            <div class="dropdown-menu bg-light m-0">
+                <a href="/dang-ky-tuyen-dung/" class="dropdown-item">
+                    <img src="../img/logo/tuyen-dung.svg" alt="Tuyển dụng" style="width: 24px; height: 24px; margin-right: 8px;">
+                    Tuyển dụng
+                </a>
+                <a href="/tin-tuc/" class="dropdown-item">
+                    <img src="../img/logo/tin-tuc.svg" alt="Tin tức" style="width: 24px; height: 24px; margin-right: 8px;">
+                    Tin tức
+                </a>
+            </div>
+          </div>
+          <!-- === HẾT DROPDOWN === -->
+
           <!-- Button -->
-          <a href="#services" class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3">
+          <a href="#dich-vu" class="btn btn-contact-nav rounded-pill py-2 px-4 ms-lg-3">
             Đặt lịch ngay
           </a>
         </div>
@@ -214,146 +232,86 @@
             <!-- Form chính -->
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-12">                 
-                    <form id="bookingForm" class="p-5 bg-white shadow-lg rounded-3 position-relative" novalidate>
-                    <input type="hidden" name="selectedServices" id="selectedServices" value="">
-                    
-                    <!-- I. THÔNG TIN CƠ BẢN -->
-                    <h4 class="mb-4 section-title">I. Thông Tin Cơ Bản</h4>                   
-                    <div class="row g-3 mb-4">
-                        <div class="col-md-6">
-                        <label class="form-label required">1. Tên người đặt dịch vụ</label>
-                        <input type="text" class="form-control form-control-lg" id="tenNguoiDat" name="tenNguoiDat" placeholder="Tên của bạn" required>
-                        <div class="invalid-feedback">Vui lòng nhập tên.</div>
-                        </div>
-                        <div class="col-md-6">
-                        <label class="form-label required">Số điện thoại liên hệ</label>
-                        <input type="tel" class="form-control form-control-lg" id="soDienThoai" name="soDienThoai" placeholder="0xx xxx xxxx" pattern="^[0-9+\-\s]{7,20}$" required>
-                        <div class="invalid-feedback">Số điện thoại không hợp lệ.</div>
-                        </div>
-                        <div class="col-12">
-                        <label class="form-label required">2. Địa chỉ cần dọn vệ sinh</label>
-                        <input type="text" class="form-control form-control-lg" id="diaChi" name="diaChi" placeholder="Số nhà, đường, phường/quận" required>
-                        <div class="invalid-feedback">Vui lòng nhập địa chỉ.</div>
-                        </div>
-                    </div>
+                  <form id="bookingForm" class="p-4 p-md-5 bg-white shadow-lg rounded-3" novalidate>
+                      <!-- I. THÔNG TIN CƠ BẢN -->
+                      <div class="mb-5">
+                          <h4 class="mb-4 section-title">I. Thông Tin Cơ Bản</h4>
+                          <div class="row g-3">
+                              <div class="col-md-6">
+                                  <label class="form-label required">1. Tên người đặt dịch vụ</label>
+                                  <input type="text" class="form-control" name="tenNguoiDat" placeholder="Tên của bạn" required>
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="form-label required">2. Số điện thoại liên hệ</label>
+                                  <input type="tel" class="form-control" name="soDienThoai" placeholder="0xx xxx xxxx" pattern="^[0-9+\-\s]{7,20}$" required>
+                              </div>
+                              <div class="col-12">
+                                  <label class="form-label required">3. Địa chỉ nơi cần dọn vệ sinh</label>
+                                  <input type="text" class="form-control" name="diaChi" placeholder="Số nhà, đường, phường/quận..." required>
+                              </div>
+                          </div>
+                      </div>
 
-                    <hr/>
+                      <!-- II. ĐẶC ĐIỂM NHÀ Ở -->
+                      <div class="mb-5">
+                          <h4 class="mb-4 section-title">II. Đặc Điểm Nhà Ở</h4>
+                          <div class="row g-3">
+                              <div class="col-12">
+                                  <label class="form-label required">4. Tổng diện tích sàn và tường (nếu có) cần dọn vệ sinh (m²)</label>
+                                  <input type="number" class="form-control" name="tongDienTich" placeholder="Ví dụ: 80" min="1" required>
+                              </div>
+                              <div class="col-md-4">
+                                  <label class="form-label">5. Số tầng (cả trệt)</label>
+                                  <input type="number" class="form-control" name="soTang" placeholder="Số lượng" min="0">
+                              </div>
+                              <div class="col-md-4">
+                                  <label class="form-label">6. Số nhà bếp</label>
+                                  <input type="number" class="form-control" name="soNhaBep" placeholder="Số lượng" min="0">
+                              </div>
+                              <div class="col-md-4">
+                                  <label class="form-label">7. Số toilet</label>
+                                  <input type="number" class="form-control" name="soToilet" placeholder="Số lượng" min="0">
+                              </div>
+                          </div>
+                      </div>
 
-                    <!-- II. ĐẶC ĐIỂM CÔNG TRÌNH -->
-                    <h4 class="mb-4 section-title">II. Đặc Điểm Công Trình</h4>
-                    <div class="row g-4 mb-4 align-items-center">
-                        <div class="col-12">
-                        <label class="form-label required d-block mb-2">3. Đặc điểm nhà ở</label>
-                        <div class="btn-group" role="group" aria-label="Đặc điểm nhà" id="dacDiemGroup">
-                            <input type="radio" class="btn-check" name="dacDiemNha" id="nhaLauNam" value="Nhà ở lâu năm" required>
-                            <label class="btn btn-outline-primary" for="nhaLauNam">Nhà ở lâu năm</label>
+                      <!-- III. YÊU CẦU VỆ SINH CỤ THỂ -->
+                      <div class="mb-5">
+                          <h4 class="mb-4 section-title">III. Yêu Cầu Vệ Sinh Cụ Thể</h4>
+                          <div class="row g-4">
+                              <div class="col-md-6">
+                                  <label class="form-label required">8. Mức độ làm sạch?</label>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="mucDoLamSach" value="Sạch nhẹ (sạch bụi)" required><label class="form-check-label">Sạch nhẹ (sạch bụi)</label></div>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="mucDoLamSach" value="Sạch kỹ (tẩy vết bẩn cứng đầu: ố, cặn canxi, gỉ sét, dầu mỡ, keo, sơn)"><label class="form-check-label">Sạch kỹ (tẩy vết bẩn cứng đầu: ố, gỉ sét, cặn canxi, dầu mỡ, keo, sơn,... )</label></div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="form-label required">9. Vệ sinh trần nhà?</label>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhTranNha" value="Cần" required><label class="form-check-label">Cần (Trần, quạt trần, đèn, quạt hút)</label></div>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhTranNha" value="Không cần"><label class="form-check-label">Không cần</label></div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="form-label required">10. Vệ sinh nội thất?</label>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhNoiThat" value="Cần" required><label class="form-check-label">Cần (Kính, cửa, tủ, bàn, ghế, thiết bị)</label></div>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhNoiThat" value="Không cần"><label class="form-check-label">Không cần</label></div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="form-label required">11. Vệ sinh máy giặt?</label>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayGiat" value="Lồng ngang" required><label class="form-check-label">Lồng ngang</label></div>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayGiat" value="Lồng đứng"><label class="form-check-label">Lồng đứng</label></div>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayGiat" value="Không cần"><label class="form-check-label">Không cần</label></div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="form-label required">12. Vệ sinh máy lạnh?</label>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayLanh" value="Cần" required><label class="form-check-label">Cần</label></div>
+                                  <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayLanh" value="Không cần"><label class="form-check-label">Không cần</label></div>
+                              </div>
+                          </div>
+                      </div>
 
-                            <input type="radio" class="btn-check" name="dacDiemNha" id="nhaMoi" value="Nhà ở còn mới">
-                            <label class="btn btn-outline-primary" for="nhaMoi">Nhà ở còn mới</label>
-
-                            <input type="radio" class="btn-check" name="dacDiemNha" id="nhaSauXayDung" value="Nhà ở sau xây dựng">
-                            <label class="btn btn-outline-primary" for="nhaSauXayDung">Nhà sau xây dựng</label>
-                        </div>
-                        <div class="form-text text-muted mt-2">Chọn 1 mục phù hợp nhất.</div>
-                        </div>
-
-                        <div class="col-md-5">
-                        <label class="form-label required">4. Tổng diện tích (m²)</label>
-                        <input type="number" class="form-control" id="dienTich" name="dienTich" placeholder="Ví dụ: 75" min="1" required>
-                        <div class="invalid-feedback">Nhập diện tích hợp lệ.</div>
-                        </div>
-
-                        <div class="col-md-7">
-                        <label class="form-label">5. Số tầng / phòng ngủ / toilet</label>
-                        <div class="row g-2">
-                            <div class="col">
-                            <input type="number" class="form-control" name="soTang" placeholder="Tầng" min="0">
-                            </div>
-                            <div class="col">
-                            <input type="number" class="form-control" name="soPhongNgu" placeholder="Phòng ngủ" min="0">
-                            </div>
-                            <div class="col">
-                            <input type="number" class="form-control" name="soToilet" placeholder="Toilet" min="0">
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <hr/>
-
-                    <!-- III. HẠNG MỤC VỆ SINH -->
-                    <h4 class="mb-4 section-title">III. Hạng Mục Vệ Sinh</h4>
-                    <label class="form-label d-block mb-3 required">6. Quý khách có yêu cầu dọn vệ sinh như thế nào? </label>
-
-                    <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh cơ bản" id="cb1">
-                        <label class="form-check-label" for="cb1">Vệ sinh cơ bản</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh nội thất" id="cb2">
-                        <label class="form-check-label" for="cb2">Vệ sinh nội thất</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh không gian" id="cb3">
-                        <label class="form-check-label" for="cb3">Vệ sinh không gian</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh đồ dùng cá nhân" id="cb4">
-                        <label class="form-check-label" for="cb4">Vệ sinh đồ dùng cá nhân, đồ trang trí</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Sắp xếp vật dụng" id="cb5">
-                        <label class="form-check-label" for="cb5">Sắp xếp vật dụng, đồ trang trí</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh bếp" id="cb6">
-                        <label class="form-check-label" for="cb6">Vệ sinh bếp (tẩy dầu mỡ)</label>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh xây dựng" id="cb7">
-                        <label class="form-check-label" for="cb7">Vệ sinh xây dựng (cạo sơn, tẩy keo)</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Tẩy mốc, ố, cặn canxi" id="cb8">
-                        <label class="form-check-label" for="cb8">Tẩy mốc, tẩy ố, tẩy cặn canxi</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh máy lạnh" id="cb9">
-                        <label class="form-check-label" for="cb9">Vệ sinh máy lạnh</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh máy giặt" id="cb10">
-                        <label class="form-check-label" for="cb10">Vệ sinh máy giặt</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Vệ sinh máy nước nóng" id="cb11">
-                        <label class="form-check-label" for="cb11">Vệ sinh máy nước nóng</label>
-                        </div>
-                        <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="Đổ rác xây dựng" id="cb12">
-                        <label class="form-check-label" for="cb12">Đổ rác xây dựng ngoài bãi</label>
-                        </div>
-                    </div>
-                    </div>
-
-
-                    <!-- Ghi chú -->
-                    <div class="mb-4">
-                        <label class="form-label">Ghi chú thêm (diện tích chi tiết, giờ dự kiến, yêu cầu đặc biệt)</label>
-                        <textarea class="form-control" name="ghiChu" id="ghiChu" rows="4" placeholder="Ví dụ: 3 phòng ngủ, ưu tiên buổi sáng..."></textarea>
-                    </div>
-
-                    <!-- Nút Gửi -->
-                    <div class="col-12 text-center">
-                      <button id="submitBtn" class="btn btn-primary btn-lg rounded-pill py-3 px-5 fw-bold fs-5" type="submit">
-                      Gửi Yêu Cầu Đặt Lịch
-                      </button>
-                    </div>
+                      <!-- Nút Gửi -->
+                      <div class="col-12 text-center mt-5">
+                          <button class="btn btn-primary btn-lg rounded-pill py-3 px-5 fw-bold fs-5" type="submit">Gửi Yêu Cầu Đặt Lịch</button>
+                      </div>
                   </form>
                 </div>
             </div>
@@ -401,10 +359,12 @@
           </div>
           <div class="col-lg-4 col-md-12 d-flex flex-column">
             <h4 class="text-light mb-4">Links Nhanh</h4>
-            <a class="btn btn-link" href="#about">Về Chúng Tôi</a>
-            <a class="btn btn-link" href="#services">Dịch Vụ</a>
-            <a class="btn btn-link" href="#projects">Công Trình</a>
-            <a class="btn btn-link" href="#testimonials">Phản Hồi</a>
+            <a class="btn btn-link" href="/trang-chu/#about">Về Chúng Tôi</a>
+            <a class="btn btn-link" href="/trang-chu/#dich-vu">Dịch Vụ</a>
+            <a class="btn btn-link" href="/trang-chu/#projects">Công Trình</a>
+            <a class="btn btn-link" href="/trang-chu/#testimonials">Phản Hồi</a>
+            <a class="btn btn-link" href="/tin-tuc/">Tin tức</a>
+            <a class="btn btn-link" href="/dang-ky-tuyen-dung/">Tuyển dụng</a>
           </div>
         </div>
       </div>

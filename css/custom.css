@@ -7,19 +7,24 @@
     gap: 8px; /* Khoảng cách giữa icon và chữ */
 }
 
-/* Nút "Liên Hệ Ngay" nổi bật hơn */
+/* Nút "Đặt lịch ngay" nổi bật hơn */
 .btn-contact-nav {
-    background: linear-gradient(45deg, #fcb900, #ff5722); /* Gradient nổi bật */
+    background: linear-gradient(45deg, #fcb900, #ff5722);
     color: #fff;
     border: none;
-    font-weight: 900;
+    
+    /* === SỬA LỖI FONT CHỮ TẠI ĐÂY === */
+    font-family: 'Roboto', sans-serif; /* Chỉ định rõ font Roboto */
+    font-weight: 700;                 /* Giảm độ đậm xuống 700 (Bold) cho đẹp hơn */
+    /* ================================= */
+
     padding: 12px 26px;
-    border-radius: 50px; /* bo tròn kiểu pill button */
+    border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6); /* phát sáng cam */
-    animation: pulse 2s infinite; /* hiệu ứng nhịp tim */
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6);
+    animation: pulse 2s infinite;
 }
 
 /* Hover */
@@ -789,8 +794,19 @@
 }
 
 /* Tùy chỉnh breadcrumb */
-.breadcrumb-item + .breadcrumb-item::before {
+/* .breadcrumb-item + .breadcrumb-item::before {
     color: rgba(255, 255, 255, 0.5);
+} */
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">"; /* Thay đổi dấu ngăn cách mặc định thành dấu ">" */
+  color: #6c757d; /* Tùy chỉnh màu sắc cho dấu > */
+}
+
+/* Bỏ đi nền mặc định và căn chỉnh lại */
+.breadcrumb {
+    background-color: transparent; 
+    padding-left: 0;
 }
 
 /* --- Tùy chỉnh cho Nút Quay Lại --- */
@@ -1126,3 +1142,304 @@
     width: 250px; /* Cho nút có chiều rộng bằng các mục ở trên */
   }
 }
+
+/* Thêm vào file CSS của bạn */
+.post-content p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.post-content h2 {
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.post-content h3 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.post-content blockquote {
+  border-left: 4px solid #007bff; /* Dùng màu chủ đạo của bạn */
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.post-content a {
+  color: #007bff; /* Dùng màu chủ đạo của bạn */
+  text-decoration: none;
+}
+
+.post-content a:hover {
+  text-decoration: underline;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+/* Thêm vào css/custom.css */
+
+.blog-card {
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 8px; /* Bo góc card */
+}
+
+.blog-card:hover {
+  transform: translateY(-5px); /* Hiệu ứng nhấc lên khi hover */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important; /* Đổ bóng rõ hơn */
+}
+
+.blog-card .card-img-top {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.blog-card .blog-card-title {
+  transition: color 0.2s ease;
+}
+
+.blog-card .blog-card-title:hover {
+  color: var(--primary); /* Đổi màu title khi hover (dùng màu primary của bạn) */
+}
+
+/* ===================================== */
+/* ========= NÂNG CẤP TRANG BÀI VIẾT ========= */
+/* ===================================== */
+
+
+/* [[MỚI]] Thẻ nội dung chính màu trắng */
+.post-content-card {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 767.98px) {
+    .post-content-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Định dạng cho nội dung bài viết */
+.post-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #343a40;
+}
+.post-body h2, .post-body h3, .post-body h4 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    color: #1A2A56;
+    scroll-margin-top: 100px;
+}
+.post-body img {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem 0;
+}
+.post-body blockquote {
+    border-left: 4px solid #0d6efd;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #6c757d;
+    background-color: #f8f9fa;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+
+/* ---- [[NÂNG CẤP]] Nâng cấp Widget Sidebar ---- */
+.sticky-sidebar {
+    position: sticky;
+    top: 100px;
+}
+.widget-card {
+    background-color: #ffffff;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+.widget-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #0d6efd;
+    display: inline-block;
+}
+.recent-post-item:hover h6 {
+    color: #0d6efd;
+}
+
+/* Định dạng Mục lục (TOC) */
+#toc-container ul { list-style: none; padding-left: 0; margin: 0; }
+#toc-container ul ul { padding-left: 1.5rem; }
+#toc-container li { margin-bottom: 0.5rem; }
+#toc-container a { color: #495057; text-decoration: none; display: block; padding: 5px 10px; border-left: 3px solid #e9ecef; transition: all 0.2s ease; }
+#toc-container a:hover { color: #0d6efd; background-color: #e9ecef; }
+#toc-container a.active { color: #0d6efd; font-weight: 700; border-left-color: #0d6efd; background-color: #e9ecef4d; }
+
+/* Tinh chỉnh hiển thị Meta (Tác giả & Ngày) */
+.post-meta span {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ========================================= */
+/* ===== NÂNG CẤP TRANG DANH SÁCH TIN TỨC ===== */
+/* ========================================= */
+
+/* BÀI VIẾT NỔI BẬT (FEATURED POST) */
+.featured-post-card {
+    border: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease-in-out;
+}
+
+.featured-post-card .featured-image {
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.featured-post-card:hover .featured-image {
+    transform: scale(1.05);
+}
+
+.featured-post-content {
+    padding: 2.5rem;
+}
+
+.featured-post-content .post-title a {
+    color: #1A2A56; /* Màu xanh đậm thương hiệu */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.featured-post-content .post-title a:hover {
+    color: #0d6efd; /* Màu xanh primary */
+}
+
+/* TINH CHỈNH THẺ BÀI VIẾT (BLOG CARD) */
+.blog-card {
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+.blog-card .card-title {
+    line-height: 1.4;
+}
+
+.blog-card .blog-card-title {
+    transition: color 0.3s ease;
+}
+
+.blog-card .blog-card-title:hover {
+    color: #0d6efd !important;
+}
+
+/* Đảm bảo responsiveness cho bài viết nổi bật */
+@media (max-width: 991.98px) {
+    .featured-post-card .featured-image {
+        min-height: 300px;
+        border-radius: 12px 12px 0 0;
+    }
+    .featured-post-content {
+        padding: 2rem;
+    }
+}
+
+/* ========================================= */
+/* ===== SỬA LỖI HÌNH ẢNH BÀI NỔI BẬT ===== */
+/* ========================================= */
+
+.featured-image-wrapper {
+    max-height: 450px; /* Giới hạn chiều cao tối đa của ảnh */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Thêm màu nền cho đẹp khi ảnh tải */
+}
+
+.featured-image-wrapper .featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đây là thuộc tính quan trọng nhất */
+    transition: transform 0.4s ease;
+}
+
+.featured-post-card:hover .featured-image {
+    transform: scale(1.05);
+}
+
+/* Ghi đè lại style cũ không cần thiết */
+.featured-post-card .featured-image {
+    min-height: auto; /* Bỏ min-height cũ */
+}
+
+/* ========================================= */
+/* ===== WIDGET CHỦ ĐỀ BÀI VIẾT (TAGS) ===== */
+/* ========================================= */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Khoảng cách giữa các tag */
+}
+.tag-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+    background-color: #f0f2f5;
+    border-radius: 20px; /* Bo tròn kiểu viên thuốc */
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.tag-badge:hover {
+    color: #fff;
+    background-color: #0d6efd; /* Màu primary của bạn */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+
