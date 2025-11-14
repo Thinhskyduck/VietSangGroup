@@ -20,33 +20,55 @@ permalink: /tin-tuc/
   <div class="container">
     
     {% assign featured_post = site.posts.first %}
-    <div class="card border-0 shadow-lg mb-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="card border-0 shadow-sm mb-5 wow fadeInUp" data-wow-delay="0.1s">
       <div class="row g-0">
+        
+        <!-- Image -->
         <div class="col-md-5">
-          <div class="featured-image-wrapper">
-            {% if featured_post.image %}
-              <a href="{{ featured_post.url | absolute_url }}">
-                <img class="img-fluid featured-image" src="{{ featured_post.image }}" alt="{{ featured_post.title }}">
-              </a>
-            {% endif %}
-          </div>
+          <a href="{{ featured_post.url | absolute_url }}">
+            <img 
+              src="{{ featured_post.image }}" 
+              alt="{{ featured_post.title }}"
+              class="img-fluid h-100 w-100 object-fit-cover rounded-start"
+            >
+          </a>
         </div>
-        <div class="col-md-7 d-flex flex-column">
-          <div class="card-body p-4 p-md-5">
-            <span class="badge bg-primary mb-2">Mới nhất</span>
-            <h3 class="card-title fw-bold">
-              <a href="{{ featured_post.url | absolute_url }}" class="text-dark text-decoration-none stretched-link">{{ featured_post.title }}</a>
+
+        <!-- Content -->
+        <div class="col-md-7">
+          <div class="card-body p-4 d-flex flex-column">
+
+            <!-- Badge -->
+            <span class="badge bg-primary-subtle text-primary fw-semibold mb-3 px-3 py-2">
+              Mới nhất
+            </span>
+
+            <!-- Title -->
+            <h3 class="fw-bold mb-3 lh-sm">
+              <a href="{{ featured_post.url | absolute_url }}" 
+                class="text-dark text-decoration-none stretched-link">
+                {{ featured_post.title }}
+              </a>
             </h3>
-            <p class="text-muted small">
+
+            <!-- Meta -->
+            <p class="text-muted small mb-3">
               <i class="far fa-calendar-alt me-2"></i>{{ featured_post.date | date: "%d/%m/%Y" }}
               <span class="mx-2">•</span>
               <i class="far fa-user me-1"></i>{{ featured_post.author | default: "Việt Sáng Home" }}
             </p>
-            <p class="card-text d-none d-sm-block">{{ featured_post.description | truncate: 150 }}</p>
+
+            <!-- Description -->
+            <p class="text-muted d-none d-sm-block mb-0">
+              {{ featured_post.description | truncate: 150 }}
+            </p>
+
           </div>
         </div>
+
       </div>
     </div>
+
 
     <hr class="wow fadeInUp" data-wow-delay="0.2s">
 
