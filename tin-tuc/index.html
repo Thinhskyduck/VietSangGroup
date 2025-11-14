@@ -16,8 +16,6 @@ permalink: /tin-tuc/
   </div>
 </div>
 
-
-
 <div class="container-xxl py-5">
   <div class="container">
     
@@ -125,13 +123,21 @@ permalink: /tin-tuc/
 }
 /* CSS cho page header */
 .page-header {
-  background-color: #333; /* Fallback color */
   position: relative;
 }
+
 .page-header::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Lớp phủ tối */
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
 }
+
+.page-header .container {
+  position: relative;
+  z-index: 2;
+  color: #fff !important;
+}
+
 </style>
