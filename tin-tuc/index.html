@@ -25,9 +25,13 @@ permalink: /tin-tuc/
     <div class="card border-0 shadow-lg mb-5 wow fadeInUp" data-wow-delay="0.1s">
       <div class="row g-0">
         <div class="col-md-5">
-          <a href="{{ featured_post.url | absolute_url }}">
-            <img src="{{ featured_post.image }}" class="img-fluid rounded-start h-100" style="object-fit: cover; min-height: 250px;" alt="{{ featured_post.title }}">
-          </a>
+          <div class="featured-image-wrapper">
+            {% if featured_post.image %}
+              <a href="{{ featured_post.url | absolute_url }}">
+                <img class="img-fluid featured-image" src="{{ featured_post.image }}" alt="{{ featured_post.title }}">
+              </a>
+            {% endif %}
+          </div>
         </div>
         <div class="col-md-7 d-flex flex-column">
           <div class="card-body p-4 p-md-5">
@@ -78,11 +82,11 @@ permalink: /tin-tuc/
       </div>
 
       <div class="col-lg-4">
-        <div class="position-sticky" style="top: 1.5rem;">
+        <div class="position-sticky" style="top: 6rem;">
           
           {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | compact %}
           {% if all_tags.size > 0 %}
-          <div class="p-4 mb-4 bg-light rounded-3 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="p-4 mb-4 bg-light rounded-2 wow fadeInUp" data-wow-delay="0.15s">
             <h4 class="fst-italic mb-3">Chủ đề</h4>
             <div class="d-flex flex-wrap gap-2">
               {% for tag in all_tags %}
