@@ -5,116 +5,79 @@ description: Cập nhật mẹo vệ sinh nhà cửa, kinh nghiệm chuyển nh�
 permalink: /tin-tuc/
 ---
 
-<div class="container-xxl py-5 bg-light">
+<!-- ============================= -->
+<!-- ===== PAGE HEADER ===== -->
+<!-- ============================= -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background: url('{{ site.posts.first.image | default: "/img/banner/banner-2.webp" }}') center center no-repeat; background-size: cover;">
+  <div class="container text-center py-5">
+    <h1 class="display-4 text-white animated slideInDown mb-4">Tin Tức & Kinh Nghiệm</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a class="text-white" href="{{ "/" | absolute_url }}">Trang Chủ</a></li>
+        <li class="breadcrumb-item text-primary active" aria-current="page">Tin Tức</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="container-xxl py-5">
   <div class="container">
-
-    <!-- Tiêu đề chính -->
-    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-      <p class="text-primary fw-bold text-uppercase mb-2">Tin Tức & Blog</p>
-      <h1 class="display-4 fw-bold mb-3">Cập Nhật Từ Việt Sáng</h1>
-      <p class="fs-5 text-muted">Mẹo hay, kinh nghiệm thực tế và những câu chuyện từ đội ngũ vệ sinh, chuyển nhà chuyên nghiệp.</p>
-    </div>
-
-    <!-- ============================= -->
-    <!-- ===== BÀI VIẾT NỔI BẬT (HERO) ===== -->
-    <!-- ============================= -->
-    {% assign featured_post = site.posts.first %}
-    {% if featured_post and featured_post.image %}
-    <div class="row g-5 align-items-center mb-5 featured-hero rounded-4 overflow-hidden shadow-lg wow fadeInUp" data-wow-delay="0.2s">
-      <div class="col-lg-7 order-lg-2">
-        <div class="position-relative h-100">
-          <img src="{{ featured_post.image }}" 
-               class="img-fluid w-100 h-100" 
-               alt="{{ featured_post.title }}" 
-               style="object-fit: cover; min-height: 400px;">
-          <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
-          <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4" style="z-index: 2; max-width: 90%;">
-            <span class="badge bg-primary text-white px-3 py-2 mb-3">MỚI NHẤT</span>
-            <h2 class="display-5 fw-bold mb-3">
-              <a href="{{ featured_post.url | absolute_url }}" class="text-white text-decoration-none stretched-link">{{ featured_post.title }}</a>
-            </h2>
-            <p class="text-white-50 small d-none d-md-block">
-              {{ featured_post.description | default: "Đọc ngay bài viết mới nhất từ Việt Sáng" | truncate: 120 }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-5 order-lg-1">
-        <div class="p-5">
-          <p class="text-muted small"><i class="far fa-calendar-alt me-2"></i>{{ featured_post.date | date: "%d/%m/%Y" }}</p>
-          {% if featured_post.author %}
-            <p class="text-muted small mb-3"><i class="far fa-user me-2"></i>{{ featured_post.author }}</p>
-          {% endif %}
-          <p class="lead text-dark">{{ featured_post.description | default: "Khám phá những bí quyết và kinh nghiệm hay từ đội ngũ chuyên gia của chúng tôi." }}</p>
-          <a href="{{ featured_post.url | absolute_url }}" class="btn btn-primary rounded-pill px-4 py-2 fw-bold">
-            Đọc ngay <i class="fas fa-arrow-right ms-2"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-
     <div class="row g-5">
-
       <!-- =================================== -->
-      <!-- ===== DANH SÁCH BÀI VIẾT (GRID) ===== -->
+      <!-- ===== CỘT BÀI VIẾT CHÍNH (TRÁI) ===== -->
       <!-- =================================== -->
       <div class="col-lg-8">
-
-        <!-- Filter Tags -->
-        {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | compact %}
-        {% if all_tags.size > 0 %}
-        <div class="mb-4 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="d-flex flex-wrap gap-2" id="tagFilter">
-            <button class="btn btn-outline-primary btn-sm active" data-filter="*">Tất cả</button>
-            {% for tag in all_tags %}
-              {% assign clean_tag = tag | strip | slugify %}
-              <button class="btn btn-outline-primary btn-sm" data-filter=".tag-{{ clean_tag }}">{{ tag }}</button>
-            {% endfor %}
+        
+        <!-- Bài Viết Mới Nhất (Chỉ hiển thị ở trang 1) -->
+        {% if paginator.page == 1 %}
+          {% assign featured_post = site.posts.first %}
+          <div class="card border-0 shadow-lg mb-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <img src="{{ featured_post.image }}" class="img-fluid rounded-start h-100" alt="{{ featured_post.title }}" style="object-fit: cover; min-height: 250px;">
+              </div>
+              <div class="col-md-7 d-flex flex-column">
+                <div class="card-body">
+                  <span class="badge bg-primary mb-2">Mới nhất</span>
+                  <h3 class="card-title fw-bold">
+                    <a href="{{ featured_post.url | absolute_url }}" class="text-dark text-decoration-none stretched-link">{{ featured_post.title }}</a>
+                  </h3>
+                  <p class="text-muted small">
+                    <i class="far fa-calendar-alt me-2"></i>{{ featured_post.date | date: "%d/%m/%Y" }}
+                    <span class="mx-2">•</span>
+                    <i class="far fa-user me-1"></i>{{ featured_post.author }}
+                  </p>
+                  <p class="card-text d-none d-sm-block">{{ featured_post.description | truncate: 150 }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
         {% endif %}
+        
+        <h4 class="mb-4 wow fadeInUp" data-wow-delay="0.2s">Các bài viết khác</h4>
 
-        <!-- Grid -->
-        <div class="row g-4" id="blogGrid">
+        <!-- Danh sách bài viết (Grid) -->
+        <div class="row g-4">
           {% for post in paginator.posts %}
-            {% assign post_tags = '' %}
-            {% if post.tags %}{% assign post_tags = post.tags | join: ' ' | slugify %}{% endif %}
-            <div class="col-md-6 blog-item 
-                        {% for tag in post.tags %}tag-{{ tag | slugify }} {% endfor %} 
-                        wow fadeInUp" data-wow-delay="0.{{ forloop.index | times: 0.1 }}s">
-              <div class="card border-0 shadow-sm h-100 overflow-hidden blog-card-modern">
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.index | plus: 2 }}s">
+              <div class="card border-0 shadow-sm h-100 blog-card-modern">
                 {% if post.image %}
                   <a href="{{ post.url | absolute_url }}" class="d-block overflow-hidden">
-                    <img src="{{ post.image }}" class="card-img-top img-fluid transition-scale" 
-                         alt="{{ post.title }}" style="height: 220px; object-fit: cover;">
-                  </a>
-                {% else %}
-                  <a href="{{ post.url | absolute_url }}" class="d-block bg-light text-center p-5 d-flex align-items-center justify-content-center">
-                    <i class="bi bi-card-image text-muted fs-1"></i>
+                    <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}" style="height: 220px; object-fit: cover;">
                   </a>
                 {% endif %}
                 <div class="card-body p-4 d-flex flex-column">
-                  <div class="d-flex align-items-center text-muted small mb-3">
-                    <i class="far fa-calendar-alt me-2"></i>
-                    <span>{{ post.date | date: "%d/%m/%Y" }}</span>
-                    {% if post.author %}
-                      <span class="mx-2">•</span>
-                      <i class="far fa-user me-1"></i> {{ post.author }}
-                    {% endif %}
+                  <div class="mb-2">
+                    {% for tag in post.tags limit:1 %}
+                      <span class="badge bg-secondary-subtle text-secondary-emphasis">{{ tag }}</span>
+                    {% endfor %}
                   </div>
-                  <h5 class="card-title fw-bold mb-3 line-clamp-2">
-                    <a href="{{ post.url | absolute_url }}" class="text-dark text-decoration-none stretched-link">
-                      {{ post.title }}
-                    </a>
+                  <h5 class="card-title fw-bold mb-3 flex-grow-1">
+                    <a href="{{ post.url | absolute_url }}" class="text-dark text-decoration-none stretched-link">{{ post.title }}</a>
                   </h5>
-                  {% if post.description %}
-                    <p class="card-text text-muted small line-clamp-3 mb-3">{{ post.description }}</p>
-                  {% endif %}
-                  <div class="mt-auto">
-                    <a href="{{ post.url | absolute_url }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
-                      Xem chi tiết
-                    </a>
+                  <div class="mt-auto d-flex justify-content-between align-items-center text-muted small">
+                    <span><i class="far fa-calendar-alt me-2"></i>{{ post.date | date: "%d/%m/%Y" }}</span>
+                    <span class="d-none d-md-inline"><i class="far fa-user me-1"></i>{{ post.author }}</span>
                   </div>
                 </div>
               </div>
@@ -122,32 +85,24 @@ permalink: /tin-tuc/
           {% endfor %}
         </div>
 
-        <!-- PAGINATION -->
+        <!-- PHÂN TRANG (PAGINATION) -->
         {% if paginator.total_pages > 1 %}
         <nav aria-label="Page navigation" class="mt-5 wow fadeInUp" data-wow-delay="0.5s">
           <ul class="pagination justify-content-center">
             {% if paginator.previous_page %}
-              <li class="page-item">
-                <a class="page-link" href="{% if paginator.previous_page == 1 %}{{ '/tin-tuc/' | absolute_url }}{% else %}{{ '/tin-tuc/page' | append: paginator.previous_page | absolute_url }}{% endif %}">Trước</a>
-              </li>
+              <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path }}">Trước</a></li>
             {% else %}
               <li class="page-item disabled"><span class="page-link">Trước</span></li>
             {% endif %}
 
             {% for page in (1..paginator.total_pages) %}
-              {% if page == paginator.page %}
-                <li class="page-item active"><span class="page-link">{{ page }}</span></li>
-              {% elsif page == 1 %}
-                <li class="page-item"><a class="page-link" href="{{ '/tin-tuc/' | absolute_url }}">{{ page }}</a></li>
-              {% else %}
-                <li class="page-item"><a class="page-link" href="{{ '/tin-tuc/page' | append: page | absolute_url }}">{{ page }}</a></li>
-              {% endif %}
-            {% endfor %}
-
-            {% if paginator.next_page %}
-              <li class="page-item">
-                <a class="page-link" href="{{ '/tin-tuc/page' | append: paginator.next_page | absolute_url }}">Sau</a>
+              <li class="page-item {% if page == paginator.page %}active{% endif %}">
+                <a class="page-link" href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a>
               </li>
+            {% endfor %}
+            
+            {% if paginator.next_page %}
+              <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path }}">Sau</a></li>
             {% else %}
               <li class="page-item disabled"><span class="page-link">Sau</span></li>
             {% endif %}
@@ -158,94 +113,74 @@ permalink: /tin-tuc/
       </div>
 
       <!-- =================================== -->
-      <!-- ===== SIDEBAR (DESKTOP) ===== -->
+      <!-- ===== SIDEBAR (CỘT PHẢI) ===== -->
       <!-- =================================== -->
-      <div class="col-lg-4 d-none d-lg-block">
-        <div class="sticky-sidebar" style="top: 100px;">
-          <div class="widget-card bg-primary text-white p-4 rounded-3 mb-4 text-center">
-            <i class="fas fa-headset fs-1 mb-3"></i>
-            <h5 class="fw-bold">Cần tư vấn ngay?</h5>
-            <p class="small mb-3">Gọi hotline để được báo giá miễn phí trong 5 phút</p>
-            <a href="tel:0931992089" class="btn btn-light rounded-pill px-4 fw-bold">0931 992 089</a>
-          </div>
+      <div class="col-lg-4">
+        <div class="position-sticky" style="top: 1.5rem;">
+          <!-- Widget Tìm kiếm (Tùy chọn) -->
+          <!-- <div class="p-4 mb-4 bg-light rounded-3 wow fadeInUp">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tìm kiếm bài viết...">
+              <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+            </div>
+          </div> -->
 
+          <!-- Widget Phân Loại/Tags -->
+          {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | compact %}
           {% if all_tags.size > 0 %}
-          <div class="widget-card p-4 border rounded-3 mb-4">
-            <h6 class="fw-bold mb-3">Chủ đề hot</h6>
+          <div class="p-4 mb-4 bg-light rounded-3 wow fadeInUp" data-wow-delay="0.2s">
+            <h4 class="fst-italic mb-3">Chủ đề</h4>
             <div class="d-flex flex-wrap gap-2">
-              {% for tag in all_tags limit:6 %}
-                <a href="#" class="badge bg-light text-primary px-3 py-2 text-decoration-none">{{ tag }}</a>
+              {% for tag in all_tags %}
+                <a href="#" class="btn btn-sm btn-outline-secondary">{{ tag }}</a>
               {% endfor %}
             </div>
           </div>
           {% endif %}
-
-          <div class="widget-card bg-gradient text-white p-4 rounded-3 text-center" style="background: linear-gradient(135deg, #0088ff, #0066cc);">
-            <img src="{{ '/img/logo/zalo.png' | absolute_url }}" alt="Zalo" class="mb-3" style="width: 50px;">
-            <h6 class="fw-bold">Chat Zalo ngay!</h6>
-            <p class="small mb-3">Nhắn tin để nhận ưu đãi đặc biệt</p>
-            <a href="https://zalo.me/0931992089" target="_blank" class="btn btn-light rounded-pill px-4 fw-bold">Chat liền tay</a>
+          
+          <!-- Widget Bài Viết Gần Đây -->
+          <div class="p-4 mb-4 bg-light rounded-3 wow fadeInUp" data-wow-delay="0.3s">
+            <h4 class="fst-italic mb-3">Xem nhiều nhất</h4>
+            <ul class="list-unstyled mb-0">
+              {% for post in site.posts limit:4 %}
+              <li>
+                <a href="{{ post.url | absolute_url }}" class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-2 text-decoration-none border-bottom">
+                  <img src="{{ post.image }}" alt="{{ post.title }}" width="80" height="80" class="rounded-3" style="object-fit: cover;">
+                  <div class="d-flex flex-column">
+                    <strong class="mb-1 text-dark">{{ post.title | truncate: 50 }}</strong>
+                    <small class="text-muted">{{ post.date | date: "%d/%m/%Y" }}</small>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
           </div>
+          
         </div>
       </div>
-
     </div>
-
-    <!-- CTA nổi bật cho Mobile -->
-    <div class="d-lg-none mt-5 p-4 bg-primary text-white text-center rounded-3">
-      <h5 class="fw-bold">Cần tư vấn? Gọi ngay!</h5>
-      <a href="tel:0931992089" class="btn btn-light rounded-pill px-4 mt-2 fw-bold">0931 992 089</a>
-    </div>
-
   </div>
 </div>
 
-<!-- CSS -->
 <style>
-  .featured-hero { background: #f8f9fa; }
-  .transition-scale img { transition: transform 0.4s ease; }
-  .transition-scale:hover img { transform: scale(1.05); }
-  .line-clamp-2 { 
-    display: -webkit-box; 
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical; 
-    overflow: hidden;
-    line-clamp: 2;
-  }
-  .line-clamp-3 { 
-    display: -webkit-box; 
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical; 
-    overflow: hidden;
-    line-clamp: 3;
-  }
-  .blog-card-modern { transition: all 0.3s ease; }
-  .blog-card-modern:hover { 
-    transform: translateY(-8px); 
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; 
-  }
-  .pagination .page-link { border-radius: 50rem !important; margin: 0 3px; }
-  .pagination .page-item.active .page-link { background-color: var(--bs-primary); border-color: var(--bs-primary); }
+/* CSS cho các thành phần mới */
+.blog-card-modern {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 1.5rem rgba(0,0,0,0.1) !important;
+}
+.page-header {
+  background-color: #333; /* Fallback color */
+  position: relative;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Lớp phủ tối */
+}
 </style>
 
-<!-- JS: Filter bằng Isotope -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    if (typeof Isotope !== 'undefined') {
-      const grid = document.querySelector('#blogGrid');
-      const iso = new Isotope(grid, {
-        itemSelector: '.blog-item',
-        layoutMode: 'fitRows'
-      });
-
-      document.querySelectorAll('#tagFilter button').forEach(btn => {
-        btn.addEventListener('click', function () {
-          document.querySelector('#tagFilter .active')?.classList.remove('active');
-          this.classList.add('active');
-          const filterValue = this.getAttribute('data-filter');
-          iso.arrange({ filter: filterValue });
-        });
-      });
-    }
-  });
-</script>
+<!-- Xóa Script Isotope cũ đi, vì tính năng filter đã được đưa vào Sidebar -->
