@@ -3,6 +3,12 @@ layout: default
 title: Tin tức - Việt Sáng Home
 description: Cập nhật mẹo vệ sinh nhà cửa, kinh nghiệm chuyển nhà và hoạt động mới nhất từ Việt Sáng Home – Dịch vụ vệ sinh & chuyển nhà trọn gói tại TP.HCM.
 permalink: /tin-tuc/
+
+# THÊM KHỐI NÀY ĐỂ KÍCH HOẠT PHÂN TRANG CHO TRANG NÀY
+pagination:
+  enabled: true
+  permalink: 'page:num/'     # Đường dẫn tương đối: /tin-tuc/page2/
+  first_page_path: '/tin-tuc/' # Đường dẫn tuyệt đối cho trang 1
 ---
 
 <!-- ============================= -->
@@ -96,19 +102,15 @@ permalink: /tin-tuc/
             {% endif %}
 
             {% for page in (1..paginator.total_pages) %}
-              {% comment %} --- KIỂM TRA NẾU LÀ TRANG 1 --- {% endcomment %}
-              {% if page == 1 %}
-                {% assign page_url = "/tin-tuc/" %}
-              {% else %}
-                {% assign page_url = site.paginate_path | replace: ':num', page %}
-              {% endif %}
-
               <li class="page-item {% if page == paginator.page %}active{% endif %}">
-                {% comment %} 
-                  Sử dụng page_url đã gán ở trên. 
-                  Thêm absolute_url để đảm bảo link luôn đúng.
-                {% endcomment %}
-                <a class="page-link" href="{{ page_url | absolute_url }}">{{ page }}</a>
+
+                {% comment %} Sử dụng biến của v2 để tạo link {% endcomment %}
+                {% if page == 1 %}
+                  <a class="page-link" href="{{ paginator.first_page_path | absolute_url }}">{{ page }}</a>
+                {% else %}
+                  <a class="page-link" href="{{ paginator.page_path | replace: ':num', page | absolute_url }}">{{ page }}</a>
+                {% endif %}
+
               </li>
             {% endfor %}
             

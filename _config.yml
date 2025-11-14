@@ -21,7 +21,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed # Thêm plugin này để tạo RSS Feed, cũng tốt cho SEO
   - jekyll-seo-tag # Thêm plugin SEO Tag để cải thiện SEO
-  - jekyll-paginate
+  - jekyll-paginate-v2
 # (Tùy chọn) Loại trừ các tệp không muốn xuất hiện trong sitemap
 # Ví dụ: Tệp index.html ở gốc chỉ dùng để redirect, không nên có trong sitemap.
 paginate: 6
