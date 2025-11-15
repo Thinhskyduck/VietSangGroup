@@ -249,6 +249,13 @@
                                   <label class="form-label required">3. Địa chỉ nơi cần dọn vệ sinh</label>
                                   <input type="text" class="form-control" name="diaChi" placeholder="Số nhà, đường, phường/quận..." required>
                               </div>
+                              <div class="col-12">
+                                <label class="form-label required">4. Thời gian mong muốn vệ sinh</label>
+                                <input type="datetime-local" class="form-control" name="thoiGianMongMuon" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn ngày và giờ.
+                                </div>
+                            </div>
                           </div>
                       </div>
 
@@ -257,19 +264,19 @@
                           <h4 class="mb-4 section-title">II. Đặc Điểm Nhà Ở</h4>
                           <div class="row g-3">
                               <div class="col-12">
-                                  <label class="form-label required">4. Tổng diện tích sàn và tường (nếu có) cần dọn vệ sinh (m²)</label>
+                                  <label class="form-label required">5. Tổng diện tích sàn và tường (nếu có) cần dọn vệ sinh (m²)</label>
                                   <input type="number" class="form-control" name="tongDienTich" placeholder="Ví dụ: 80" min="1" required>
                               </div>
                               <div class="col-md-4">
-                                  <label class="form-label">5. Số tầng (cả trệt)</label>
+                                  <label class="form-label">6. Số tầng (cả trệt)</label>
                                   <input type="number" class="form-control" name="soTang" placeholder="Số lượng" min="0">
                               </div>
                               <div class="col-md-4">
-                                  <label class="form-label">6. Số nhà bếp</label>
+                                  <label class="form-label">7. Số nhà bếp</label>
                                   <input type="number" class="form-control" name="soNhaBep" placeholder="Số lượng" min="0">
                               </div>
                               <div class="col-md-4">
-                                  <label class="form-label">7. Số toilet</label>
+                                  <label class="form-label">8. Số toilet</label>
                                   <input type="number" class="form-control" name="soToilet" placeholder="Số lượng" min="0">
                               </div>
                           </div>
@@ -280,28 +287,28 @@
                           <h4 class="mb-4 section-title">III. Yêu Cầu Vệ Sinh Cụ Thể</h4>
                           <div class="row g-4">
                               <div class="col-md-6">
-                                  <label class="form-label required">8. Mức độ làm sạch?</label>
+                                  <label class="form-label required">9. Mức độ làm sạch?</label>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="mucDoLamSach" value="Sạch nhẹ (sạch bụi)" required><label class="form-check-label">Sạch nhẹ (sạch bụi)</label></div>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="mucDoLamSach" value="Sạch kỹ (tẩy vết bẩn cứng đầu: ố, cặn canxi, gỉ sét, dầu mỡ, keo, sơn)"><label class="form-check-label">Sạch kỹ (tẩy vết bẩn cứng đầu: ố, gỉ sét, cặn canxi, dầu mỡ, keo, sơn,... )</label></div>
                               </div>
                               <div class="col-md-6">
-                                  <label class="form-label required">9. Vệ sinh trần nhà?</label>
+                                  <label class="form-label required">10. Vệ sinh trần nhà?</label>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhTranNha" value="Cần" required><label class="form-check-label">Cần (Trần, quạt trần, đèn, quạt hút)</label></div>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhTranNha" value="Không cần"><label class="form-check-label">Không cần</label></div>
                               </div>
                               <div class="col-md-6">
-                                  <label class="form-label required">10. Vệ sinh nội thất?</label>
+                                  <label class="form-label required">11. Vệ sinh nội thất?</label>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhNoiThat" value="Cần" required><label class="form-check-label">Cần (Kính, cửa, tủ, bàn, ghế, thiết bị)</label></div>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhNoiThat" value="Không cần"><label class="form-check-label">Không cần</label></div>
                               </div>
                               <div class="col-md-6">
-                                  <label class="form-label required">11. Vệ sinh máy giặt?</label>
+                                  <label class="form-label required">12. Vệ sinh máy giặt?</label>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayGiat" value="Lồng ngang" required><label class="form-check-label">Lồng ngang</label></div>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayGiat" value="Lồng đứng"><label class="form-check-label">Lồng đứng</label></div>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayGiat" value="Không cần"><label class="form-check-label">Không cần</label></div>
                               </div>
                               <div class="col-md-6">
-                                  <label class="form-label required">12. Vệ sinh máy lạnh?</label>
+                                  <label class="form-label required">13. Vệ sinh máy lạnh?</label>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayLanh" value="Cần" required><label class="form-check-label">Cần</label></div>
                                   <div class="form-check"><input class="form-check-input" type="radio" name="veSinhMayLanh" value="Không cần"><label class="form-check-label">Không cần</label></div>
                               </div>
